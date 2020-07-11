@@ -1,0 +1,17 @@
+
+[13-Jun-2018 07:46:15 America/Chicago] PHP Parse error:  syntax error, unexpected ''data_added_successf' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home/myqueenhair/public_html/superschool/application/controllers/Admin.php on line 941
+[13-Jun-2018 07:48:11 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/myqueenhair/public_html/superschool/application/controllers/Admin.php on line 1032
+[13-Jun-2018 07:51:26 America/Chicago] PHP Fatal error:  Call to a member function row() on a non-object in /home/myqueenhair/public_html/superschool/application/helpers/multi_language_helper.php on line 23
+[13-Jun-2018 07:54:32 America/Chicago] PHP Fatal error:  Call to a member function row() on a non-object in /home/myqueenhair/public_html/superschool/application/helpers/multi_language_helper.php on line 23
+[13-Jun-2018 18:45:27 America/Chicago] PHP Parse error:  syntax error, unexpected ''a' (T_ENCAPSED_AND_WHITESPACE) in /home/myqueenhair/public_html/superschool/application/views/backend/admin/navigation.php on line 527
+[16-Jun-2018 12:59:50 America/Chicago] PHP Parse error:  syntax error, unexpected '===' (T_IS_IDENTICAL) in /home/myqueenhair/public_html/superschool/application/controllers/Admin.php on line 1041
+[16-Jun-2018 13:00:09 America/Chicago] PHP Parse error:  syntax error, unexpected '===' (T_IS_IDENTICAL) in /home/myqueenhair/public_html/superschool/application/controllers/Admin.php on line 1041
+[21-Oct-2018 02:27:27 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 455
+[21-Oct-2018 02:27:30 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 455
+[21-Oct-2018 02:27:46 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 452
+[22-Oct-2018 11:43:40 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 80
+[22-Oct-2018 11:43:43 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 80
+[22-Oct-2018 11:44:43 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 80
+[22-Oct-2018 11:44:45 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 80
+[22-Oct-2018 11:49:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 109
+[22-Oct-2018 11:49:04 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/thehillside/public_html/superschool/application/views/backend/admin/tabulation_sheet_midterm_print_view_single.php on line 109

@@ -1,0 +1,39 @@
+<div class="x_panel" >
+            
+                <div class="x_title">
+                    <div class="panel-title">
+					 <?php echo get_phrase('noticeboard_list'); ?>
+					</div>
+					</div>
+<div class="table-responsive">
+    
+                <table cellpadding="0" cellspacing="0" border="0" class="table" id="table_export">
+                	<thead>
+                		<tr>
+                    		<th><div>#</div></th>
+                    		<th><div><?php echo get_phrase('title');?></div></th>
+                    		<th><div><?php echo get_phrase('notice');?></div></th>
+                    		<th><div><?php echo get_phrase('date');?></div></th>
+						</tr>
+					</thead>
+                    <tbody>
+                    	<?php $count = 1;foreach($notices as $row):?>
+                        <tr>
+                            <td><?php echo $count++;?></td>
+							<td><?php echo $row['notice_title'];?></td>
+							<td class="span5"><?php echo $row['notice'];?></td>
+							<td><?php echo date('d M,Y', $row['create_timestamp']);?></td>
+							
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+				
+				
+				<?php if($row['notice_title'] == ''):?>
+							<div class="alert alert-danger" align="center">No Data to be Displayed Yet !</div>
+							<?php endif;?>
+				
+				
+			</div>
+		</div>

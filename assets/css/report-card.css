@@ -1,0 +1,74 @@
+.print-doc {
+    padding: 10px;
+}
+.print-doc h4, .print-doc h2 {
+    text-align: left;
+}
+.container1 {
+        height: auto;
+        width: auto;
+        padding-right: auto;
+        padding-left: auto;
+        margin-right: auto;
+        margin-left: auto;
+}
+@font-face {
+    font-family: 'canterburyregular';
+    src: url('../fonts/canterbury-webfont.woff2') format('woff2'),
+         url('../fonts/canterbury-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+td {
+    padding: 8px;
+    color: #000 !important;
+    border: 1px solid #D2CBCB;
+    font-size: 12px;
+}
+.tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.tg td {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        padding: 8px;border-style: solid;
+        border-width: 1px;overflow: hidden;
+        word-break: normal;
+        border-color: #ddd;
+        color: #000;
+}
+.tg th {
+        font-family: Arial, sans-serif;
+        font-size: 12px;padding: 8px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ddd;
+        color: #000;
+}
+.tg .tg-yw4l {
+    vertical-align:middle;
+    text-align: center;
+}
+.tg.table-two {
+    margin: 100px 0 0 0;
+}
+.tg tr th, .tg tr td {
+    color: #000;
+}
+td.space {
+    min-width: 85px;
+    text-align: center;
+}
+td h5 {
+    color: #000 !important;
+}
+span.grade-right::before {
+    content: "\f00c";
+    font-family: fontawesome;
+    color: green;
+}
