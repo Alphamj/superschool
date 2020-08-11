@@ -60,29 +60,29 @@
                 </a>
             </li>
 
-
-            <li class="<?php if ($page_name == 'exam_first' || $page_name == 'exam_second' || $page_name == 'exam_site') echo 'active'; ?> ">
-                <?php if ($this->session->userdata('cur_exam_data')) { ?>
-                    <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/exam_site">                
+            <!-- Online Exam 
+            <li class="<?php //if ($page_name == 'exam_first' || $page_name == 'exam_second' || $page_name == 'exam_site') echo 'active'; ?> ">
+                <?php //if ($this->session->userdata('cur_exam_data')) { ?>
+                    <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/exam_site">                
                         <i class="entypo-book"></i>
-                        <span><?php echo get_phrase('online_exam'); ?></span>
+                        <span><?php //echo get_phrase('online_exam'); ?></span>
                     </a>
-                <?php } else { ?>
-                    <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/exam/first">                
+                <?php //} else { ?>
+                    <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/exam/first">                
                         <i class="entypo-book"></i>
-                        <span><?php echo get_phrase('online_exam'); ?></span>
+                        <span><?php //echo get_phrase('online_exam'); ?></span>
                     </a>
-                <?php } ?>
-            </li>
+                <?php //} ?>
+            </li>-->
 
-
-            <li class="<?php if ($page_name == 'exam_review' || $page_name == 'exam_result_detail') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/exam_review">
-                    <span><i class="entypo-book"></i> <?php echo get_phrase('view_exam_results'); ?></span>
+            <!-- Exam Review 
+            <li class="<?php //if ($page_name == 'exam_review' || $page_name == 'exam_result_detail') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/exam_review">
+                    <span><i class="entypo-book"></i> <?php //echo get_phrase('view_exam_results'); ?></span>
                 </a>
-            </li>
+            </li> -->
 
-            <!-- Exam marks -->
+            <!-- Media -->
             <li class="<?php if ($page_name == 'media') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/media/<?php echo $this->session->userdata('login_user_id'); ?>">
                     <i class="entypo-camera"></i>
@@ -99,8 +99,7 @@
             </li>
 
 
-            <!-- Exam marks -->
-            
+            <!-- Report Card -->
             <li class="<?php
                 if ($page_name == 'student_marksheet' ||
                         $page_name == 'midterm_result')
@@ -128,7 +127,7 @@
             <li class="<?php if ($page_name == 'invoice') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/invoice">
                     <i class="entypo-credit-card"></i>
-                    <span><?php echo get_phrase('make_payment'); ?></span>
+                    <span><?php echo get_phrase('view_payment'); ?></span>
                 </a>
             </li>
 
@@ -149,13 +148,13 @@
                 </a>
             </li>
 
-            <!-- TRANSPORT -->
-            <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/transport">
+            <!-- TRANSPORT 
+            <li class="<?php //if ($page_name == 'transport') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/transport">
                     <i class="entypo-flight"></i>
-                    <span><?php echo get_phrase('transportation'); ?></span>
+                    <span><?php //echo get_phrase('transportation'); ?></span>
                 </a>
-            </li>
+            </li> -->
 
 
             <!-- TODAYS THOUGHT -->

@@ -211,73 +211,70 @@
 								
                               </tbody>
                             </table>
+
 <h2><strong  style="color:#5cb85c">Tranportation Information</strong></h2>
-<table class="table">
-
-	 <tbody>
+      <table class="table">
+	      <tbody>
           <tr>
-                                  <th>Transportation Name</th>
-                                  <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->name;?></td>
-                                </tr>
-								<tr>
-                                  <th>Number of Vehicle</th>
-                                  <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->number_of_vehicle;?></td>
-                                </tr>
+            <th>Transportation Name</th>
+            <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->name;?></td>
+          </tr>
+					<tr>
+            <th>Number of Vehicle</th>
+            <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->number_of_vehicle;?></td>
+          </tr>		
 								
-								
-                                <tr>
-                                  <th>Route Fare</th>
-                                  <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->route_fare;?></td>
-                                </tr>
-                                <tr>
-                                  <th>Description</th>
-                                  <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->description;?></td>
-                                </tr>
-								
-								
-                              </tbody>
-                            </table>
-<h2><strong  style="color:#5cb85c">Student Timetable</strong></h2>
-							 <table cellpadding="0" cellspacing="0" border="0"  class="table">
-                                            <tbody>
-                                                <?php 
-                                                for($d=1;$d<=7;$d++):
-                                                
-                                                if($d==1)$day='sunday';
-                                                else if($d==2)$day='monday';
-                                                else if($d==3)$day='tuesday';
-                                                else if($d==4)$day='wednesday';
-                                                else if($d==5)$day='thursday';
-                                                else if($d==6)$day='friday';
-                                                else if($d==7)$day='saturday';
-                                                ?>
-                                                <tr class="gradeA">
-                                                    <td width="100"><?php echo strtoupper($day);?></td>
-                                                    <td>
-                                                    	<?php
-														$this->db->order_by("time_start", "asc");
-														$this->db->where('day' , $day);
-														$this->db->where('class_id' , $class_id);
-														$routines	=	$this->db->get('class_routine')->result_array();
-														foreach($routines as $row2):
-														?>
-															<button class="btn btn-white" >
-                                                         <?php echo $this->crud_model->get_subject_name_by_id($row2['subject_id']);?>
-																<?php
-                                                                    if ($row2['time_start_min'] == 0 && $row2['time_end_min'] == 0) 
-                                                                        echo '('.$row2['time_start'].'-'.$row2['time_end'].')';
-                                                                    if ($row2['time_start_min'] != 0 || $row2['time_end_min'] != 0)
-                                                                        echo '('.$row2['time_start'].':'.$row2['time_start_min'].'-'.$row2['time_end'].':'.$row2['time_end_min'].')';
-                                                                ?>
-                                                            </button>
-														<?php endforeach;?>
+          <tr>
+            <th>Route Fare</th>
+            <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->route_fare;?></td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->description;?></td>
+          </tr>
+				</tbody>
+      </table>
 
-                                                    </td>
-                                                </tr>
-                                                <?php endfor;?>
+<h2><strong  style="color:#5cb85c">Student Timetable</strong></h2>
+			<table cellpadding="0" cellspacing="0" border="0"  class="table">
+        <tbody>
+          <?php 
+            for($d=1;$d<=7;$d++):
+              
+              if($d==1)$day='sunday';
+              else if($d==2)$day='monday';
+              else if($d==3)$day='tuesday';
+              else if($d==4)$day='wednesday';
+              else if($d==5)$day='thursday';
+              else if($d==6)$day='friday';
+              else if($d==7)$day='saturday';
+          ?>
+              <tr class="gradeA">
+                  <td width="100"><?php echo strtoupper($day);?></td>
+                  <td>
+                  <?php
+						      	$this->db->order_by("time_start", "asc");
+						      	$this->db->where('day' , $day);
+						      	$this->db->where('class_id' , $class_id);
+						      	$routines	=	$this->db->get('class_routine')->result_array();
+						      	foreach($routines as $row2):
+						      ?>
+								      <button class="btn btn-white" >
+                        <?php echo $this->crud_model->get_subject_name_by_id($row2['subject_id']);?>
+								      	<?php
+                          if ($row2['time_start_min'] == 0 && $row2['time_end_min'] == 0) 
+                              echo '('.$row2['time_start'].'-'.$row2['time_end'].')';
+                          if ($row2['time_start_min'] != 0 || $row2['time_end_min'] != 0)
+                              echo '('.$row2['time_start'].':'.$row2['time_start_min'].'-'.$row2['time_end'].':'.$row2['time_end_min'].')';
+                        ?>
+                      </button>
+										<?php endforeach;?>
+              </td>
+              </tr>
+            <?php endfor;?>
                                                 
-                                            </tbody>
-                                        </table>
+        </tbody>
+      </table>
 <?php endforeach; ?>	
 					
 					
@@ -286,13 +283,13 @@
 
 
 
-<!--
+
 <div class="col-md-6">
  <div class="x_panel" >
             
                 <div class="x_title">
                     <div class="panel-title">
-					 <?php /*echo get_phrase('my_profile'); ?>
+					 <?php echo get_phrase('my_profile'); ?>
 					</div>
 					</div>
 
@@ -304,7 +301,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"/>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" readonly/>
                                 </div>
                             </div>
 
@@ -314,14 +311,14 @@
                                     <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>"/>
                                 </div>
                             </div>
-
+                            <!--
                             <div class="form-group">
-                                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
+                                <label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('photo');?></label>
                                 
                                 <div class="col-sm-5">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;" data-trigger="fileinput">
-                                            <img src="<?php echo $this->crud_model->get_image_url('student' , $row['student_id']);?>" alt="...">
+                                            <img src="<?php //echo $this->crud_model->get_image_url('student' , $row['student_id']);?>" alt="..." >
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
                                         <div>
@@ -335,7 +332,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                    -->
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-5">
                                   <button type="submit" class="btn btn-green btn-sm"><i class="entypo-plus"></i><?php echo get_phrase('update_profile');?></button>
@@ -345,10 +342,10 @@
                         </form>
 						<?php
                     endforeach;
-                    */?>
+                    ?>
                 </div>
 			</div>
-            --EDITING FORM ENDS-->
+            <!--EDITING FORM ENDS-->
 
 
 
@@ -370,7 +367,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('current_password');?></label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="password" value="<?php echo $row['password'];?>"/ readonly="true">
+                                    <input type="password" class="form-control" name="password" value=""/>
                                 </div>
                             </div>
                             <div class="form-group">

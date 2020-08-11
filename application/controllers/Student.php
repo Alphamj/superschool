@@ -86,15 +86,16 @@ class Student extends CI_Controller
     
     
 // END OF TERM
-    function student_marksheet($class_id = '',$exam_id='') {
+    function student_marksheet($class_id = '',$exam_id='',$sessoin_id='') {
         if ($this->session->userdata('student_login') != 1)
             redirect('login', 'refresh');
 		if($this->input->post('operation') =='selection'){
+            $page_data['session_year'] = $this->input->post('session_year');
 			$page_data['class_id'] = $this->input->post('class_id');
 			$page_data['exam_id'] = $this->input->post('exam_id');
 
 			if ($page_data['class_id'] > 0 ){
-				redirect(base_url() . 'index.php?student/student_marksheet/'.$page_data['class_id'].'/'.$page_data['exam_id'], 'refresh');
+				redirect(base_url() . 'index.php?student/student_marksheet/'.$page_data['class_id'].'/'.$page_data['exam_id'].'/'.$page_data['session_year'], 'refresh');
 			}else {
 				$this->session->set_flashdata('info', 'please_student_name');
 				redirect(base_url() . 'index.php?student/student_marksheet/', 'refresh');
@@ -106,6 +107,7 @@ class Student extends CI_Controller
         $page_data['page_title'] =   get_phrase('marksheet_for') . ' (' . get_phrase('class') . ' ' . $class_name . ')';
         $page_data['exam_id'] =   $exam_id;
         $page_data['class_id']   =   $class_id;
+        $page_data['session_year']   =   $sessoin_id;
         $this->load->view('backend/index', $page_data);
     }
 
@@ -122,15 +124,16 @@ class Student extends CI_Controller
 
     //MID TERM REPORT
 
-    function midterm_result($class_id = '',$exam_id='') {
+    function midterm_result($class_id = '',$exam_id='',$sessoin_id='') {
         if ($this->session->userdata('student_login') != 1)
             redirect('login', 'refresh');
 		if($this->input->post('operation') =='selection'){
+            $page_data['session_year'] = $this->input->post('session_year');
 			$page_data['class_id'] = $this->input->post('class_id');
 			$page_data['exam_id'] = $this->input->post('exam_id');
 
 			if ($page_data['class_id'] > 0 ){
-				redirect(base_url() . 'index.php?student/midterm_result/'.$page_data['class_id'].'/'.$page_data['exam_id'], 'refresh');
+				redirect(base_url() . 'index.php?student/midterm_result/'.$page_data['class_id'].'/'.$page_data['exam_id'].'/'.$page_data['session_year'], 'refresh');
 			}else {
 				$this->session->set_flashdata('info', 'please_student_name');
 				redirect(base_url() . 'index.php?student/midterm_result/', 'refresh');
@@ -141,6 +144,7 @@ class Student extends CI_Controller
         $page_data['page_title'] =   'Mid term report';
         $page_data['exam_id'] =   $exam_id;
         $page_data['class_id']   =   $class_id;
+        $page_data['session_year']   =   $sessoin_id;
         $this->load->view('backend/index', $page_data);
     }
 
@@ -498,7 +502,7 @@ class Student extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
     
-    /******MANAGE OWN PROFILE AND CHANGE PASSWORD***/
+    /******MANAGE PROFILE AND CHANGE PASSWORD***/
     function manage_profile($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('student_login') != 1)
@@ -521,14 +525,18 @@ class Student extends CI_Controller
             $current_password = $this->db->get_where('student', array(
                 'student_id' => $this->session->userdata('student_id')
             ))->row()->password;
-            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password']) {
+            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password'] && $data['new_password'] != '') {
                 $this->db->where('student_id', $this->session->userdata('student_id'));
                 $this->db->update('student', array(
                     'password' => $data['new_password']
                 ));
                 $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
-            } else {
+
+            } if ($current_password != $data['password'] || $data['new_password'] != $data['confirm_new_password'] && $data['new_password'] != '') {
                 $this->session->set_flashdata('flash_message', get_phrase('password_mismatch'));
+
+            } if ($data['new_password'] == '' && $data['confirm_new_password'] == '') {
+                $this->session->set_flashdata('flash_message', get_phrase('password_can_not_be_empty'));
             }
             redirect(base_url() . 'index.php?student/manage_profile/', 'refresh');
         }
