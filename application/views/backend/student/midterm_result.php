@@ -1492,7 +1492,7 @@ function printdiv(printpage)
 {
 var headstr = '<html><head>' 
       + $("head").html() 
-      + ' <style>body{background-color:white !important;}@page { size: 59.4cm 84.1cm;margin: 2cm 2cm 2cm 2cm; } </style></head>';
+      + ' <style>body{background-color:white !important; width:100%; height:100%}@page { size: 30.4cm 44.1cm; margin: 1cm 1cm 1cm 1cm;}</style></head>';
 var footstr = "</body>";
 var newstr = document.all.item(printpage).innerHTML;
 var oldstr = document.body.innerHTML;
