@@ -102,9 +102,9 @@ class Student extends CI_Controller
 			}
 			
         }
-        $class_name   = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name;
+        $name   = $this->db->get_where('student' , array('student_id' => $this->session->userdata('login_user_id')))->result_array();
         $page_data['page_name']  =   'student_marksheet';
-        $page_data['page_title'] =   get_phrase('marksheet_for') . ' (' . get_phrase('class') . ' ' . $class_name . ')';
+        $page_data['page_title'] =   get_phrase('end_of_term_report_for') . ' (' . $name[0]['name'] . ' ' . $name[0]['surname'] . ')';
         $page_data['exam_id'] =   $exam_id;
         $page_data['class_id']   =   $class_id;
         $page_data['session_year']   =   $sessoin_id;
@@ -124,16 +124,15 @@ class Student extends CI_Controller
 
     //MID TERM REPORT
 
-    function midterm_result($class_id = '',$exam_id='',$sessoin_id='') {
+    function midterm_result($class_id = '',$exam_id='') {
         if ($this->session->userdata('student_login') != 1)
             redirect('login', 'refresh');
 		if($this->input->post('operation') =='selection'){
-            $page_data['session_year'] = $this->input->post('session_year');
 			$page_data['class_id'] = $this->input->post('class_id');
 			$page_data['exam_id'] = $this->input->post('exam_id');
 
 			if ($page_data['class_id'] > 0 ){
-				redirect(base_url() . 'index.php?student/midterm_result/'.$page_data['class_id'].'/'.$page_data['exam_id'].'/'.$page_data['session_year'], 'refresh');
+				redirect(base_url() . 'index.php?student/midterm_result/'.$page_data['class_id'].'/'.$page_data['exam_id'], 'refresh');
 			}else {
 				$this->session->set_flashdata('info', 'please_student_name');
 				redirect(base_url() . 'index.php?student/midterm_result/', 'refresh');
@@ -144,7 +143,6 @@ class Student extends CI_Controller
         $page_data['page_title'] =   'Mid term report';
         $page_data['exam_id'] =   $exam_id;
         $page_data['class_id']   =   $class_id;
-        $page_data['session_year']   =   $sessoin_id;
         $this->load->view('backend/index', $page_data);
     }
 

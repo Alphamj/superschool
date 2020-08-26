@@ -1,85 +1,68 @@
-
 <div class="x_panel" >
             
-			<div class="x_title">
-			   <div class="panel-title">
-	   <?php echo form_open(base_url() . 'index.php?student/midterm_result');?>
-  
-					<?php echo get_phrase('get_result'); ?>
-				   </div>
-				   </div>
-			  <?php 
-			  $get_system_settings	=	$this->crud_model->get_system_settings();
-			  echo '<input type="hidden" id="current_session" value="'.$get_system_settings[17]['description'].'">';
-			  echo form_open(base_url() . 'index.php?admin/tabulation_sheet_midterm');?>
-			  <div class="col-md-3">
-				  <div class="form-group">
-					  <select name="session_year" id="session_year" class="form-control selectboxit" onchange="show_students_session(this.value)">
-						  
-						  <?php 
-						  
-						  $sessions = $this->db->get('session')->result_array();
-						  foreach($sessions as $row):
-						  ?>
-							  <option value="<?php echo $row['name'];?>"
-								  <?php if($sessoin_id){if (trim($sessoin_id) == trim($row['name'])){ echo 'selected'; }}else {if($row['name'] ==$get_system_settings[17]['description']){ echo 'selected'; } } ?>>
-									   <?php echo $row['name'];?>
-							  </option>
-						  <?php
-						  endforeach;
-						  ?>
-					  </select>
-				  </div>
-			  </div>
-					  
-			   <div class="col-md-3">
-				  <div class="form-group">
-				  
-					 <select name="class_id"  id="class_ids" class="form-control selectboxit" required >
-						   <option value=""><?php echo get_phrase('select_a_class');?></option>
-						   <?php 
-						   $classes = $this->crud_model->get_student_classes($this->session->userdata('login_user_id'));
-						   foreach($classes as $row):
-						   ?>
-					  <option value="<?php echo $row['class_id'];?>"
-						  <?php if ($class_id == $row['class_id']) echo 'selected';?>>
-							  <?php echo $row['name'];?>
-					  </option>
-						   <?php
-						   endforeach;
-						   ?>
-						   </select>
-				  </div>
-			  </div> 
-				   <div class="col-md-3">
-			   <div class="form-group">
-				   <select name="exam_id" class="form-control selectboxit" required>
-				  <option value=""><?php echo get_phrase('select_a_term');?></option>
-				  <?php 
-				  $exams = $this->db->get('exam')->result_array();
-				  foreach($exams as $row):
-				  ?>
-					  <option value="<?php echo $row['exam_id'];?>"
-						  <?php if ($exam_id == $row['exam_id']) echo 'selected';?>>
-							  <?php echo $row['name2'];?>
-					  </option>
-				  <?php
-				  endforeach;
-				  ?>
-			   </select>
-			   </div>
-		   </div>
-			   <input type="hidden" name="operation" value="selection">
-  
-  <button type="submit" class="btn btn-orange btn-sm btn-icon icon-left"><i class="entypo-search"></i><?php echo get_phrase('view_report_card');?></button>
-  
-	   <?php echo form_close();?>
-  </div>
-  <button type="button" name="b_print" class="btn btn-xs btn-orange" onClick="printdiv('div_print');"><i class="entypo-print"></i></button>
+		  <div class="x_title">
+			 <div class="panel-title">
+	 <?php echo form_open(base_url() . 'index.php?student/midterm_result');?>
+
+				  <?php echo get_phrase('get_result'); ?>
+				 </div>
+				 </div>
+				    
+			 <div class="col-md-3">
+				<div class="form-group">
+				
+				   <select name="class_id"  id="class_ids" class="form-control selectboxit" required >
+						 <option value=""><?php echo get_phrase('select_a_class');?></option>
+						 <?php 
+						 $classes = $this->crud_model->get_student_classes($this->session->userdata('login_user_id'));
+						 foreach($classes as $row):
+						 ?>
+				    <option value="<?php echo $row['class_id'];?>"
+					    <?php if ($class_id == $row['class_id']) echo 'selected';?>>
+							<?php echo $row['name'];?>
+				    </option>
+						 <?php
+						 endforeach;
+						 ?>
+						 </select>
+				</div>
+			</div> 
+				 <div class="col-md-3">
+			 <div class="form-group">
+				 <select name="exam_id" class="form-control selectboxit" required>
+				<option value=""><?php echo get_phrase('select_a_term');?></option>
+				<?php 
+				$exams = $this->db->get('exam')->result_array();
+				foreach($exams as $row):
+				?>
+				    <option value="<?php echo $row['exam_id'];?>"
+					    <?php if ($exam_id == $row['exam_id']) echo 'selected';?>>
+						    <?php echo $row['name2'];?>
+				    </option>
+				<?php
+				endforeach;
+				?>
+			 </select>
+			 </div>
+		 </div>
+			 <input type="hidden" name="operation" value="selection">
+
+<button type="submit" class="btn btn-orange btn-sm btn-icon icon-left"><i class="entypo-search"></i><?php echo get_phrase('view_exam_marks');?></button>
+
+	 <?php echo form_close();?>
+</div>
+
+  <button type="button" name="b_print" class="btn btn-xs btn-orange" onClick="printdiv('div_print');"><i class="entypo-print"></i><?php echo get_phrase('print_result');?></button>
 
   <div class="x_panel" id="div_print">
-
-  <div >
+  <?php 
+  	$get_system_settings	=	$this->crud_model->get_system_settings();
+  	$sessoin_id = $get_system_settings[17]['description'];
+  	$student_id = $this->session->userdata('login_user_id');
+  	$fees = $this->db->get_where('invoice', array('student_id' => $student_id, 'session_year' => $sessoin_id))->result_array();
+	$event = $this->db->get_where('status', array('session_year' => $sessoin_id, 'exam_id' => $exam_id))->result_array();
+  ?>
+<div >
   <style type="text/css">
 	  td {padding: 8px;color: #000 !important;border: 1px solid #D2CBCB;font-size: 12px;}
 	  .tg  {border-collapse:collapse;border-spacing:0;}
@@ -94,14 +77,8 @@
 	  .print h4, .print h2 {text-align: left;}
 	  span.grade-right::before {content: "\f00c";font-family: fontawesome;color: green;}
   </style>
-  <?php 
-  $student_id = $this->session->userdata('login_user_id');
-  $fees = $this->db->get_where('invoice', array('student_id' => $student_id))->result_array()?>
-  <?php if ($class_id != '' && $fees[0]['status'] == 'paid'){ ?>
-	  <?php  
-	  $get_system_settings	=	$this->crud_model->get_system_settings();
-	  $sessoin_id = $get_system_settings[17]['description'];
-	  
+  <?php if ($class_id != '' && $fees[0]['status'] == 'paid' && $event[0]['status']){ ?>
+	  <?php
 	  $students   =   $this->crud_model->get_student_info($student_id); 
 	  foreach($students as $row): 
 		  $student_id = $row['student_id'];
@@ -1487,6 +1464,37 @@
 	  
   ?>
   </body>
+
+</div>
+
+<?php if ($fees[0]['status'] == 'unpaid'):?>
+<div class="x_panel" >
+            
+                <div class="x_title">
+                    <div class="panel-title">
+					 <?php echo get_phrase('get_students'); ?>
+					</div>
+					</div>
+		<?php $child = $this->db->get_where('student', array('student_id' => $student_id))->result_array();?> 
+		<div class="alert alert-danger" align="center"><?php echo $child[0]['name'] . $child[0]['surname'] ?> school fees status: Unpaid</div>
+</div>
+<?php endif;?>
+
+<?php if ($event[0]['status'] != 'opened'):?>
+
+
+<div class="x_panel" >
+	   
+		  <div class="x_title">
+			 <div class="panel-title">
+				  <?php echo get_phrase('get_result'); ?>
+				 </div>
+				 </div>
+	 <div class="alert alert-danger" align="center">This Result is not available at the moment!<?php echo $sessoin_id=''; ?></div>
+</div>
+<?php endif;?>
+
+
 <script language="javascript">
 function printdiv(printpage)
 {

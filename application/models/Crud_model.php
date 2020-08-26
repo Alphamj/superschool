@@ -581,6 +581,18 @@ class Crud_model extends CI_Model {
 		$query = $this->db->get();
 		$query_array = $query->result_array();
 		return $query_array;
+    }
+    
+    function get_student_classes0($student_id){
+		$this->db->distinct();
+		$this->db->select('t1.class_id, t1.name')
+				->from('mark0 as t2')
+				->where('t2.student_id', $student_id)
+				
+				->join('class as t1', 't1.class_id = t2.class_id', 'LEFT');
+		$query = $this->db->get();
+		$query_array = $query->result_array();
+		return $query_array;
 	}
 	//function added on 28-06-18 sandeep
 	
