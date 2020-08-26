@@ -14,7 +14,7 @@
 				   <select name="class_id"  id="class_ids" class="form-control selectboxit" required >
 						 <option value=""><?php echo get_phrase('select_a_class');?></option>
 						 <?php 
-						 $classes = $this->crud_model->get_student_classes($this->session->userdata('login_user_id'));
+						 $classes = $this->crud_model->get_student_classes0($this->session->userdata('login_user_id'));
 						 foreach($classes as $row):
 						 ?>
 				    <option value="<?php echo $row['class_id'];?>"
