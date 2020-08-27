@@ -52,9 +52,9 @@
 
 		<?php echo form_close();?>
 </div>
-
+<hr/>
 <button type="button" name="b_print" class="btn btn-xs btn-orange" onClick="printdiv('div_print');"><i class="entypo-print"></i><?php echo get_phrase('print_result');?></button>
-
+<hr/>
 <div class="x_panel" id="div_print">
 <?php 
 	$get_system_settings	=	$this->crud_model->get_system_settings();
@@ -2059,9 +2059,7 @@ function grade_mock($val){
 </div>
 <?php endif;?>
 
-<?php if ($event[0]['status'] != 'opened'):?>
-
-
+<?php if ($event[0]['status'] != 'opened' && $class_id != ''):?>
 <div class="x_panel" >
 	 
 		<div class="x_title">
@@ -2069,10 +2067,21 @@ function grade_mock($val){
 				<?php echo get_phrase('get_result'); ?>
 			   </div>
 			   </div>
-   <div class="alert alert-danger" align="center">This Result is not available at the moment!<?php echo $sessoin_id=''; ?></div>
+   <div class="alert alert-danger" align="center">This Result is not available at the moment!</div>
 </div>
 <?php endif;?>
 
+<?php if ($class_id == ''):?>
+<div class="x_panel" >
+	 
+		<div class="x_title">
+		   <div class="panel-title">
+				<?php echo get_phrase('get_result'); ?>
+			   </div>
+			   </div>
+   <div class="alert alert-danger" align="center">No Information has been provided</div>
+</div>
+<?php endif;?>
 
 <script language="javascript">
 function printdiv(printpage)
