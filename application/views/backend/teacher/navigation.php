@@ -107,23 +107,20 @@
             </li>
 
             <!-- SUBJECT -->
+            <?php /*
             <li class="<?php if ($page_name == 'subject') echo 'opened active'; ?> ">
                 <a href="#">
                     <i class="entypo-book"></i>
                     <span><?php echo get_phrase('view_subjects'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <?php $classes = $this->db->get_where('class', array('teacher_id' => $this->session->userdata('login_user_id')))->result_array();
-					foreach ($classes as $row):
-   					 ?>
-                        <li class="<?php if ($page_name == 'subject' && $class_id == $row['class_id']) echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/subject/<?php echo $row['class_id']; ?>">
-                                <span><?php echo get_phrase('class'); ?> <?php echo $row['name']; ?></span>
+                        <li class="<?php if ($page_name == 'subject' ) echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/subject">
+                                <span><?php echo get_phrase('my_subjects'); ?></span>
                             </a>
                         </li>
-                    <?php endforeach; ?>
                 </ul>
-            </li>
+            </li> */ ?>
 
             <!-- STUDY MATERIAL -->
             <li class="<?php if ($page_name == 'study_material') echo 'active'; ?> ">
@@ -133,22 +130,23 @@
                 </a>
             </li>
 
+            <?php /*
             <!-- MANAGE EXAM QUESTIONS -->
             <li class="<?php if ($page_name == 'examquestion') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/examquestion">
                     <i class="entypo-book"></i>
                     <span><?php echo get_phrase('exam_questions'); ?></span>
                 </a>
-            </li>
+            </li> 
 
-
+            
             <!-- LOAN APPLICATION -->
             <li class="<?php if ($page_name == 'loan_applicant') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/loan_applicant">
                     <i class="entypo-book"></i>
                     <span><?php echo get_phrase('loan_application'); ?></span>
                 </a>
-            </li>
+            </li> 
 
 
             <!-- LOAN APPROVAL -->
@@ -158,7 +156,7 @@
                     <i class="entypo-book"></i>
                     <span><?php echo get_phrase('approval_status'); ?></span>
                 </a>
-            </li>
+            </li> */ ?>
 
             <!-- TODAYS THOUGHT -->
             <li class="<?php if ($page_name == 'assignment') echo 'active'; ?> ">
@@ -225,7 +223,7 @@
                 </ul>
             </li>
 
-
+            <?php /*
             <!-- LIBRARY -->
             <li class="<?php if ($page_name == 'book') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/book">
@@ -240,7 +238,7 @@
                     <i class="entypo-flight"></i>
                     <span><?php echo get_phrase('transportation'); ?></span>
                 </a>
-            </li>
+            </li> */?>
 			
 			 <!-- COMMUNICATIONS -->
             <li class="<?php

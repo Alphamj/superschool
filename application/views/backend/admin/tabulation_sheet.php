@@ -1683,7 +1683,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php echo get_phrase('mass_report_card');?>
 			</a>
-			<a href="<?php echo base_url();?>index.php?admin/tabulation_sheet_print_singlee_control/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>/<?php echo $student_id;?>" 
+			<a href="<?php echo base_url();?>index.php?admin/tabulation_sheet_print_single_control/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>/<?php echo $student_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php echo get_phrase('print_report');?>
 			</a>

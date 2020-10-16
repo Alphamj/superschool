@@ -32,7 +32,7 @@
     foreach($students as $row): 
         $student_id = $row['student_id'];
         $roll = $row['roll'];
-	   $sex = $row['sex'];
+	    $sex = $row['sex'];
         $total_marks = 0;
         $total_class_score = 0;
 
@@ -55,9 +55,9 @@
 		  
 <!-- CODE added on 04 june 2018 sandeep-->
 	<?php if ($class_id > 19 && $class_id < 40){?>
-		<div class="print" style="border:1px solid #000;">
+		<div class="print" style="border:1px solid #000; margin-top: 30px;">
 			<div class="table-responsive" style="padding: 2px;">
-				<table class="table-bordered" style="width: 70%; margin:auto; margin-bottom: 10px;">
+				<table class="table-bordered" style="width: 80%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
 							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
@@ -81,7 +81,7 @@
 					</tbody>
 				</table>
 			
-				<table class="table" style="width: 70%; margin:auto; margin-bottom:10px;">
+				<table class="table" style="width: 80%; margin:auto; margin-bottom:10px;">
 					<tbody>
 						<tr>
 							<td><strong>Name</strong></td>
@@ -95,10 +95,10 @@
 							<td><strong>Sex</strong></td>
 							<td><?php echo $sex;?></td>
 
-							<?php //if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
+							<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
 							<td><strong>Attendance</strong></td>
 							<td><?php $attendence = $this->db->get_where('comments',array('exam_id' => $exam_id,'student_id' => $student_id ,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->row() ->Attendances; echo $attendence //echo $present . '/' . $total;?></td>
-							<?php //} ?>
+							<?php } ?>
 						</tr>
 						<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
 						<tr>
@@ -214,9 +214,7 @@
 								<td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
 							</tr>
 						
-								<?php }
-							endforeach; ?>
-
+								<?php } endforeach; ?>
 							<tr>
 								<td colspan="3" style="text-align: center">Total Marks</td>
 								<td style="text-align: center"><?php echo $value[0]['total_score'];;?></td>
@@ -237,9 +235,9 @@
 					<tr>
 						<th class="tg-yw4l" rowspan="2">SUBJECT</th>
 						<th class="tg-yw4l" rowspan="2">PRE-MOCK <br />[100]</th>
-						<th class="tg-yw4l" rowspan="2">GRADES</th>
+						<th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
 						<th class="tg-yw4l" rowspan="2">CLASS <br /> MAXIMUM</th>
-						<th class="tg-yw4l" rowspan="2">EFFORT</th>
+						<th class="tg-yw4l" rowspan="2">E<br />F<br />F<br />O<br />R<br />T</th>
 						<th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
 						<th class="tg-yw4l" rowspan="2">TEACHER</th>
 					</tr>
@@ -254,7 +252,7 @@
 					<?php 
 						$query = $this->db->get_where('mark' , array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id));
 						$marks	=	$query->result_array();
-						$value = $this->db->get_where('average', array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id))->result_array();
+						$value = $this->db->get_where('average', array('class_id' => 113, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id))->result_array();
 						$total_markss=$total_sub_marks1_all=$total_sub_marks2_all0;
 						foreach($marks as $row2):
 							if ($row2['mark_obtained'] != 0){
@@ -269,6 +267,8 @@
 							$class_max3 = $this->db->get_where('mark',array("subject_id"=>$row2['subject_id'],'exam_id' => $exam_id, 'class_id'=> 37, 'session_year'=>$sessoin_id))->result_array();
 				
 							$class_max = array_merge($class_max1,$class_max2,$class_max3);
+							$this->db->select("student_id");
+							$tstu = $this->db->get_where('student',array('class_id'=>$class_id))->result_array();
 							
 							$total_sub_marks = $row2['mark_obtained'];
 							$grade = grade_mock($total_sub_marks);
@@ -288,12 +288,11 @@
 							<td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
 						</tr>
 						
-					<?php }
-						endforeach; ?>
+					<?php } endforeach; ?>
 
 						<tr>
 								<td colspan="3" style="text-align: center">Total Marks</td>
-								<td style="text-align: center"><?php echo $value[0]['total_score'];;?></td>
+								<td style="text-align: center"><?php echo $value[0]['total_score'];?></td>
 								<td colspan="2" style="text-align: center">Student Average</td>
 								<td style="text-align: center"><?php echo $value[0]['total_average'];?></td>
 								<td colspan="2" style="text-align: center">Class Average</td>
@@ -308,7 +307,7 @@
 				<br />
 			
 			<div class="table-responsive">
-				<table style="width:98%; margin:10px;" class="tg">
+				<table style=" margin:10px;" class="tg">
 					
 					<tr>
 						<td style=" font-size:20px;">key:</td>
@@ -374,7 +373,7 @@
 
 		<br />
 		
-		<?php //if (strpos($class_type, 'SS 1') !== false || strpos($class_type, 'SS 2') !== false) { ?>
+		<?php if ($class_id > 28 && $class_id < 35) { ?>
 		<p style = "page-break-before:always">
 		
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -581,7 +580,8 @@
 				</table>
 			</div>
 		</div>
-	<?php //} ?>
+		<?php } ?>
+	
 
 <!--Junior Secondary-->
 	<?php }else if (strpos($class_type, 'junior secondary') !== false || strpos($class_type, 'jss') !== false){?>
@@ -687,8 +687,7 @@
 								<td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
 							</tr>
 						
-							<?php }
-							endforeach; ?>
+							<?php } endforeach; ?>
 							<tr>
 								<td colspan="3" style="text-align: center">Total Marks</td>
 								<td style="text-align: center"><?php echo $value[0]['total_score'];;?></td>
@@ -1608,7 +1607,7 @@
 					<td colspan="16"><span><strong>SOCIAL-EMOTIONAL DEVELOPMENT</strong></span></td>
 					<td colspan="16"><span><strong>KNOWLEDGE AND UNDERSTANDING OF THE WORLD</strong></span></td>
 				</tr>
-				<?php // NURSERY 1
+			<?php // NURSERY 1
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 				<?php 
 					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
@@ -1992,22 +1991,23 @@
 </body>
 <script type="text/javascript" src="js/html2canvas.min.js"></script>
 <script type="text/javascript" src="js/jspdf.min.js"></script>
-<script type="text/javascript">
-  /*var pages = $('.print');
+<script type="text/javascript">/*
+    var pages = $('.print');
     var doc = new jsPDF();
     var j = 0;
-    $name = $this->db->get_where('student',array('student_id' => $student_id))->result_array();
     for (var i = 0 ; i < pages.length; i++) {
         html2canvas(pages[i]).then(function(canvas) {
         var img=canvas.toDataURL("image/png");
         // debugger;
-        var height =  canvas.height / 440 * 80;
-        doc.addImage(img,'JPEG',10,0,190,height);
+		
+		var height =  canvas.height / 250 * 37;
+        doc.addImage(img,'JPEG',5,5,200,height);
         if (j < (pages.length - 1) ) doc.addPage();
-        if (j == (pages.length - 1) ) {doc.save($name[0]['name'].'.pdf');}
+        if (j == (pages.length - 1) ) {doc.save('Report.pdf');}
         j++;
-        });
-    }*/
-    
+		});
+		console.log(height)
+	}*/
+
 </script>
 </html>

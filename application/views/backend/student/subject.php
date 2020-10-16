@@ -14,18 +14,31 @@
                     		<th><div><?php echo get_phrase('teacher');?></div></th>
 						</tr>
 					</thead>
+					
+					
                     <tbody>
-                    	<?php $count = 1;foreach($subjects as $row):?>
-                        <tr>
+						<?php $count = 1;foreach($subjects as $row):?>
+
+							<!-- For Primary && Jss -->
+						<?php if ($row['class_id'] > 0 && $row['class_id'] < 29){?>
+                        	<tr>
+								<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
+								<td><?php echo $row['name'];?></td>
+								<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
+							</tr><?php } ?>
+
+
+							<!-- For SSS -->
+						<?php if ($row['class_id'] > 28 && $row['class_id'] < 40){?>
+							<tr>
 							<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
-							<td><?php echo $row['name'];?></td>
+							<td><?php echo $this->crud_model->get_type_name_by_id('subject',$row['subject_id']);?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
-							
-                        </tr>
-                        <?php endforeach;?>
-                    </tbody>
+							</tr><?php } ?>
+						<?php endforeach;?>
+						</tbody> 
                 </table>
-						<?php if($row['name'] == ''):?>
+						<?php if($row['subject_id'] == ''):?>
 							<div class="alert alert-danger" align="center">No Data to be Displayed</div>
 							<?php endif;?>
 			</div>

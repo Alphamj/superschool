@@ -856,7 +856,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"></td>
+						<td colspan="8"><img src="uploads/signature/sign.jpg" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -871,7 +871,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"></td>
+						<td colspan="8"><img src="uploads/signature/sign.jpg" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -1991,7 +1991,7 @@
 </body>
 <script type="text/javascript" src="js/html2canvas.min.js"></script>
 <script type="text/javascript" src="js/jspdf.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">/*
     var pages = $('.print');
     var doc = new jsPDF();
     var j = 0;
@@ -2007,7 +2007,7 @@
         j++;
 		});
 		console.log(height)
-	}
+	}*/
 
 </script>
 </html>

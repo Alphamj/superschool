@@ -76,15 +76,22 @@ class Student extends CI_Controller
             'student_id' => $this->session->userdata('student_id')
         ))->row();
         $student_class_id        = $student_profile->class_id;
-        $page_data['subjects']   = $this->db->get_where('subject', array(
-            'class_id' => $student_class_id
-        ))->result_array();
+
+            if ($student_class_id > 0 && $student_class_id < 29){
+                $page_data['subjects']   = $this->db->get_where('subject', array(
+                    'class_id' => $student_class_id
+                ))->result_array();}
+                
+            if ($student_class_id > 28 && $student_class_id < 40){
+                $page_data['subjects']   = $this->db->get_where('class_subject', array(
+                    'class_id' => $student_class_id, 'student_id' => $this->session->userdata('student_id')
+                ))->result_array(); }
+
         $page_data['page_name']  = 'subject';
         $page_data['page_title'] = get_phrase('manage_subject');
         $this->load->view('backend/index', $page_data);
     }
-    
-    
+
 // END OF TERM
     function student_marksheet($class_id = '',$exam_id='',$sessoin_id='') {
         if ($this->session->userdata('student_login') != 1)
@@ -506,9 +513,8 @@ class Student extends CI_Controller
         if ($this->session->userdata('student_login') != 1)
             redirect(base_url() . 'index.php?login', 'refresh');
         if ($param1 == 'update_profile_info') {
-            $data['name']        = $this->input->post('name');
+            //$data['name']        = $this->input->post('name');
             $data['email']       = $this->input->post('email');
-            
             $this->db->where('student_id', $this->session->userdata('student_id'));
             $this->db->update('student', $data);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $this->session->userdata('student_id') . '.jpg');

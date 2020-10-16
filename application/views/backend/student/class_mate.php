@@ -12,9 +12,8 @@
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
             				<th><?php echo get_phrase('class');?></th>
-                            <th><div><?php echo get_phrase('email');?></div></th>
+                            <!--<th><div><?php //echo get_phrase('email');?></div></th>-->
                             <th><div><?php echo get_phrase('mobile_no');?></div></th>
-                            <th><div><?php echo get_phrase('address');?></div></th>
                             <th><div><?php echo get_phrase('send_message');?></div></th>
                         </tr>
                     </thead>
@@ -30,9 +29,8 @@
                     			<?php $name = $this->db->get_where('class' , array('class_id' => $row['class_id'] ))->row()->name;
                     			 echo $name;?>
                				 </td>
-                            <td><?php echo $row['email'];?></td>
+                            <!--<td><?php //echo $row['email'];?></td>-->
                             <td><?php echo $row['phone'];?></td>
-                            <td><?php echo $row['address'];?></td>
                             <td>
 <a href="#" onclick="showAjaxModal('<?php echo base_url(); ?>index.php?modal/popup/modal_student_message/<?php echo $row['student_id']; ?>');"><button type="button" class="btn btn-green btn-xs"><i class="entypo-mail"></i></button></a>
 							</td>

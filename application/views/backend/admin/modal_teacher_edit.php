@@ -83,7 +83,13 @@ foreach ( $edit_data as $row):
                                 </div>
                             </div>
                             
-                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><?php echo get_phrase('Signature'); ?></label>
+                                <div class="col-sm-10">
+                                <input type="file" name="signature" class="form-control file2 inline btn btn-primary btn-sm" data-label="<i class='glyphicon glyphicon-file'></i> Browse Document" />
+                                </div>
+                            </div>
+
                        <div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-blue btn-sm"><i class="entypo-pencil"></i><?php echo get_phrase('update_teacher');?></button>
