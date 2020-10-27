@@ -760,8 +760,11 @@ function head($param1 = '', $param2 = '', $param3 = '') {
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
         $data['password'] = $this->input->post('password');
+        $data['signature'] = $_FILES["signature"]["name"];
+
         $this->db->insert('head', $data);
         $head_id = $this->db->insert_id();
+        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/head_image/' . $head_id . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         $this->email_model->account_opening_email('head', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
@@ -775,9 +778,11 @@ function head($param1 = '', $param2 = '', $param3 = '') {
         $data['phone'] = $this->input->post('phone');
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
+        $data['signature'] = $_FILES["signature"]["name"];
 
         $this->db->where('head_id', $param2);
         $this->db->update('head', $data);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/head_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/head/', 'refresh');

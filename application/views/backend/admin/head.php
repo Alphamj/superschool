@@ -80,6 +80,13 @@
 							<input type="password" class="form-control" name="password" value="" >
 						</div> 
 					</div>
+
+					<div class="form-group">
+                    	<label class="col-sm-3 control-label"><?php echo get_phrase('Signature'); ?></label>
+                    	<div class="col-sm-9">
+              				<input type="file" name="signature" class="form-control file2 inline btn btn-primary btn-sm" data-label="<i class='glyphicon glyphicon-file'></i> Browse Document" />
+						</div>
+					</div>
 	
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>

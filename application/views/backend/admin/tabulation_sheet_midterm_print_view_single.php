@@ -328,6 +328,8 @@
 				<!--COMMENT AREA-->
 				<table style="width:98%; margin:10px;" class="tg">
 					<?php 
+						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
 
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
@@ -343,10 +345,12 @@
 					</tr>
 					
 					<tr>
-						<th colspan="3" style="height:10px;  width: 25%;">TEACHER'S COMMENT</th>
-						<th colspan="3" style="height:10px;  width: 25%;">SIGNATURE:</th>
-						<th colspan="3" style="height:10px;  width: 25%;">VICE PRINCIPAL'S COMMENT</th>
-						<th colspan="3" style="height:10px;  width: 25%;">SIGNATURE:</th>
+						<th colspan="2" style="height:10px;  width: 10%;">Teacher's Comment</th>
+						<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
+						<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+						<th colspan="2" style="height:10px;  width: 10%;">Head Teacher's Comment</th>
+						<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
+						<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width: 50%; height:100%; display: block; margin:auto; padding:auto"></th>
 					</tr>
 					<tr>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['TeacherComments'];?></td>
@@ -677,9 +681,13 @@
 				</div>
 				<br />
 				<br />
-
+				
+					<!-- Comments -->
 				<table style="width: 80%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -691,8 +699,8 @@
 					<td colspan="8"><?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td colspan="2">SIGNATURE:</td>
-					<td colspan="8"></td>
+					<td colspan="5" style="height:100px;  width: 10%;">SIGNATURE:</td>
+					<td colspan="5" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS:</td>
@@ -828,8 +836,11 @@
 
 		<!--COMMENT AREA-->
 
-		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
+			<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -837,10 +848,11 @@
 					foreach($student_comments as $row):
 				?>
 				<tr>
-					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
+					<td colspan="6">TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -976,8 +988,11 @@
 
 		<!--COMMENT AREA-->
 
-		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
+			<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -985,10 +1000,11 @@
 					foreach($student_comments as $row):
 				?>
 				<tr>
-					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
+					<td colspan="6">TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1138,8 +1154,11 @@
 
 		<!--COMMENT AREA-->
 
-		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
+			<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -1147,10 +1166,11 @@
 					foreach($student_comments as $row):
 				?>
 				<tr>
-					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
+					<td colspan="6">TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1286,8 +1306,11 @@
 
 		<!--COMMENT AREA-->
 
-		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
+			<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -1298,8 +1321,10 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
+				
 				<?php endforeach; ?>
 			</table>
 			</div>
