@@ -125,7 +125,7 @@
 						<th class="tg-yw4l" rowspan="2">C.A [20]</th>
 						<th class="tg-yw4l" rowspan="2">TEST [10]</th>
 						<th class="tg-yw4l" rowspan="2">TOTAL [30]</th>
-						<th class="tg-yw4l" rowspan="2">GRADES</th>
+						<th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
 						<th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
 						<th class="tg-yw4l" rowspan="2">EFFORT</th>
 						<th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
@@ -521,9 +521,16 @@
 				<br>
 				<br>
 			<table style="width:100%; font-size:14px;">
+			<?php
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+					$head_sign = $this->db->get_where('head', array('section'=>'primary'))->result_array();
+			?>
 				<tr>
-					<td colspan="6" style="text-align:center;">CLASS TEACHER</td>
-					<td colspan="6" style="text-align:center;">PRINCIPAL</td>
+					<td colspan="3" style="text-align:center;">CLASS TEACHER</td>
+					<td colspan="3" style="height:100px;  width: 25%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="3" style="text-align:center;">PRINCIPAL</td>
+					<td colspan="3" style="height:100px;  width: 25%;"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS TO GRADES:</td>
@@ -681,7 +688,7 @@
 				</div>
 				<br />
 				<br />
-				
+
 					<!-- Comments -->
 				<table style="width: 80%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
