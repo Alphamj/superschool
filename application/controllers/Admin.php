@@ -3373,6 +3373,8 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
                 $data2['social']        = $this->input->post('social');
                 $data2['knowledge']     = $this->input->post('knowledge');
                 $data2['language1']     = $this->input->post('language1');
+                $data2['social100']  = $this->input->post('social100');
+                $data2['knowledge200']  = $this->input->post('knowledge200');
                 $data2['social101']     = $this->input->post('social101');
                 $data2['knowledge201']  = $this->input->post('knowledge201');
                 $data2['language2']     = $this->input->post('language2');

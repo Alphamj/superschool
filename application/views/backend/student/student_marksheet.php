@@ -78,8 +78,8 @@ td h5 {color: #000 !important;}
 .print h4, .print h2 {text-align: left;}
 span.grade-right::before {content: "\f00c";font-family: fontawesome;color: green;}
 </style>
-
-<?php if ($class_id != '' && $fees[0]['status'] == 'paid' && $event[0]['status']){ ?>
+<?php //echo $event[0]['status'] ?>
+<?php if ($class_id != '' && $fees[0]['status'] == 'paid' && $event[0]['status'] == 'opened'){ ?>
 
 <?php  
 $students   =   $this->crud_model->get_student_info($student_id); 
