@@ -146,7 +146,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					if (strpos($class_type, 'ss') !== false && $jss !='yes'){
 					?>
 
-					<?php 
+					<?php /*
 						////CREATE THE MARK ENTRY ONLY IF NOT EXISTS////
 						$students	=	$this->crud_model->get_subjects_by_class4($class_id,$student_id);
 						foreach($students as $row):
@@ -156,7 +156,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							
 							if($query->num_rows() < 1)
 								$this->db->insert('mark' , $verify_data);
-						 endforeach; 
+						 endforeach; */
 					?>
 			<!-- For SS 1 & 2 -->
 			<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
@@ -277,7 +277,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 								</td>
 								<td width = '13%'>
 								
-									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>"  required>
+									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>"  >
                                 				<option value=""><?php echo 'select_teacher';?></option>
 											<?php 
 											$teachers = $this->db->get('teacher')->result_array();
@@ -423,7 +423,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 								</td>
 								<td width = '13%'>
 								
-									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>"  required>
+									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>">
                                 				<option value=""><?php echo 'select_teacher';?></option>
 											<?php 
 											$teachers = $this->db->get('teacher')->result_array();
@@ -461,7 +461,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 		<!-- individual Assessment-->
 		<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
 		<table cellpadding="0" cellspacing="0" border="0" class="tg">
-			<?php 
+			<?php /*
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_Remark = $this->db->get_where('Remark' , $verify_data);
@@ -471,7 +471,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							}
 				
 				$student_Remark = $query_Remark->result_array();
-				foreach($student_Remark as $row):	
+				foreach($student_Remark as $row):	*/
 
 			?>
 				<thead>
@@ -701,7 +701,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						</td>
 					</tr>
 				</tbody>
-				<?php endforeach;?>
+				<?php //endforeach;?>
 			</table>
 				<?php } ?>
 
@@ -749,7 +749,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 <!-- Junior Secondary -->
 				 <?php }else if (strpos($class_type, 'junior secondary') !== false || strpos($class_type, 'jss') !== false){ ?>
 
-					<?php 
+					<?php /*
 						////CREATE THE MARK ENTRY ONLY IF NOT EXISTS////
 						$students	=	$this->crud_model->get_subjects_by_class1($class_id);
 						foreach($students as $row):
@@ -759,7 +759,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							
 							if($query->num_rows() < 1)
 								$this->db->insert('mark' , $verify_data);
-						 endforeach;
+						 endforeach; */
 					?>
 
 					<table cellpadding="0" cellspacing="0" border="0" class="tg">
@@ -880,7 +880,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 								</td>
 								<td width = '13%'>
 								
-									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>"  required>
+									<select class="class_score form-control" name="teacher_<?php echo $row['subject_id'];?>">
                                 				<option value=""><?php echo 'select_teacher';?></option>
 											<?php 
 											$teachers = $this->db->get('teacher')->result_array();
@@ -916,7 +916,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 
 	<!-- individual Assessment-->
 	<table cellpadding="0" cellspacing="0" border="0" class="tg">
-			<?php 
+			<?php /*
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_Remark = $this->db->get_where('Remark' , $verify_data);
@@ -926,7 +926,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							}
 				
 				$student_Remark = $query_Remark->result_array();
-				foreach($student_Remark as $row):	
+				foreach($student_Remark as $row):	*/
 
 			?>
 				<thead>
@@ -1156,7 +1156,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						</td>
 					</tr>
 				</tbody>
-				<?php endforeach;?>
+				<?php //endforeach;?>
 			</table>
 
 			<hr>
@@ -1974,10 +1974,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 		?>
 		 
 		<div class="text-center">
-			<label>Vacation Date: </label>
-			<input type="text" name="vacation_date" id="datepicker" placeholder="Select Vacation Date" value="<?php echo $vacation_date[0]['vacation_date']; ?>" required>
+			<!--<label>Vacation Date: </label>
+			<input type="text" name="vacation_date" id="datepicker" placeholder="Select Vacation Date" value="<?php //echo $vacation_date[0]['vacation_date']; ?>" required>
 			<label>Resumption Date: </label>
-			<input type="text" name="resumption_date" id="datepicker2" placeholder="Select Resumption Date" value="<?php echo $vacation_date[0]['resumption_date']; ?>" required>
+			<input type="text" name="resumption_date" id="datepicker2" placeholder="Select Resumption Date" value="<?php //echo $vacation_date[0]['resumption_date']; ?>" required>-->
 			<input type="hidden" name="student_id" value="<?php echo $student_id;?>" />
      		<button type="submit" class="btn btn-sm btn-icon icon-left btn-orange"><i class="entypo-plus"></i><?php echo get_phrase('update_marks');?></button>
 		</div>

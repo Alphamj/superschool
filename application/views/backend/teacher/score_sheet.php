@@ -154,6 +154,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							<th class="tg-yw4l" rowspan="2">CPS</th>
 							<th class="tg-yw4l" rowspan="2">AGS</th>
 							<th class="tg-yw4l" rowspan="2">T_D</th>
+							<th class="tg-yw4l" rowspan="2">CRS</th>
+							<th class="tg-yw4l" rowspan="2">IRS</th>
 							<th class="tg-yw4l" rowspan="2">TOT</th>
 							<th class="tg-yw4l" rowspan="2">AVG</th>
 							<th class="tg-yw4l" rowspan="2">POS</th>
@@ -438,6 +440,26 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 									}
 								}
 								?></th>
+								<th class="tg-yw4l"><?php 
+								foreach ($marks as $val){
+									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
+									foreach ($subject as $subj){
+										if (strpos($subj['name'], 'CRS' ) !== false){
+											echo ($val['ca_marks']+$val['mark_obtained']);
+										}
+									}
+								}
+								?></th>
+								<th class="tg-yw4l"><?php 
+								foreach ($marks as $val){
+									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
+									foreach ($subject as $subj){
+										if (strpos($subj['name'], 'IRS' ) !== false){
+											echo ($val['ca_marks']+$val['mark_obtained']);
+										}
+									}
+								}
+								?></th>
 								<th class="tg-yw4l"><?php echo $average[0]['total_score'] ?></th>
 								<th class="tg-yw4l"><?php echo $average[0]['total_average'] ?></th>
 								<th class="tg-yw4l"><?php echo $average[0]['position'] ?></th>
@@ -662,6 +684,26 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 									$subject = $this->db->get_where('subject',array('subject_id' => $marks_cal['subject_id']))->result_array();
 									foreach ($subject as $subj){
 										if (strpos($subj['name'], 'DRAWING' ) !== false){
+											echo $marks_cal['subject_average'];
+										}
+									}
+								}
+								?></th>
+								<th class="tg-yw4l" rowspan="2"><?php 
+								foreach ($avgtmk as $marks_cal){
+									$subject = $this->db->get_where('subject',array('subject_id' => $marks_cal['subject_id']))->result_array();
+									foreach ($subject as $subj){
+										if (strpos($subj['name'], 'CRS' ) !== false){
+											echo $marks_cal['subject_average'];
+										}
+									}
+								}
+								?></th>
+								<th class="tg-yw4l" rowspan="2"><?php 
+								foreach ($avgtmk as $marks_cal){
+									$subject = $this->db->get_where('subject',array('subject_id' => $marks_cal['subject_id']))->result_array();
+									foreach ($subject as $subj){
+										if (strpos($subj['name'], 'IRS' ) !== false){
 											echo $marks_cal['subject_average'];
 										}
 									}
