@@ -11,6 +11,7 @@
 
 <!-- FullCalendar -->
 <link href="assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+<link href="assets/css/custom.css" rel="stylesheet">
 <?php $count_all = $this->db->count_all('student') + $this->db->count_all('teacher') + $this->db->count_all('parent') + $this->db->count_all('librarian') + $this->db->count_all('accountant'); ?>
 <?php
 $check = array('date' => date('Y-m-d'), 'status' => '1');
@@ -18,25 +19,25 @@ $query = $this->db->get_where('attendance', $check);
 $present_today = $query->num_rows();
 ?>
 <div class="row">
-    <div class="col-md-12" role="main">
+    <div class="col-md-12 col-xs-12" role="main">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-4">
                 <ul class="site-stats">
-                    <li><a href="<?php echo base_url(); ?>index.php?admin/student_information"><h3><div class="col-md-4 stats-left" style="background-color:#4e7d2a"><i class="entypo-users"></i></div>  <div class="col-md-8 stats-right  text-centre"> Total <?php echo get_phrase('student'); ?> : <strong><?php echo $this->db->count_all('student'); ?></strong></div></h3></a> </li>
-                    <li><a href="<?php echo base_url(); ?>index.php?admin/teacher"><h3> <div class="col-md-4 stats-left" style="background-color:#489ee7"><i class="entypo-users"></i></div>  <div class="col-md-8 stats-right  text-right">  Total <?php echo get_phrase('teacher'); ?>  :  <strong><?php echo $this->db->count_all('teacher'); ?></strong></div></h3></a></li>
+                    <li><a href="<?php echo base_url(); ?>index.php?admin/student_information"><h3><div class="col-md-4 col-xs-4 stats-left" style="background-color:#4e7d2a"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-12 stats-right  text-centre"> Total <?php echo get_phrase('student'); ?> : <strong><?php echo $this->db->count_all('student'); ?></strong></div></h3></a> </li>
+                    <li><a href="<?php echo base_url(); ?>index.php?admin/teacher"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#489ee7"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('teacher'); ?>  :  <strong><?php echo $this->db->count_all('teacher'); ?></strong></div></h3></a></li>
 
                 </ul>
             </div>
             <div class="col-md-4">
                 <ul class="site-stats">
-                    <li> <a href="<?php echo base_url(); ?>index.php?admin/parent"><h3> <div class="col-md-4 stats-left" style="background-color:#3bbc63"><i class="entypo-users"></i></div>  <div class="col-md-8 stats-right  text-right">  Total <?php echo get_phrase('parent_users'); ?>  : <strong><?php echo $this->db->count_all('parent'); ?></strong></div> </h3></a></li>
-                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/librarian"><h3> <div class="col-md-4 stats-left" style="background-color:#fb5d5d"><i class="fa fa-book"></i></div>  <div class="col-md-8 stats-right  text-right">  Total <?php echo get_phrase('librarian'); ?>  : <strong><?php echo $this->db->count_all('librarian'); ?></strong></div></h3></a></li>
+                    <li> <a href="<?php echo base_url(); ?>index.php?admin/parent"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#3bbc63"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('parent_users'); ?>  : <strong><?php echo $this->db->count_all('parent'); ?></strong></div> </h3></a></li>
+                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/librarian"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#fb5d5d"><i class="fa fa-book"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('librarian'); ?>  : <strong><?php echo $this->db->count_all('librarian'); ?></strong></div></h3></a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <ul class="site-stats">
-                    <li> <a href="<?php echo base_url(); ?>index.php?admin/admin_list"><h3> <div class="col-md-4 stats-left" style="background-color:#f7941d"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 stats-right  text-right">  Total <?php echo get_phrase('admin_users'); ?>  :  <strong><?php echo $this->db->count_all('admin'); ?></strong></div></h3></a></li>
-                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/enquiry"><h3> <div class="col-md-4 stats-left" style="background-color:#797b0e"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8  stats-right text-right">  <?php echo get_phrase('all_enquiries'); ?>  : <strong><?php echo $this->db->count_all('enquiry'); ?></strong></div></h3></a></li>
+                    <li> <a href="<?php echo base_url(); ?>index.php?admin/admin_list"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#f7941d"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('admin_users'); ?>  :  <strong><?php echo $this->db->count_all('admin'); ?></strong></div></h3></a></li>
+                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/enquiry"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#797b0e"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8  stats-right text-right">  <?php echo get_phrase('all_enquiries'); ?>  : <strong><?php echo $this->db->count_all('enquiry'); ?></strong></div></h3></a></li>
                 </ul>
             </div>
         </div>

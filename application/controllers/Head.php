@@ -399,7 +399,7 @@ class Head extends CI_Controller
                    $data0['VPName']  = $this->input->post('VPName');
                    $data0['VPComment']  = $this->input->post('VPComment');
                    $data0['TeacherNames']  = $this->input->post('TeacherNames');
-                    $data0['TeacherComments']  = $this->input->post('TeacherComments');
+                   $data0['TeacherComments']  = $this->input->post('TeacherComments');
 
 
                    $this->db->where('class_id', $class_id);

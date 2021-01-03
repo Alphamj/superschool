@@ -16,6 +16,10 @@
     font-family: 'canterburyregular';
 }
 
+.col-xs-4{
+    width: 100%;
+}
+
 span.grade-right::before {
     content: "\f00c";
     font-family: fontawesome;

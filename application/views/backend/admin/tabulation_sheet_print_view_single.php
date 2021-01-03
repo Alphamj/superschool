@@ -1532,6 +1532,12 @@
 			.text-transform span {float: left;width: 100%;margin: 0 0 0 -93px;}
 			.text-transform { text-align: center;g-origin: 50% 50%;-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg);  -ms-transform: rotate(90deg);  -o-transform: rotate(90deg); transform: rotate(270deg); width: 10px; max-width: 10px;}
 		</style>
+		<?php 
+			$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id, 
+								'student_id' => $student_id);
+				$query_comments = $this->db->get_where('comments' , $verify_data);
+				$student_comments = $query_comments->result_array();
+		?>
 		<div class="print" style="border:2px solid #000;">
 			<div class="table-responsive">
 				<table class="table-bordered" style="width: 70%; margin:auto; margin-bottom: 10px;">
@@ -1568,7 +1574,7 @@
 							<td><strong>DOB</strong></td>
 							<td><?php $dob = $this->db->get_where('student' , array('student_id' => $student_id))->row()->birthday;echo $dob;?></td>
 							<td><strong>Attendance</strong></td>
-							<td><?php echo $present . '/' . $total;?></td>
+							<td><?php echo $student_comments[0]['Attendance']; //$present . '/' . $total;?></td>
 						</tr>
 						<tr>
 							<td><strong>Next Term Begins</strong></td>
@@ -1893,10 +1899,7 @@
 			$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
 			$head_sign = $this->db->get_where('head', array('section'=>'primary'))->result_array();
 
-			$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-							'student_id' => $student_id);
-			$query_comments = $this->db->get_where('comments' , $verify_data);
-			$student_comments = $query_comments->result_array();
+			
 			foreach($student_comments as $row):
 			?>
 			

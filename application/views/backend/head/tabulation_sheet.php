@@ -46,7 +46,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                         <option value=""><?php echo get_phrase('select_a_class');?></option>
                         <?php 
                         $classes = $this->db->get('class')->result_array();
-				    $sect = $this->db->get_where('teacher', array('teacher_id' => $this->session->userdata('login_user_id')))->result_array();
+				    $sect = $this->db->get_where('head', array('head_id' => $this->session->userdata('login_user_id')))->result_array();
 				    foreach($classes as $row):
                         ?>
                         <?php if ($sect[0]['section'] == 'Secondary'): 
@@ -331,7 +331,72 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php } ?>
 
 
-			
+			<!-- Individual Total Average -->
+			<?php 
+					if ($class_id > 28 && $class_id < 32 ){
+						$verify_datas = array('exam_id' => $exam_id,'class_id' => 111, 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					 elseif ($class_id > 31 && $class_id < 35 ){
+						$verify_datas = array('exam_id' => $exam_id ,'class_id' => 112 , 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					 elseif ($class_id > 34 && $class_id < 38 ){
+						$verify_datas = array('exam_id' => $exam_id ,'class_id' => 113 , 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					$query_Remark = $this->db->get_where('average' , $verify_datas);
+
+					if($query_Remark->num_rows() < 1){
+					$this->db->insert('average' , $verify_datas);
+							}
+					
+					if ($class_id > 28 && $class_id < 32 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 111,'session_year'=>$sessoin_id))->result_array();
+					 }
+					 elseif ($class_id > 31 && $class_id < 35 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 112,'session_year'=>$sessoin_id))->result_array();
+					 }
+					 elseif ($class_id > 34 && $class_id < 38 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 113,'session_year'=>$sessoin_id))->result_array();
+					 }
+					
+					 $cav = $z = 0;	
+					foreach($total_average as $avgg){
+						if ($avgg['total_average'] != 0){
+							$z++;
+							$cav +=$avgg['total_average'];}
+					}
+					$class_avg = $cav / $z;
+					$position = $this->crud_model->get_positions($class_id,$student_id,$exam_id,$sessoin_id);
+					
+					if ($class_avg == ''){
+						$datas['class_average'] = 0;
+						$datas['position'] = 0;
+					}
+
+					if ($class_avg > 0){
+						$datas['class_average'] = round($class_avg,1);
+						$datas['position'] = $position;
+					}
+					
+					if ($class_id > 28 && $class_id < 32 ){
+						$this->db->where('class_id', 111);
+					 }
+					 elseif ($class_id > 31 && $class_id < 35 ){
+						$this->db->where('class_id', 112);
+					 }
+					 elseif ($class_id > 34 && $class_id < 38 ){
+						$this->db->where('class_id', 113);
+					 }
+        			$this->db->where('student_id', $student_id);
+					$this->db->where('exam_id', $exam_id);
+					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->update('average', $datas);
+				?>
 
 			   <hr>
 	
@@ -433,7 +498,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				</tbody>
 				<?php endforeach; ?>
 			</table>
-		<?php } ?>
+				<?php } ?>
 			
 			<hr>
 
@@ -569,7 +634,73 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				 </tbody>
 				
 			   </table>
-			   
+			<!-- Individual Total Average -->
+			<?php 
+					if ($class_id > 19 && $class_id < 23 ){
+						$verify_datas = array('exam_id' => $exam_id,'class_id' => 101, 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					 elseif ($class_id > 22 && $class_id < 26 ){
+						$verify_datas = array('exam_id' => $exam_id ,'class_id' => 102 , 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					 elseif ($class_id > 25 && $class_id < 29 ){
+						$verify_datas = array('exam_id' => $exam_id ,'class_id' => 103 , 
+						'student_id' => $student_id,'session_year'=>$sessoin_id);
+					 }
+					$query_Remark = $this->db->get_where('average' , $verify_datas);
+
+					if($query_Remark->num_rows() < 1){
+					$this->db->insert('average' , $verify_datas);
+							}
+					
+					if ($class_id > 19 && $class_id < 23 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 101,'session_year'=>$sessoin_id))->result_array();
+					 }
+					 elseif ($class_id > 22 && $class_id < 26 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 102,'session_year'=>$sessoin_id))->result_array();
+					 }
+					 elseif ($class_id > 25 && $class_id < 29 ){
+						$this->db->select('total_average');
+						$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=> 103,'session_year'=>$sessoin_id))->result_array();
+					 }
+					
+					 $cav = $z = 0;	
+					 foreach($total_average as $avgg){
+						if ($avgg['total_average'] != 0){
+							$z++;
+							$cav +=$avgg['total_average'];}
+					}
+
+					$class_avg = $cav / $z;
+					$position = $this->crud_model->get_positions($class_id,$student_id,$exam_id,$sessoin_id);
+					
+					if ($class_avg == ''){
+						$datas['class_average'] = 0;
+						$datas['position'] = 0;
+					}
+
+					if ($class_avg > 0){
+						$datas['class_average'] = round($class_avg,1);
+						$datas['position'] = $position;
+					}
+					
+					if ($class_id > 19 && $class_id < 23 ){
+						$this->db->where('class_id', 101);
+					 }
+					 elseif ($class_id > 22 && $class_id < 26 ){
+						$this->db->where('class_id', 102);
+					 }
+					 elseif ($class_id > 25 && $class_id < 29 ){
+						$this->db->where('class_id', 103);
+					 }
+        				$this->db->where('student_id', $student_id);
+					$this->db->where('exam_id', $exam_id);
+					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->update('average', $datas);
+				?>
 			   <hr>
 			   
 	<!-- individual Assessment-->
@@ -745,7 +876,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 								$subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
 								
 								$this->db->select("(ca_marks+mark_obtained) as total");
-								$total_marks = $this->db->get_where('mark_pri',array("subject_id"=>$row2['subject_id'],'exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
+								$total_marks = $this->db->get_where('mark',array("subject_id"=>$row2['subject_id'],'exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
 								
 								$this->db->select("student_id");
 								$tstu = $this->db->get_where('student',array('class_id'=>$class_id))->result_array();
@@ -755,13 +886,18 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 								$sub = $this->db->get_where('mark_pri',array('class_id'=>$class_id, 'exam_id' => $exam_id, 'student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
 								$subno = count($sub);
 
+								$this->db->select("total_average as val");
+								$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
+								
+						
 								foreach($total_marks as $marks_cal){
-									$i++;
-									$total +=$marks_cal['total'];
-									
-									 
+									if ($marks_cal['total'] != 0){
+										$i++;
+										$total +=$marks_cal['total'];
+									}
 								}
 								$subavg =  $total/ $i;
+								
 								$avg += $subavg;
 									
 									
@@ -811,7 +947,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 										<td class="space" colspan="3"><?php echo round($subavg,1);?></td>
 										<td class="space" colspan="3"><?php echo $grade;?></td>
 										<td class="space" colspan="3"><?php echo grade_remark($row2['mark_total']);?></td>
-									</tr>
+										</tr>
 								<?php 
 								if (($row2['ca_marks']+$row2['mark_obtained']) != 0){
 									$h++;
@@ -826,7 +962,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				<!-- Term 3 -->
 					<?php if($exam_id == 3 && $class_id < 40) {?> 
 
-					<table cellpadding="0" cellspacing="0" class="tg" style="width: 78%; border: 10px; display: inline-block;vertical-align: top;overflow: auto;">
+					<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width: 78%;display: inline-block;vertical-align: top;overflow: auto;">
 						<tbody>
 							<tr>
 								<td colspan="13"></td>
@@ -868,13 +1004,13 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							$marks	=	$query->result_array();
 							$d = $c = $i = $a = $h = $z = 0;
 							$cav = $total = $avg = $total_scores = $total_markss = 0;
-							
+
 							foreach($marks as $row2):
      							$a++;
 								$subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
 								
 								$this->db->select("(ca_marks+mark_obtained) as total");
-								$total_marks = $this->db->get_where('mark_pri',array("subject_id"=>$row2['subject_id'],'exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
+								$total_marks = $this->db->get_where('mark',array("subject_id"=>$row2['subject_id'],'exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
 								
 								$this->db->select("student_id");
 								$tstu = $this->db->get_where('student',array('class_id'=>$class_id))->result_array();
@@ -899,14 +1035,17 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 									$exam_score2 = $da1['mark_total'];
 									$grade2 = grade_sys($exam_score2);
 								}
-								
-     							foreach($total_marks as $marks_cal){
-									$i++;
-          							$total +=$marks_cal['total'];
-     							}
-								$subavg =  $total/ $stno;
-								$avg += $subavg;
 
+     							foreach($total_marks as $marks_cal){
+									if ($marks_cal['total'] != 0){
+										$i++;
+										$total +=$marks_cal['total'];
+									}
+								}
+								$subavg =  $total/ $i;
+
+								$avg += $subavg;
+										
 								$total_sub_marks = $row2['ca_marks']+$row2['mark_obtained'];
 								$grade = grade_sys($total_sub_marks);
 
@@ -948,7 +1087,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 										endforeach;
 									endforeach; } 
 									?>
-									
+
 								<tr>
 									<td><?php echo $a; ?></td>
 									<td colspan="12"><?php echo $subjects[0]['name'];?></td>
@@ -979,7 +1118,6 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							?>
 						</tbody>
 					</table>
-
 					<?php  }?>
 
 				<!-- Individual Total Average -->
