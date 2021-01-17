@@ -106,13 +106,13 @@
 						</div> 
 					</div>
 					
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('place_birth');?></label>
+					<!--<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('place_birth');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="place_birth" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
 					<div class="form-group">
 						<label  class="col-sm-3 control-label"><?php echo get_phrase('sex');?></label>
@@ -126,13 +126,13 @@
 						</div> 
 					</div>
 					
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('mother_tongue');?></label>
+					<!--<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('mother_tongue');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="m_tongue" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
 					<div class="form-group">
 						<label  class="col-sm-3 control-label"><?php echo get_phrase('religion');?></label>
@@ -142,13 +142,13 @@
 						</div> 
 					</div>
 					
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('blood_group');?></label>
+					<!--<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('blood_group');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="blood_group" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
 					<div class="form-group">
 						<label  class="col-sm-3 control-label"><?php echo get_phrase('address');?></label>
@@ -159,20 +159,20 @@
 					</div>
 					
 					
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('city');?></label>
+					<!--<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('city');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="city" value="" >
 						</div> 
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('state');?></label>
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('state');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="state" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
 					<div class="form-group">
 						<label  class="col-sm-3 control-label"><?php echo get_phrase('nationality');?></label>
@@ -204,173 +204,6 @@
 							<input type="password" class="form-control" name="password" value="" >
 						</div> 
 					</div>
-
-            </div>
-        </div>
-    </div>
-
-
-	<div class="col-md-6">
-		<div class="x_panel" data-collapsed="0">
-        	<div class="x_title">
-            	<div class="panel-title" >
-            		
-					<?php echo get_phrase('admission_form');?>
-            	</div>
-            </div>
-			<div class="panel-body">
-				
-               
-	
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('previous_school_name');?></label>
-                        
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="ps_attend" data-validate="required" value="" autofocus>
-						</div>
-					</div>
-					<br><br><br>
-					
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('the_address');?></label>
-                        
-						<div class="col-sm-9">
-						<textarea name="ps_address" cols="" class="form-control" rows=""></textarea>
-						</div>
-					</div>
-					<br><br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('purpose_of_leaving');?></label>
-                        
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="ps_purpose" data-validate="required" value="" autofocus>
-						</div>
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('class_in_which_was_studying');?></label>
-                        
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="class_study" data-validate="required" value="" autofocus>
-						</div>
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('date_of_leaving');?></label>
-                        
-						<div class="col-sm-9">
-							<input type="text" class="form-control datepicker" name="date_of_leaving" value="" data-start-view="2">
-						</div> 
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('admission_date');?></label>
-                        
-						<div class="col-sm-9">
-							<input type="text" class="form-control datepicker" id="am_date" name="am_date" value="" data-start-view="2">
-						</div> 
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Notes';?></label>
-                        
-						<div class="col-sm-9">
-							<textarea type="text" class="form-control" id="notes" name="notes" ></textarea>
-						</div> 
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('transfer_certificate');?></label>
-                        
-						<div class="col-sm-9">
-							<select name="tran_cert" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option> 
-                          </select>
-						</div> 
-					</div>
-					
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('birth_certificate');?></label>
-                        
-						<div class="col-sm-9">
-							<select name="dob_cert" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option> 
-                          </select>
-						</div> 
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('any_given_marksheet');?></label>
-                        
-						<div class="col-sm-9">
-							<select name="mark_join" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option> 
-                          </select>
-							
-						</div> 
-					</div>
-					<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('physical_handicap');?></label>
-                        
-						<div class="col-sm-9">
-							<select name="physical_h" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option> 
-                          </select>
-						</div> 
-					</div>
-
-<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('dormitory');?></label>
-                        
-						<div class="col-sm-7">
-							<select name="dormitory_id" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$dormitories = $this->db->get('dormitory')->result_array();
-	                              	foreach($dormitories as $row):
-	                              ?>
-                              		<option value="<?php echo $row['dormitory_id'];?>"><?php echo $row['name'];?></option>
-                          		<?php endforeach;?>
-                          </select>
-
-						</div> 
-		<a href="<?php echo base_url();?>index.php?admin/dormitory/student_add"><button type="button" class="btn btn-orange btn-icon icon-left btn-sm"><i class="entypo-plus"></i>Add</button></a>
-
-					</div>
-<br><br><br>
-					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo get_phrase('transport_route');?></label>
-                        
-						<div class="col-sm-7">
-							<select name="transport_id" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$transports = $this->db->get('transport')->result_array();
-	                              	foreach($transports as $row):
-	                              ?>
-                              		<option value="<?php echo $row['transport_id'];?>"><?php echo $row['name'];?></option>
-                          		<?php endforeach;?>
-                          </select>
-						</div> 
-				<a href="<?php echo base_url();?>index.php?admin/transport/student_add"><button type="button" class="btn btn-orange btn-icon icon-left btn-sm"><i class="entypo-plus"></i>Add</button></a>
-
-					</div>
-	<br><br><br>
 					<div class="form-group">
 						<label  class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
                         
@@ -391,9 +224,203 @@
 							</div>
 						</div>
 					</div>
+
+					<br><br><br>				
+                    <div class="form-group">
+						<div class="col-sm-offset-3 col-sm-5">
+							<button type="submit" class="btn btn-blue btn-sm btn-icon icon-left"> <i class="entypo-plus"></i><?php echo get_phrase('save_student');?></button>
+						</div>
+					</div>
+				<?php echo form_close();?>
+            </div>
+        </div>
+    </div>
+
+
+	<!--<div class="col-md-6">
+		<div class="x_panel" data-collapsed="0">
+        	<div class="x_title">
+            	<div class="panel-title" >
+            		
+					<?php //echo get_phrase('admission_form');?>
+            	</div>
+            </div>
+			<div class="panel-body">
+				
+               
+	
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('previous_school_name');?></label>
+                        
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="ps_attend" data-validate="required" value="" autofocus>
+						</div>
+					</div>
+					<br><br><br>
+					
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('the_address');?></label>
+                        
+						<div class="col-sm-9">
+						<textarea name="ps_address" cols="" class="form-control" rows=""></textarea>
+						</div>
+					</div>
+					<br><br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('purpose_of_leaving');?></label>
+                        
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="ps_purpose" data-validate="required" value="" autofocus>
+						</div>
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('class_in_which_was_studying');?></label>
+                        
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="class_study" data-validate="required" value="" autofocus>
+						</div>
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('date_of_leaving');?></label>
+                        
+						<div class="col-sm-9">
+							<input type="text" class="form-control datepicker" name="date_of_leaving" value="" data-start-view="2">
+						</div> 
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('admission_date');?></label>
+                        
+						<div class="col-sm-9">
+							<input type="text" class="form-control datepicker" id="am_date" name="am_date" value="" data-start-view="2">
+						</div> 
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo 'Notes';?></label>
+                        
+						<div class="col-sm-9">
+							<textarea type="text" class="form-control" id="notes" name="notes" ></textarea>
+						</div> 
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('transfer_certificate');?></label>
+                        
+						<div class="col-sm-9">
+							<select name="tran_cert" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+                              
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option> 
+                          </select>
+						</div> 
+					</div>
+					
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('birth_certificate');?></label>
+                        
+						<div class="col-sm-9">
+							<select name="dob_cert" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+                              
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option> 
+                          </select>
+						</div> 
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('any_given_marksheet');?></label>
+                        
+						<div class="col-sm-9">
+							<select name="mark_join" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+                              
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option> 
+                          </select>
+							
+						</div> 
+					</div>
+					<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('physical_handicap');?></label>
+                        
+						<div class="col-sm-9">
+							<select name="physical_h" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+                              
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option> 
+                          </select>
+						</div> 
+					</div>
+
+<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('dormitory');?></label>
+                        
+						<div class="col-sm-7">
+							<select name="dormitory_id" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+	                              <?php 
+	                              	//$dormitories = $this->db->get('dormitory')->result_array();
+	                              	//foreach($dormitories as $row):
+	                              ?>
+                              		<option value="<?php //echo $row['dormitory_id'];?>"><?php echo $row['name'];?></option>
+                          		<?php //endforeach;?>
+                          </select>
+
+						</div> 
+		<a href="<?php //echo base_url();?>index.php?admin/dormitory/student_add"><button type="button" class="btn btn-orange btn-icon icon-left btn-sm"><i class="entypo-plus"></i>Add</button></a>
+
+					</div>
+<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('transport_route');?></label>
+                        
+						<div class="col-sm-7">
+							<select name="transport_id" class="form-control select2">
+                              <option value=""><?php //echo get_phrase('select');?></option>
+	                              <?php 
+	                              	//$transports = $this->db->get('transport')->result_array();
+	                              	//foreach($transports as $row):
+	                              ?>
+                              		<option value="<?php //echo $row['transport_id'];?>"><?php echo $row['name'];?></option>
+                          		<?php //endforeach;?>
+                          </select>
+						</div> 
+				<a href="<?php //echo base_url();?>index.php?admin/transport/student_add"><button type="button" class="btn btn-orange btn-icon icon-left btn-sm"><i class="entypo-plus"></i>Add</button></a>
+
+					</div>
+	<br><br><br>
+					<div class="form-group">
+						<label  class="col-sm-3 control-label"><?php //echo get_phrase('photo');?></label>
+                        
+						<div class="col-sm-9">
+							<div class="fileinput fileinput-new" data-provides="fileinput">
+								<div class="fileinput-new thumbnail" style="width: 100px; height: 100px;" data-trigger="fileinput">
+									<img src="http://placehold.it/200x200" alt="...">
+								</div>
+								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
+								<div>
+									<span class="btn btn-white btn-file">
+										<span class="fileinput-new">Select image</span>
+										<span class="fileinput-exists">Change</span>
+										<input type="file" name="userfile" accept="image/*">
+									</span>
+									<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+								</div>
+							</div>
+						</div>
+					</div>
 					 <br><br><br>
 				<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Birth Certificate';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Birth Certificate';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news">
 								<div>
@@ -408,7 +435,7 @@
 					</div>
 					 <br><br><br>
 					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Transfer Certificate';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Transfer Certificate';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news">
 								<div>
@@ -423,7 +450,7 @@
 					</div>
 					 <br><br><br>
 					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Medical Certificate';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Medical Certificate';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news">
 								<div>
@@ -438,7 +465,7 @@
 					</div>
 					 <br><br><br>
 				<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Other1';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Other1';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news" >
 								<div>
@@ -453,7 +480,7 @@
 					</div>
 					 <br><br><br>
 					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Other2';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Other2';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news" >
 								<div>
@@ -468,7 +495,7 @@
 					</div>
 					 <br><br><br>
 					<div class="form-group">
-						<label  class="col-sm-3 control-label"><?php echo 'Other3';?></label>
+						<label  class="col-sm-3 control-label"><?php //echo 'Other3';?></label>
                         <div class="col-sm-9">
 							<div class="fileinputs fileinput-news" >
 								<div>
@@ -488,10 +515,10 @@
 						</div>
 					</div>
 					
-                <?php echo form_close();?>
+                <?php //echo form_close();?>
             </div>
         </div>
-    </div>
+    </div>-->
 <!-----  add code on 26 may 2018 ---->   
  
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

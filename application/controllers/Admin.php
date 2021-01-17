@@ -273,15 +273,36 @@ class Admin extends CI_Controller {
                 </option>
                             <?php endforeach;
 		}else{
-			$this->db->distinct();
-			$this->db->select('t1.student_id, t1.name,t1.surname')
+            if ($class_id > 39 && $class_id < 47){
+			    $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+			    		->from('nursery_student_marks as t2')
+			    		->where('t2.class_id', $class_id)
+			    		->where('t2.session_year', $session)
+			    		->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+                $query_array = $query->result_array();}
+                
+            if ($class_id > 0 && $class_id < 20){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+					->from('mark_pri as t2')
+					->where('t2.class_id', $class_id)
+					->where('t2.session_year', $session)
+					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();}
+            
+            if ($class_id > 19 && $class_id < 40){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
 					->from('mark as t2')
 					->where('t2.class_id', $class_id)
 					->where('t2.session_year', $session)
 					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
-			$query = $this->db->get();
-			$query_array = $query->result_array();
-			
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();
+            }
 			foreach($query_array as $students_ids){
 				$students_id =$students_ids['student_id'];
 				$students_name =$students_ids['name'];
@@ -312,7 +333,9 @@ class Admin extends CI_Controller {
 			<?php	}
 		
 
-	}
+    }
+    
+            // MANAGE STUDENTS
     function student($param1 = '', $param2 = '', $param3 = '') {
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
@@ -323,96 +346,27 @@ class Admin extends CI_Controller {
             $data['surname'] 			= $this->input->post('surname');
             $data['birthday'] 			= $this->input->post('birthday');
             $data['age'] 				= $this->input->post('age');
-            $data['place_birth'] 		= $this->input->post('place_birth');
             $data['sex'] 				= $this->input->post('sex');
-            $data['m_tongue'] 			= $this->input->post('m_tongue');
             $data['religion'] 			= $this->input->post('religion');
-            $data['blood_group'] 		= $this->input->post('blood_group');
-            $data['address'] 			= $this->input->post('address');
-            $data['city'] 				= $this->input->post('city');
-            $data['state'] 				= $this->input->post('state');
-            $data['nationality'] 		= $this->input->post('nationality');
             $data['phone'] 				= $this->input->post('phone');
             $data['email'] 				= $this->input->post('email');
-            $data['notes'] 				= $this->input->post('notes');
-
-            $data['ps_attend'] 			= $this->input->post('ps_attend');
-            $data['ps_address'] 		= $this->input->post('ps_address');
-            $data['ps_purpose'] 		= $this->input->post('ps_purpose');
-            $data['class_study'] 		= $this->input->post('class_study');
-            $data['date_of_leaving'] 	= $this->input->post('date_of_leaving');
-            $data['am_date'] 			= $this->input->post('am_date');
-            $data['tran_cert'] 			= $this->input->post('tran_cert');
-            $data['dob_cert'] 			= $this->input->post('dob_cert');
-            $data['mark_join'] 			= $this->input->post('mark_join');
             $data['physical_h'] 		= $this->input->post('physical_h');
 
             $data['password'] 			= $this->input->post('password');
             $data['class_id'] 			= $this->input->post('class_id');
            
             $data['parent_id'] 			= $this->input->post('parent_id');
-            $data['dormitory_id'] 		= $this->input->post('dormitory_id');
-            $data['session'] 			= $this->input->post('session');
-            $data['transport_id'] 		= $this->input->post('transport_id');
             $data['roll'] 				= $this->input->post('roll');
             
            
             
             $this->db->insert('student', $data);
             $student_id = $this->db->insert_id();
-            $ext2 =$ext3 =$ext4 =$otherext1 =$otherext2 =$otherext3 =array();
-            if($_FILES['userfile2']['name']){
-				$ext2 = explode('.',$_FILES['userfile2']['name']);
-			}
-			if($_FILES['userfile3']['name']){
-				$ext3 = explode('.',$_FILES['userfile3']['name']);
-			}
-            if($_FILES['userfile4']['name']){
-				$ext4 = explode('.',$_FILES['userfile4']['name']);
-			}
-            if($_FILES['other1']['name']){
-				$otherext1 = explode('.',$_FILES['other1']['name']);
-			}
-			if($_FILES['other2']['name']){
-				$otherext2 = explode('.',$_FILES['other2']['name']);
-			}
-			if($_FILES['other3']['name']){
-				$otherext3 = explode('.',$_FILES['other3']['name']);
-			}
-           
             
-           //others_files
-            
-           move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
-           $data1['birth_certificate'] = $data1['transfer_certificate'] = $data1['medical_certificate'] =$data1['attach_other1'] =
-           $data1['attach_other2'] =$data1['attach_other3'] ='';
-			if(count($ext2) ==2){
-				$data1['birth_certificate'] =  $student_id .'birth_certificate.'. $ext2[1];
-				move_uploaded_file($_FILES['userfile2']['tmp_name'], 'uploads/student_image/birth_certificate/' . $student_id .'birth_certificate.'. $ext2[1]);
-            }
-            if(count($ext3) ==2){
-				  $data1['transfer_certificate'] =  $student_id .'transfer_certificate.'. $ext3[1];
-				move_uploaded_file($_FILES['userfile3']['tmp_name'], 'uploads/student_image/transfer_certificate/' . $student_id .'transfer_certificate.'.$ext3[1]);
-            }
-            if(count($ext4) ==2){
-				$data1['medical_certificate'] =  $student_id .'medical_certificate.'. $ext4[1];
-				move_uploaded_file($_FILES['userfile4']['tmp_name'], 'uploads/student_image/medical_certificate/' . $student_id .'medical_certificate.'.$ext4[1]);
-            }
-            if(count($otherext1) ==2){
-				$data1['attach_other1'] = $student_id .'other1.'.$otherext1[1];
-				move_uploaded_file($_FILES['other1']['tmp_name'], 'uploads/student_image/others_files/' . $student_id .'other1.'.$otherext1[1]);
-            }
-            if(count($otherext2) ==2){
-				$data1['attach_other2'] = $student_id .'other2.'.$otherext2[1];
-				move_uploaded_file($_FILES['other2']['tmp_name'], 'uploads/student_image/others_files/' . $student_id .'other2.'.$otherext2[1]);
-            }
-            if(count($otherext3) ==2){
-				$data1['attach_other3'] = $student_id .'other3.'.$otherext3[1];
-				move_uploaded_file($_FILES['other3']['tmp_name'], 'uploads/student_image/others_files/' . $student_id .'other3.'.$otherext3[1]);
-            }
-             $this->db->where('student_id', $student_id);
+            $this->db->where('student_id', $student_id);
             $this->db->update('student', $data1);
             
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
             $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
             $this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
             redirect(base_url() . 'index.php?admin/student_add/' . $data['class_id'], 'refresh');
@@ -423,7 +377,7 @@ class Admin extends CI_Controller {
             $data['birthday'] 			= $this->input->post('birthday');
             $data['age'] 				= $this->input->post('age');
             $data['sex'] 				= $this->input->post('sex');
-            $data['m_tongue'] 			= $this->input->post('m_tongue');
+            //$data['m_tongue'] 			= $this->input->post('m_tongue');
             $data['religion'] 			= $this->input->post('religion');
             $data['address'] 			= $this->input->post('address');
             $data['phone'] 				= $this->input->post('phone');
@@ -431,39 +385,15 @@ class Admin extends CI_Controller {
             $data['class_id'] 			= $this->input->post('class_id');
            
             $data['parent_id'] 			= $this->input->post('parent_id');
-            $data['dormitory_id'] 		= $this->input->post('dormitory_id');
-            $data['transport_id'] 		= $this->input->post('transport_id');
+            //$data['dormitory_id'] 		= $this->input->post('dormitory_id');
+            //$data['transport_id'] 		= $this->input->post('transport_id');
             $data['roll'] 				= $this->input->post('roll');
-            $data['notes'] 				= $this->input->post('notes');
+            //$data['notes'] 				= $this->input->post('notes');
 			
-			 $ext2 =$ext3 =$ext4 =$otherext1 =$otherext2 =$otherext3 =array();
-            if($_FILES['userfile2']['name']){
-				$ext2 = explode('.',$_FILES['userfile2']['name']);
-			}
-			if($_FILES['userfile3']['name']){
-				$ext3 = explode('.',$_FILES['userfile3']['name']);
-			}
-            if($_FILES['userfile4']['name']){
-				$ext4 = explode('.',$_FILES['userfile4']['name']);
-			}
-			
-			move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $param3 . '.jpg');
-			 $data1['birth_certificate'] = $data1['transfer_certificate'] = $data1['medical_certificate'] ='';
-            if(count($ext2) ==2){
-				$data['birth_certificate'] = $param3 .'.'. $ext2[1];
-				move_uploaded_file($_FILES['userfile2']['tmp_name'], 'uploads/student_image/birth_certificate/' . $student_id .'birth_certificate.'. $ext2[1]);
-            }
-            if(count($ext3) ==2){
-				  $data['transfer_certificate'] = $param3 .'.'. $ext3[1];
-				move_uploaded_file($_FILES['userfile3']['tmp_name'], 'uploads/student_image/transfer_certificate/' . $student_id .'transfer_certificate.'.$ext3[1]);
-            }
-            if(count($ext4) ==2){
-				$data['medical_certificate'] = $param3 .'.'. $ext4[1];
-				move_uploaded_file($_FILES['userfile4']['tmp_name'], 'uploads/student_image/medical_certificate/' . $student_id .'medical_certificate.'.$ext4[1]);
-            }
-             $this->db->where('student_id', $param3);
+            $this->db->where('student_id', $param3);
             $this->db->update('student', $data);
-           
+
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $param3 . '.jpg');
             $this->crud_model->clear_cache();
             $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
             redirect(base_url() . 'index.php?admin/student_information/' . $param1, 'refresh');
@@ -485,6 +415,7 @@ class Admin extends CI_Controller {
         if ($param2 == 'delete') {
             $this->db->where('student_id', $param3);
             $this->db->delete('student');
+            unlink('uploads/student_image/' . $param3 . '.jpg');
             $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
             redirect(base_url() . 'index.php?admin/student_information/' . $param1, 'refresh');
         }
@@ -542,75 +473,6 @@ class Admin extends CI_Controller {
 	}
 }
 
-/*Add Class code*/
-
-// function teacher($param1 = '', $param2 = '', $param3 = '') {
-    // if ($this->session->userdata('admin_login') != 1)
-        // redirect(base_url(), 'refresh');
-    // if ($param1 == 'create') {
-        // $data['name'] = $this->input->post('name');
-        // $data['birthday'] = $this->input->post('birthday');
-        // $data['sex'] = $this->input->post('sex');
-		
-		// $data['religion'] = $this->input->post('religion');
-        // $data['blood_group'] = $this->input->post('blood_group');
-		
-        // $data['address'] = $this->input->post('address');
-        // $data['phone'] = $this->input->post('phone');
-        // $data['email'] = $this->input->post('email');
-
-		// $data['facebook'] = $this->input->post('facebook');
-        // $data['twitter'] = $this->input->post('twitter');
-		// $data['googleplus'] = $this->input->post('googleplus');
-        // $data['linkedin'] = $this->input->post('linkedin');
-        // $data['qualification'] = $this->input->post('qualification');
-		// $data['file_name'] = $_FILES["file_name"]["name"];
-
-        // $data['password'] = $this->input->post('password');
-        // $this->db->insert('teacher', $data);
-        // $teacher_id = $this->db->insert_id();
-		
-		// move_uploaded_file($_FILES["file_name"]["tmp_name"], "uploads/teacher_image/" . $_FILES["file_name"]["name"]);
-        // move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $teacher_id . '.jpg');
-        // $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
-        // $this->email_model->account_opening_email('teacher', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
-        // redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
-    // }
-    // if ($param1 == 'do_update') {
-        // $data['name'] = $this->input->post('name');
-        // $data['birthday'] = $this->input->post('birthday');
-        // $data['sex'] = $this->input->post('sex');
-        // $data['address'] = $this->input->post('address');
-        // $data['phone'] = $this->input->post('phone');
-        // $data['email'] = $this->input->post('email');
-
-        // $this->db->where('teacher_id', $param2);
-        // $this->db->update('teacher', $data);
-        // move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $param2 . '.jpg');
-        // $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
-        // redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
-    // } else if ($param1 == 'personal_profile') {
-        // $page_data['personal_profile'] = true;
-        // $page_data['current_teacher_id'] = $param2;
-    // } else if ($param1 == 'edit') {
-        // $page_data['edit_data'] = $this->db->get_where('teacher', array(
-                    // 'teacher_id' => $param2
-                // ))->result_array();
-    // }
-    // if ($param1 == 'delete') {
-        // $this->db->where('teacher_id', $param2);
-        // $this->db->delete('teacher');
-        // $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
-        // redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
-    // }
-    // $page_data['teachers'] = $this->db->get('teacher')->result_array();
-    // $page_data['page_name'] = 'teacher';
-    // $page_data['page_title'] = get_phrase('manage_teacher');
-    // $this->load->view('backend/index', $page_data);
-// }
-/*add class code end*/
-
-
 /* * **MANAGE TEACHERS**** */
 
 function teacher($param1 = '', $param2 = '', $param3 = '') {
@@ -618,31 +480,30 @@ function teacher($param1 = '', $param2 = '', $param3 = '') {
         redirect(base_url(), 'refresh');
     if ($param1 == 'create') {
         $data['name'] = $this->input->post('name');
-        $data['birthday'] = $this->input->post('birthday');
+        //$data['birthday'] = $this->input->post('birthday');
         $data['sex'] = $this->input->post('sex');
 		
-		$data['religion'] = $this->input->post('religion');
-        $data['blood_group'] = $this->input->post('blood_group');
+		//$data['religion'] = $this->input->post('religion');
+        //$data['blood_group'] = $this->input->post('blood_group');
 		
         $data['address'] = $this->input->post('address');
         $data['phone'] = $this->input->post('phone');
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
 
-		$data['facebook'] = $this->input->post('facebook');
-        $data['twitter'] = $this->input->post('twitter');
-		$data['googleplus'] = $this->input->post('googleplus');
-        $data['linkedin'] = $this->input->post('linkedin');
-        $data['qualification'] = $this->input->post('qualification');
-        $data['file_name'] = $_FILES["file_name"]["name"];
-        $data['signature'] = $_FILES["signature"]["name"];
+		//$data['facebook'] = $this->input->post('facebook');
+        //$data['twitter'] = $this->input->post('twitter');
+		//$data['googleplus'] = $this->input->post('googleplus');
+        //$data['linkedin'] = $this->input->post('linkedin');
+        //$data['qualification'] = $this->input->post('qualification');
+        //$data['file_name'] = $_FILES["file_name"]["name"];
 
         $data['password'] = $this->input->post('password');
         $this->db->insert('teacher', $data);
         $teacher_id = $this->db->insert_id();
 		
-        move_uploaded_file($_FILES["file_name"]["tmp_name"], "uploads/teacher_image/" . $_FILES["file_name"]["name"]);
-        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
+        //move_uploaded_file($_FILES["file_name"]["tmp_name"], "uploads/teacher_image/" . $_FILES["file_name"]["name"]);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" .  $teacher_id . '.jpg');
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $teacher_id . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         $this->email_model->account_opening_email('teacher', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
@@ -650,17 +511,16 @@ function teacher($param1 = '', $param2 = '', $param3 = '') {
     }
     if ($param1 == 'do_update') {
         $data['name'] = $this->input->post('name');
-        $data['birthday'] = $this->input->post('birthday');
+        //$data['birthday'] = $this->input->post('birthday');
         $data['sex'] = $this->input->post('sex');
         $data['address'] = $this->input->post('address');
         $data['phone'] = $this->input->post('phone');
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
-        $data['signature'] = $_FILES["signature"]["name"];
 
         $this->db->where('teacher_id', $param2);
         $this->db->update('teacher', $data);
-        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], 'uploads/signature/' . $param2. '.jpg');
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
@@ -675,6 +535,7 @@ function teacher($param1 = '', $param2 = '', $param3 = '') {
     if ($param1 == 'delete') {
         $this->db->where('teacher_id', $param2);
         $this->db->delete('teacher');
+        unlink('uploads/teacher_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
     }
@@ -737,6 +598,7 @@ function alumni($param1 = '', $param2 = '', $param3 = '') {
     if ($param1 == 'delete') {
         $this->db->where('alumni_id', $param2);
         $this->db->delete('alumni');
+        unlink('uploads/alumni_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/alumni', 'refresh');
     }
@@ -760,11 +622,10 @@ function head($param1 = '', $param2 = '', $param3 = '') {
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
         $data['password'] = $this->input->post('password');
-        $data['signature'] = $_FILES["signature"]["name"];
 
         $this->db->insert('head', $data);
         $head_id = $this->db->insert_id();
-        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $head_id . '.jpg');
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/head_image/' . $head_id . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         $this->email_model->account_opening_email('head', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
@@ -778,11 +639,10 @@ function head($param1 = '', $param2 = '', $param3 = '') {
         $data['phone'] = $this->input->post('phone');
         $data['section'] = $this->input->post('section');
         $data['email'] = $this->input->post('email');
-        $data['signature'] = $_FILES["signature"]["name"];
 
         $this->db->where('head_id', $param2);
         $this->db->update('head', $data);
-        move_uploaded_file($_FILES["signature"]["tmp_name"], "uploads/signature/" . $_FILES["signature"]["name"]);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], 'uploads/signature/' . $param2 . '.jpg');
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/head_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/head/', 'refresh');
@@ -797,6 +657,7 @@ function head($param1 = '', $param2 = '', $param3 = '') {
     if ($param1 == 'delete') {
         $this->db->where('head_id', $param2);
         $this->db->delete('head');
+        unlink('uploads/head_image/' . $param2 . '.jpg');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/head/', 'refresh');
     }
@@ -1792,7 +1653,7 @@ function modify_subject($param1 = '', $param2 = '', $param3 = '', $param4 = '', 
         
 
         $this->db->where('subject_id', $param2);
-        $this->db->where('class_id', $this->input->post('class_ids'));
+        //$this->db->where('class_id', $this->input->post('class_ids'));
         $this->db->update('class_subject', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/modify_subject/' . $param3 . '/' . $param4, 'refresh');;
@@ -2984,6 +2845,7 @@ function exam_marks_sms($param1 = '', $param2 = '') {
                     // Comments for primary
                     $data0['TeacherName']  = $this->input->post('TeacherName');
                     $data0['Attendances']  = $this->input->post('Attendances');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
 
                     $this->db->where('class_id', $class_id);
                     $this->db->where('student_id', $student_id);
@@ -3015,6 +2877,8 @@ function exam_marks_sms($param1 = '', $param2 = '') {
                     $data0['TeacherComments']  = $this->input->post('TeacherComments');
                     $data0['VPComment']  = $this->input->post('VPComment');
                     $data0['Attendances']  = $this->input->post('Attendances');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
 
                     $this->db->where('class_id', $class_id);
                     $this->db->where('student_id', $student_id);
@@ -3139,6 +3003,7 @@ function exam_marks_sms($param1 = '', $param2 = '') {
 
              // Comments for nursery
              $data0['TeacherName']  = $this->input->post('TeacherName');
+             $data0['teach_sign'] = $this->input->post('teach_sign');
 
              $this->db->where('class_id', $class_id);
              $this->db->where('student_id', $student_id);
@@ -3192,6 +3057,7 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
         }
         if ($this->input->post('operation') == 'update') {
             $subjects = $this->db->get_where('class_subject' , array('class_id' => $class_id))->result_array();
+            //$subjects = $this->db->get_where('class_subject' , array('student_id' => $student_id))->result_array();
             $session_year = $this->input->post('session_year');
             $student_id = $this->input->post('student_id');
             $total_subs = '';
@@ -3261,6 +3127,8 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
                     $data0['TeacherComment']  = $this->input->post('TeacherComment');
                     $data0['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                     $data0['Attendance']  = $this->input->post('Attendance');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
 
                     $this->db->where('class_id', $class_id);
                     $this->db->where('student_id', $student_id);
@@ -3272,6 +3140,7 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
 
 					
 				}else{
+                //foreach($subjectss as $rowz){
 					$data['ca_marks']      = $this->input->post('ca_marks_' . $row['subject_id']);
 					$data['mark_obtained']      = $this->input->post('mark_obtained_' . $row['subject_id']);
 					$data['mark_total']      = $this->input->post('mark_total_' . $row['subject_id']);
@@ -3291,6 +3160,8 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
                     $data0['TeacherComments']  = $this->input->post('TeacherComments');
                     $data0['VPComment']  = $this->input->post('VPComment');
                     $data0['Attendances']  = $this->input->post('Attendances');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
 
                     $this->db->where('class_id', $class_id);
                     $this->db->where('student_id', $student_id);
@@ -3511,6 +3382,8 @@ function marks($exam_id = '', $class_id = '', $student_id = '')
                 $data0['TeacherComment']  = $this->input->post('TeacherComment');
                 $data0['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                 $data0['Attendance']  = $this->input->post('Attendance');
+                $data0['teach_sign'] = $this->input->post('teach_sign');
+                $data0['head_sign'] = $this->input->post('head_sign');
 
                 $this->db->where('class_id', $class_id);
                 $this->db->where('student_id', $student_id);

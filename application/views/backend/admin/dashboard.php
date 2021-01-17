@@ -2,7 +2,7 @@
 <!-- Resources -->
 <style>
     #chartdiv2, #chartdiv,#attandence_chart,#expence_chart {
-        width		: 100%;
+        width		: 80%;
         height		: 300px;
         font-size	: 11px;
     }					
@@ -19,25 +19,26 @@ $query = $this->db->get_where('attendance', $check);
 $present_today = $query->num_rows();
 ?>
 <div class="row">
-    <div class="col-md-12 col-xs-12" role="main">
+    <div class="col-md-12 col-sm-12 col-xm-12" role="main">
         <div class="row">
-            <div class="col-md-4 col-xs-4">
+            <div class="col-md-4 col-sm-4 col-xm-4">
                 <ul class="site-stats">
-                    <li><a href="<?php echo base_url(); ?>index.php?admin/student_information"><h3><div class="col-md-4 col-xs-4 stats-left" style="background-color:#4e7d2a"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-12 stats-right  text-centre"> Total <?php echo get_phrase('student'); ?> : <strong><?php echo $this->db->count_all('student'); ?></strong></div></h3></a> </li>
-                    <li><a href="<?php echo base_url(); ?>index.php?admin/teacher"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#489ee7"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('teacher'); ?>  :  <strong><?php echo $this->db->count_all('teacher'); ?></strong></div></h3></a></li>
+                    <li><a href="<?php echo base_url(); ?>index.php?admin/student_information"><h3><div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#4e7d2a"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8 stats-right  text-right
+                    "> Total <?php echo get_phrase('student'); ?> : <strong><?php echo $this->db->count_all('student'); ?></strong></div></h3></a> </li>
+                    <li><a href="<?php echo base_url(); ?>index.php?admin/teacher"><h3> <div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#489ee7"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8 stats-right  text-right">  Total <?php echo get_phrase('teacher'); ?>  :  <strong><?php echo $this->db->count_all('teacher'); ?></strong></div></h3></a></li>
 
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4 col-sm-4">
                 <ul class="site-stats">
-                    <li> <a href="<?php echo base_url(); ?>index.php?admin/parent"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#3bbc63"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('parent_users'); ?>  : <strong><?php echo $this->db->count_all('parent'); ?></strong></div> </h3></a></li>
-                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/librarian"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#fb5d5d"><i class="fa fa-book"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('librarian'); ?>  : <strong><?php echo $this->db->count_all('librarian'); ?></strong></div></h3></a></li>
+                    <li> <a href="<?php echo base_url(); ?>index.php?admin/parent"><h3> <div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#3bbc63"><i class="entypo-users"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8 stats-right  text-right">  Total <?php echo get_phrase('parent_users'); ?>  : <strong><?php echo $this->db->count_all('parent'); ?></strong></div> </h3></a></li>
+                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/librarian"><h3> <div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#fb5d5d"><i class="fa fa-book"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8 stats-right  text-right">  Total <?php echo get_phrase('librarian'); ?>  : <strong><?php echo $this->db->count_all('librarian'); ?></strong></div></h3></a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4 col-sm-4">
                 <ul class="site-stats">
-                    <li> <a href="<?php echo base_url(); ?>index.php?admin/admin_list"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#f7941d"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8 stats-right  text-right">  Total <?php echo get_phrase('admin_users'); ?>  :  <strong><?php echo $this->db->count_all('admin'); ?></strong></div></h3></a></li>
-                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/enquiry"><h3> <div class="col-md-4 col-xs-4 stats-left" style="background-color:#797b0e"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8  stats-right text-right">  <?php echo get_phrase('all_enquiries'); ?>  : <strong><?php echo $this->db->count_all('enquiry'); ?></strong></div></h3></a></li>
+                    <li> <a href="<?php echo base_url(); ?>index.php?admin/admin_list"><h3> <div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#f7941d"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8 stats-right  text-right">  Total <?php echo get_phrase('admin_users'); ?>  :  <strong><?php echo $this->db->count_all('admin'); ?></strong></div></h3></a></li>
+                    <li>  <a href="<?php echo base_url(); ?>index.php?admin/enquiry"><h3> <div class="col-md-4 col-xs-4 col-sm-4 stats-left" style="background-color:#797b0e"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>  <div class="col-md-8 col-xs-8 col-sm-8  stats-right text-right">  <?php echo get_phrase('all_enquiries'); ?>  : <strong><?php echo $this->db->count_all('enquiry'); ?></strong></div></h3></a></li>
                 </ul>
             </div>
         </div>
@@ -86,12 +87,12 @@ $present_today = $query->num_rows();
 
 </div>
 
-
+<!--
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">    
         <div class="x_panel " data-collapsed="0">
             <div class="x_title">
-                <?php echo get_phrase('Charts'); ?>
+                <?php //echo get_phrase('Charts'); ?>
             </div>
             <div class="x-content">
                 <div id="chartdiv2"></div> 
@@ -101,7 +102,7 @@ $present_today = $query->num_rows();
     <div class="col-md-4 col-sm-12 col-xs-12">    
         <div class="x_panel " data-collapsed="0">
             <div class="x_title">
-                <?php echo get_phrase('Charts'); ?>
+                <?php //echo get_phrase('Charts'); ?>
             </div>
             <div class="x-content">
                 <div id="chartdiv"></div>
@@ -116,7 +117,7 @@ $present_today = $query->num_rows();
 	 <div class="col-md-6 col-sm-12 col-xs-12">    
         <div class="x_panel " data-collapsed="0">
             <div class="x_title">
-                <?php echo get_phrase('attendance charts current month'); ?>
+                <?php //echo get_phrase('attendance charts current month'); ?>
             </div>
             <div class="x-content">
                 <div id="attandence_chart"></div>
@@ -126,7 +127,7 @@ $present_today = $query->num_rows();
 	 <div class="col-md-6 col-sm-12 col-xs-12">    
         <div class="x_panel " data-collapsed="0">
             <div class="x_title">
-                <?php echo get_phrase('expence charts'); ?>
+                <?php //echo get_phrase('expence charts'); ?>
             </div>
             <div class="x-content">
                 <div id="expence_chart"></div>
@@ -134,6 +135,7 @@ $present_today = $query->num_rows();
         </div>
     </div>
 </div>
+-->
 <div class="row">
     <div class="col-md-8">
         <div class="x_panel">
@@ -246,7 +248,7 @@ $present_today = $query->num_rows();
 						<?php 
 						$notices	=	$this->db->get('noticeboard')->result_array();
 						foreach($notices as $row):
-						?>
+						?>,
 						{
 							title: "<?php echo $row['notice_title'];?>",
 							start: new Date(<?php echo date('Y',$row['create_timestamp']);?>, <?php echo date('m',$row['create_timestamp'])-1;?>, <?php echo date('d',$row['create_timestamp']);?>),

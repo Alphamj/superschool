@@ -373,7 +373,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                         <?php 
 				    //cod e added on 4 june sandeep
 				    		
-						$students	=	//$this->crud_model->get_subjects_by_class2($class_id, $student_id, $teacher_id);
+						$students	=	$this->crud_model->get_subjects_by_class2($class_id, $student_id, $teacher_id);
 						$h = $z = 0;
 						foreach($students as $row):
 						
@@ -581,6 +581,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 	?>
 
 	<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
+		
 		<!-- individual Assessment-->
 		<table cellpadding="0" cellspacing="0" border="0" class="tg">
 			<?php 
@@ -833,6 +834,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 	<!--COMMENT AREA-->
 			<table style="width:100%; vertical-align: bottom;">
 			<?php //echo $exam_id;
+				$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+				$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+				$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
+
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_comments = $this->db->get_where('comments' , $verify_data);
@@ -863,6 +868,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					<tr>
 						<td><textarea class="class_score form-control" value="<?php echo $row['TeacherComments'];?>" cols="30" name = "TeacherComments"><?php echo $row['TeacherComments'];?></textarea></td>
 						<td><textarea class="class_score form-control" value="<?php echo $row['VPComment'];?>" cols="30" name = "VPComment"><?php echo $row['VPComment'];?></textarea></td>
+						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg' ?>" />
+						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?>" />
 					</tr>
 			<?php 
 				endforeach;
@@ -1383,6 +1390,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 	<!--COMMENT AREA-->
 			<table style="width:100%; vertical-align: bottom;">
 			<?php //echo $exam_id;
+				$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+				$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+				$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
+
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_comments = $this->db->get_where('comments' , $verify_data);
@@ -1413,6 +1424,9 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					<tr>
 						<td><textarea class="class_score form-control" value="<?php echo $row['TeacherComments'];?>" cols="30" name = "TeacherComments"><?php echo $row['TeacherComments'];?></textarea></td>
 						<td><textarea class="class_score form-control" value="<?php echo $row['VPComment'];?>" cols="30" name = "VPComment"><?php echo $row['VPComment'];?></textarea></td>
+						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg' ?>" />
+						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?>" />
+						
 					</tr>
 			<?php 
 				endforeach;
@@ -1761,6 +1775,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<!--COMMENT AREA-->
 			<table style="width:100%; vertical-align: bottom;">
 			<?php 
+				$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+				$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+				$head_sign = $this->db->get_where('head', array('section'=>'Primary'))->result_array();
+
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_comments = $this->db->get_where('comments' , $verify_data);
@@ -1793,6 +1811,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						<td><textarea class="class_score form-control" value="<?php echo $row['TeacherComment'];?>" cols="30" name = "TeacherComment"><?php echo $row['TeacherComment'];?></textarea></td>
 						<td><textarea class="class_score form-control" value="<?php echo $row['HeadTeacherComment'];?>" cols="30" name = "HeadTeacherComment"><?php echo $row['HeadTeacherComment'];?></textarea></td>
 						<td><input class="class_score6 form-control" type="text" value="<?php $student_average = $this->db->get_where('average',array('exam_id' => $exam_id,'student_id' => $student_id ,'class_id'=>$class_id ,'session_year'=>$get_system_settings[17]['description']))->row() ->total_average; echo $student_average;?>" name="" readonly = 'true'></td>
+						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg' ?>" />
+						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?>" />
 					</tr>
 				<?php endforeach; ?>
 
@@ -2136,6 +2156,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 		<!--COMMENT AREA-->
 		<table style="width:100%; vertical-align: bottom;" cellpadding="0" cellspacing="0" border="0" class="tg">
 			<?php 
+				$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+				$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+				$head_sign = $this->db->get_where('head', array('section'=>'Primary'))->result_array();
+
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
 				$query_comments = $this->db->get_where('comments' , $verify_data);
@@ -2166,6 +2190,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					<tr>
 						<td><textarea class="class_score form-control" value="<?php echo $row['TeacherComment'];?>" cols="30" name = "TeacherComment"><?php echo $row['TeacherComment'];?></textarea></td>
 						<td><textarea class="class_score form-control" value="<?php echo $row['HeadTeacherComment'];?>" cols="30" name = "HeadTeacherComment"><?php echo $row['HeadTeacherComment'];?></textarea></td>
+						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg' ?>" />
+						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?>" />
 					</tr>
 				<?php endforeach; ?>
 

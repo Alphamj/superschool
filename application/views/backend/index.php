@@ -20,13 +20,13 @@ $active_sms_service = $this->db->get_where('settings', array('type' => 'active_s
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Optimum Linkup Universal Concepts" />
         <meta name="author" content="optimumlinkupsoftware.com" />
-
+       
 
 
         <?php include 'includes_top.php'; ?>
 
     </head>
-    <body class="nav-md nav-xm page-body <?php if ($skin_colour != '') echo 'skin-' . $skin_colour; ?>">
+    <body class="nav-md page-body <?php if ($skin_colour != '') echo 'skin-' . $skin_colour; ?>">
 
         <div class="container body page-container <?php if ($text_align == 'right-to-left') echo 'right-sidebar'; ?>">
             <div class="main-content main_container">

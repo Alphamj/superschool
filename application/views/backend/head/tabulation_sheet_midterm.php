@@ -118,7 +118,11 @@ td h5 {color: #000 !important;}
 		<?php echo form_close();?>
 </div>
 
-<?php if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
+<?php 
+$nclass = $this->db->get_where('mark0',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
+$class_id = $nclass[0]['class_id'];
+
+if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
 <br>
 <div class="row">
 	<div class="col-md-12"></div>

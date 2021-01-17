@@ -73,7 +73,7 @@
                         <tr>
                             <td><?php echo $count++;?></td>
 							<td><?php echo $row['name'];?></td>
-							<td><?php echo $row['name_numeric'];?></td>
+							<td><?php echo $row['name2'];?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
 							<td>
 							

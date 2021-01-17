@@ -1,35 +1,51 @@
 <div class="x_panel" >
-            
-		  <div class="x_title">
-			 <div class="panel-title">
-	 <?php echo form_open(base_url() . 'index.php?student/midterm_result');?>
-
-				  <?php echo get_phrase('get_result'); ?>
-				 </div>
-				 </div>
-				    
-			 <div class="col-md-3">
-				<div class="form-group">
-				
-				   <select name="class_id"  id="class_ids" class="form-control selectboxit" required >
-						 <option value=""><?php echo get_phrase('select_a_class');?></option>
-						 <?php 
-						 $classes = $this->crud_model->get_student_classes0($this->session->userdata('login_user_id'));
-						 foreach($classes as $row):
-						 ?>
-				    <option value="<?php echo $row['class_id'];?>"
+    <div class="x_title">
+		<div class="panel-title">
+			<?php echo get_phrase('get_result'); ?>
+		</div>
+	</div>
+	<?php 
+		$get_system_settings	=	$this->crud_model->get_system_settings();
+		echo '<input type="hidden" id="current_session" value="'.$get_system_settings[17]['description'].'">';
+		echo form_open(base_url() . 'index.php?student/midterm_result');?>
+	<div class="col-md-3">
+		<div class="form-group">
+			<select name="session_year" id="session_year" class="form-control selectboxit" onchange="show_students_session(this.value)">
+                <?php 
+                	$sessions = $this->db->get('session')->result_array();
+                	foreach($sessions as $row):
+                ?>
+                    <option value="<?php echo $row['name'];?>"
+                    	<?php if($sessoin_id){if (trim($sessoin_id) == trim($row['name'])){ echo 'selected'; }}else {if($row['name'] ==$get_system_settings[17]['description']){ echo 'selected'; } } ?>>
+                    		 <?php echo $row['name'];?>
+                    </option>
+                <?php
+                endforeach;
+                ?>
+            </select>
+		</div>
+	</div>		    
+	<div class="col-md-3">
+		<div class="form-group">
+			<select name="class_id"  id="class_ids" class="form-control selectboxit" required >
+				 <option value=""><?php echo get_phrase('select_a_class');?></option>
+				 <?php 
+				 $classes = $this->crud_model->get_student_classes($this->session->userdata('login_user_id'));
+				 foreach($classes as $row):
+				 ?>
+		    		<option value="<?php echo $row['class_id'];?>"
 					    <?php if ($class_id == $row['class_id']) echo 'selected';?>>
 							<?php echo $row['name'];?>
-				    </option>
-						 <?php
-						 endforeach;
-						 ?>
-						 </select>
-				</div>
-			</div> 
-				 <div class="col-md-3">
-			 <div class="form-group">
-				 <select name="exam_id" class="form-control selectboxit" required>
+		    		</option>
+				 <?php
+				 endforeach;
+				 ?>
+			</select>
+		</div>
+	</div> 
+	<div class="col-md-3">
+		<div class="form-group">
+			<select name="exam_id" class="form-control selectboxit" required>
 				<option value=""><?php echo get_phrase('select_a_term');?></option>
 				<?php 
 				$exams = $this->db->get('exam')->result_array();
@@ -42,10 +58,10 @@
 				<?php
 				endforeach;
 				?>
-			 </select>
-			 </div>
+		 	</select>
 		 </div>
-			 <input type="hidden" name="operation" value="selection">
+	</div>
+	<input type="hidden" name="operation" value="selection">
 
 <button type="submit" class="btn btn-orange btn-sm btn-icon icon-left"><i class="entypo-search"></i><?php echo get_phrase('view_result');?></button>
 
@@ -58,12 +74,12 @@
   <hr/>
   <div class="x_panel" id="div_print">
   <?php 
-  	$get_system_settings	=	$this->crud_model->get_system_settings();
-  	$sessoin_id = $get_system_settings[17]['description'];
-  	$student_id = $this->session->userdata('login_user_id');
-  	$fees = $this->db->get_where('invoice', array('student_id' => $student_id, 'session_year' => $sessoin_id))->result_array();
-	$event = $this->db->get_where('status', array('session_year' => $sessoin_id, 'exam_id' => $exam_id))->result_array();
-  ?>
+	//$get_system_settings	=	$this->crud_model->get_system_settings();
+	//$sessoin_id = $get_system_settings[17]['description'];
+	$student_id = $this->session->userdata('login_user_id');
+	$fees = $this->db->get_where('invoice', array('student_id' => $student_id, 'session_year' => $sessoin_id))->result_array();
+  	$event = $this->db->get_where('status', array('session_year' => $sessoin_id, 'exam_id' => $exam_id))->result_array();
+?>
 <div >
   <style type="text/css">
 	  td {padding: 8px;color: #000 !important;border: 1px solid #D2CBCB;font-size: 12px;}
@@ -80,7 +96,9 @@
 	  span.grade-right::before {content: "\f00c";font-family: fontawesome;color: green;}
   </style>
   <?php //echo $event[0]['status'] ?>
+ 
   <?php if ($class_id != '' && $fees[0]['status'] == 'paid' && $event[0]['status'] == 'opened'){ ?>
+
 	  <?php
 	  $students   =   $this->crud_model->get_student_info($student_id); 
 	  foreach($students as $row): 
@@ -89,7 +107,6 @@
 		  $sex = $row['sex'];
 		  $total_marks = 0;
 		  $total_class_score = 0;
-		 $class_id = $row['class_id'];
 		 $total_grade_point = 0;
   ?>
   <?php 
@@ -158,298 +175,285 @@
 				  </table>
 			  </div>
   
-  <!--Senior Secondary-->
-	  <?php } $class_type = strtolower($this->crud_model->get_class_name($class_id)); 
-		  $jss = "no";
-		  if(strpos($class_type, 'jss') !== false ){
-			  $jss = "yes";
-		  }
-				  
-		  if (strpos($class_type, 'ss') !== false && $jss !='yes'){
-	  ?>
-					  
-  <div style="width: 98.8%;display: inline-block;vertical-align: top; margin-left: 10px;">
-	  <?php //if ($exam_id = 4){ $exam_id--;} ?>
-		  <div class="table-responsive">
-			  <!-- For SS 1 & 2 -->
-			  <?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
-			  <table cellpadding="0" cellspacing="0" border="0" class="tg" style="width: 100%;">
-				  <thead>
-					  <tr>
-						  <th class="tg-yw4l" rowspan="2">SUBJECT</th>
-						  <th class="tg-yw4l" rowspan="2">C.A [20]</th>
-						  <th class="tg-yw4l" rowspan="2">TEST [10]</th>
-						  <th class="tg-yw4l" rowspan="2">TOTAL [30]</th>
-						  <th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
-						  <th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
-						  <th class="tg-yw4l" rowspan="2">E<br />F<br />F<br />O<br />R<br />T</th>
-						  <th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
-						  <th class="tg-yw4l" rowspan="2">TEACHER</th>
-					  </tr>
-					  <tr>
-						  <td class="tg-yw4l">ATTITUDE TO <br /> WORK AND TASK</td>
-						  <td class="tg-yw4l">ATTENTIVENESS IN CLASS</td>
-						  <td class="tg-yw4l">RESPONSE TO <br />ASSIGNMENTS <br /> AND PROJECTS</td>
-						  <td class="tg-yw4l">INTEREST IN SUBJECT</td>
-						  <td class="tg-yw4l">WILLINGNESS TO <br /> WORK WITH OTHERS</td>
-					  </tr>
-					  </thead>
-				  <?php 
-							  $query = $this->db->get_where('mark0' , array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id));
-							  $marks	=	$query->result_array();
-							  $total_markss=$total_sub_marks1_all=$total_sub_marks2_all0 = 0;
-							  $d = 0;
-							  foreach($marks as $row2):
-								  if ($row2['mark_total'] != 0){
-								  $subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
-								  $teacher = 	$this->db->get_where('teacher' , array('teacher_id' =>  $subjects[0]['teacher_id']))->result_array();
-								  if ($class_id > 28 && $class_id < 32 ){
-									  $verify_datas = array('exam_id' => $exam_id,'class_id' => 111, 
-									  'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
-								   }
-								  if ($class_id > 31 && $class_id < 35 ){
-									  $verify_datas = array('exam_id' => $exam_id ,'class_id' => 112 , 
-									  'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
-								   }
-  
-								  $value	=	$this->db->get_where('average0' , $verify_datas)->result_array();
-  
-								  if ($class_id > 28 && $class_id < 33){
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>29, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-		  
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>30,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>31,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  }
-		  
-								  if ($class_id > 31 && $class_id < 35){
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 32, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-		  
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 33,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  
-									  $this->db->select("(ca_marks+mark_obtained) as total");
-									  $total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 34,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  }
-		  
-								  $total_marks = array_merge($total_mark1,$total_mark2,$total_mark3);
-  
-								  $grade = grade_syssss($row2['mark_total']);
-						  ?>
-						  
-							  <tr>
-								  <td><?php echo $subjects[0]['name']; ?>	</td>
-								  <td class="tg-yw4l"><?php echo $row2['ca_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['mark_obtained'];?></td>
-								  <td class="tg-yw4l"><?php echo ($row2['ca_marks']+$row2['mark_obtained']);?></td>
-								  <td class="tg-yw4l"><?php echo $grade;?></td>
-								  <td class="tg-yw4l"><?php $arr_max = max($total_marks); echo $arr_max['total']; ?></td>
-								  <td class="tg-yw4l"><?php echo $row2['effort_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['attitude_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['attentiveness_mark'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['assignment_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['interest_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['willingness_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
-							  </tr>
-						  
-							  <?php } endforeach; ?>
-							  <tr>
-								  <td colspan="3" style="text-align: center">Total Marks</td>
-								  <td style="text-align: center"><?php echo $value[0]['total_score'];?></td>
-								  <td colspan="2" style="text-align: center">Student Average</td>
-								  <td style="text-align: center"><?php echo $value[0]['total_average'];?></td>
-							  </tr>
-							  
-						  </tbody>
-					  </table>
-					  <!-- For SS3 -->
-			  <?php } if (strpos($class_type, 'ss 3') !== false) { ?> 
-			  
-			  <table cellpadding="0" cellspacing="0" border="0" class="tg" style="width: 100%;">
-				  <thead>
-					  <tr>
-						  <th class="tg-yw4l" rowspan="2">SUBJECT</th>
-						  <th class="tg-yw4l" rowspan="2">MOCK <br />[100]</th>
-						  <th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
-						  <th class="tg-yw4l" rowspan="2">CLASS <br /> MAXIMUM</th>
-						  <th class="tg-yw4l" rowspan="2">E<br />F<br />F<br />O<br />R<br />T</th>
-						  <th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
-						  <th class="tg-yw4l" rowspan="2">TEACHER</th>
-					  </tr>
-					  <tr>
-						  <td class="tg-yw4l">ATTITUDE <br /> TO WORK <br /> AND TASK</td>
-						  <td class="tg-yw4l">ATTENTIVENESS <br />IN CLASS</td>
-						  <td class="tg-yw4l">RESPONSE TO <br /> ASSIGNMENTS <br /> AND PROJECTS</td>
-						  <td class="tg-yw4l">INTEREST <br /> IN SUBJECT</td>
-						  <td class="tg-yw4l">WILLINGNESS <br /> TO WORK <br /> WITH OTHERS</td>
-					  </tr>
-					  </thead>
-					  <?php 
-						  $query = $this->db->get_where('mark0' , array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id));
-						  $marks	=	$query->result_array();
-						  
-						  foreach($marks as $row2):
-							  if ($row2['mark_obtained'] != 0){
-							  $subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
-							  $teacher = 	$this->db->get_where('teacher' , array('teacher_id' =>  $subjects[0]['teacher_id']))->result_array();
-							  
-							  $verify_datas = array('exam_id' => $exam_id ,'class_id' => 113 , 
-								  'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
-							  $value	=	$this->db->get_where('average0' , $verify_datas)->result_array();
-  
-							  $this->db->select("(mark_obtained) as total");
-							  $total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>35, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-  
-							  $this->db->select("(mark_obtained) as total");
-							  $total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>36,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  
-							  $this->db->select("(mark_obtained) as total");
-							  $total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>37,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
-								  
-							  $total_marks = array_merge($total_mark1,$total_mark2,$total_mark3);
-						  
-						  
-							  ?>
-							  <tr>
-								  <td><?php echo $subjects[0]['name']; ?>	</td>
-								  <td class="tg-yw4l"><?php echo $row2['mark_obtained'];?></td>
-								  <td class="tg-yw4l"><?php echo grade_mock($row2['mark_obtained']);?></td>
-								  <td class="tg-yw4l"><?php $arr_max = max($total_marks); echo $arr_max['total']; ?></td>
-								  <td class="tg-yw4l"><?php echo $row2['effort_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['attitude_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['attentiveness_mark'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['assignment_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['interest_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['willingness_marks'];?></td>
-								  <td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
-								
-							   </tr>
-						  
-					  <?php } endforeach; ?>
-  
-							  <tr>
-								  <td colspan="3" style="text-align: center">Total Marks</td>
-								  <td style="text-align: center"><?php echo $value[0]['total_score'];?></td>
-								  <td colspan="2" style="text-align: center">Student Average</td>
-								  <td style="text-align: center"><?php echo $value[0]['total_average'];?></td>
-								  <td colspan="2" style="text-align: center">Class Average</td>
-								  <td style="text-align: center"><?php echo $value[0]['class_average'];?></td>
-								  <!-- <td colspan="1" style="text-align: center">Position</td>
-								  <td style="text-align: center"><?php //echo $value[0]['position'];?></td> -->
-							  </tr>
-						  </tbody>
-					  </table>
-					  <br />
-					  <hr>
-					  <br />
-			  
-			  <div class="table-responsive">
-				  <table style="width:98%; margin:10px;" class="tg">
-					  
-					  <tr>
-						  <td style=" font-size:20px;">key:</td>
-						  <td style=" font-size:13px;"><strong>A1</strong> = Excellent (75-100) </td>
-						  <td style=" font-size:13px;"><strong>B2</strong> = V.GOOD (70-74) </td>
-						  <td style=" font-size:13px;"><strong>B3</strong> = GOOD (65-69) </td>
-						  <td style=" font-size:13px;"><strong>C4</strong> = CREDIT (60-64) </td>
-						  <td style=" font-size:13px;"><strong>C5</strong> = CREDIT (55-59) </td>
-						  <td style=" font-size:13px;"><strong>C6</strong> = CREDIT (50-54) </td>
-						  <td style=" font-size:13px;"><strong>D7</strong> = PASS (45-49) </td>
-						  <td style=" font-size:13px;"><strong>D8</strong> = PASS (40-44) </td>
-						  <td style=" font-size:13px;"><strong>F9</strong> = FAIL (0-39) </td>
-					  </tr>
-					  <tr>
-						  <td style=" font-size:15px;" colspan="1" rowspan="3">Definitions:</td>
-						  <td style=" font-size:15px;" colspan="1">Grade -</td>
-						  <td style=" font-size:15px;" colspan="8">Assessment level of academic achievement based on the total score</td>
-					  </tr>
-					  <tr>
-						  <td style=" font-size:15px;" colspan="1">Class max -</td>
-						  <td style=" font-size:15px;" colspan="8">Highest grade obtained in the subject</td>
-					  </tr>
-					  <tr>
-						  <td style=" font-size:15px;" colspan="1">Effort -</td>
-						  <td style=" font-size:15px;" colspan="8">Assessment of the level of intrest and seriousness</td>
-					  </tr>
-				  </table>
-  
-				  <br />
-				  
-				  <!--COMMENT AREA-->
-				  <table style="width:98%; margin:10px;" class="tg">
-					<?php 
-						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+<!--Senior Secondary-->
+<?php } $class_type = strtolower($this->crud_model->get_class_name($class_id)); 
+		$jss = "no";
+		if(strpos($class_type, 'jss') !== false ){
+			$jss = "yes";
+		}
+				
+		if (strpos($class_type, 'ss') !== false && $jss !='yes'){
+	?>
+					
+<div style="width: 98.8%;display: inline-block;vertical-align: top; margin-left: 10px;">
+	<?php //if ($exam_id = 4){ $exam_id--;} ?>
+		<div class="table-responsive">
+			<!-- For SS 1 & 2 -->
+			<?php if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?> 
+			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width: 100%;">
+				<thead>
+					<tr>
+						<th class="tg-yw4l" rowspan="2">SUBJECT</th>
+						<th class="tg-yw4l" rowspan="2">C.A [20]</th>
+						<th class="tg-yw4l" rowspan="2">TEST [10]</th>
+						<th class="tg-yw4l" rowspan="2">TOTAL [30]</th>
+						<th class="tg-yw4l" rowspan="2">GRADES</th>
+						<th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
+						<th class="tg-yw4l" rowspan="2">EFFORT</th>
+						<th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
+						<th class="tg-yw4l" rowspan="2">TEACHER</th>
+					</tr>
+					<tr>
+						<td class="tg-yw4l">ATTITUDE TO <br /> WORK AND TASK</td>
+						<td class="tg-yw4l">ATTENTIVENESS IN CLASS</td>
+						<td class="tg-yw4l">RESPONSE TO <br />ASSIGNMENTS <br /> AND PROJECTS</td>
+						<td class="tg-yw4l">INTEREST IN SUBJECT</td>
+						<td class="tg-yw4l">WILLINGNESS TO <br /> WORK WITH OTHERS</td>
+					</tr>
+                    </thead>
+				<?php 
+							$query = $this->db->get_where('mark0' , array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id));
+							$marks	=	$query->result_array();
+							$total_markss=$total_sub_marks1_all=$total_sub_marks2_all0 = 0;
+							$d = 0;
+							foreach($marks as $row2):
+								if ($row2['mark_total'] != 0){
+								$subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
+								$teacher = 	$this->db->get_where('teacher' , array('teacher_id' =>  $subjects[0]['teacher_id']))->result_array();
+								if ($class_id > 28 && $class_id < 32 ){
+									$verify_datas = array('exam_id' => $exam_id,'class_id' => 111, 
+									'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
+								 }
+								if ($class_id > 31 && $class_id < 35 ){
+									$verify_datas = array('exam_id' => $exam_id ,'class_id' => 112 , 
+									'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
+								 }
 
+								$value	=	$this->db->get_where('average0' , $verify_datas)->result_array();
+
+								if ($class_id > 28 && $class_id < 33){
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>29, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+		
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>30,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>31,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								}
+		
+								if ($class_id > 31 && $class_id < 35){
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 32, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+		
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 33,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								
+									$this->db->select("(ca_marks+mark_obtained) as total");
+									$total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=> 34,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								}
+		
+								$total_marks = array_merge($total_mark1,$total_mark2,$total_mark3);
+
+								$grade = grade_syssss($row2['mark_total']);
+						?>
+						
+							<tr>
+								<td><?php echo $subjects[0]['name']; ?>	</td>
+								<td class="tg-yw4l"><?php echo $row2['ca_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['mark_obtained'];?></td>
+								<td class="tg-yw4l"><?php echo ($row2['ca_marks']+$row2['mark_obtained']);?></td>
+								<td class="tg-yw4l"><?php echo $grade;?></td>
+								<td class="tg-yw4l"><?php $arr_max = max($total_marks); echo $arr_max['total']; ?></td>
+								<td class="tg-yw4l"><?php echo $row2['effort_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['attitude_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['attentiveness_mark'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['assignment_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['interest_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['willingness_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
+							</tr>
+						
+							<?php } endforeach; ?>
+							<tr>
+								<td colspan="3" style="text-align: center">Total Marks</td>
+								<td style="text-align: center"><?php echo $value[0]['total_score'];?></td>
+								<td colspan="2" style="text-align: center">Student Average</td>
+								<td style="text-align: center"><?php echo $value[0]['total_average'];?></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					<!-- For SS3 -->
+			<?php } if (strpos($class_type, 'ss 3') !== false) { ?> 
+			
+			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width: 100%;">
+				<thead>
+					<tr>
+						<th class="tg-yw4l" rowspan="2">SUBJECT</th>
+						<th class="tg-yw4l" rowspan="2">MOCK <br />[100]</th>
+						<th class="tg-yw4l" rowspan="2">GRADES</th>
+						<th class="tg-yw4l" rowspan="2">CLASS <br /> MAXIMUM</th>
+						<th class="tg-yw4l" rowspan="2">EFFORT</th>
+						<th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
+						<th class="tg-yw4l" rowspan="2">TEACHER</th>
+					</tr>
+					<tr>
+						<td class="tg-yw4l">ATTITUDE <br /> TO WORK <br /> AND TASK</td>
+						<td class="tg-yw4l">ATTENTIVENESS <br />IN CLASS</td>
+						<td class="tg-yw4l">RESPONSE TO <br /> ASSIGNMENTS <br /> AND PROJECTS</td>
+						<td class="tg-yw4l">INTEREST <br /> IN SUBJECT</td>
+						<td class="tg-yw4l">WILLINGNESS <br /> TO WORK <br /> WITH OTHERS</td>
+					</tr>
+                    </thead>
+					<?php 
+						$query = $this->db->get_where('mark0' , array('class_id' => $class_id, 'exam_id' => $exam_id, 'student_id' => $student_id,'session_year'=>$sessoin_id));
+						$marks	=	$query->result_array();
+						
+						foreach($marks as $row2):
+							if ($row2['mark_obtained'] != 0){
+							$subjects = 	$this->db->get_where('subject' , array('subject_id' =>  $row2['subject_id']))->result_array();
+							$teacher = 	$this->db->get_where('teacher' , array('teacher_id' =>  $subjects[0]['teacher_id']))->result_array();
+							
+							$verify_datas = array('exam_id' => $exam_id ,'class_id' => 113 , 
+								'student_id' => $row2['student_id'],'session_year'=>$sessoin_id);
+							$value	=	$this->db->get_where('average0' , $verify_datas)->result_array();
+
+							$this->db->select("(mark_obtained) as total");
+							$total_mark1 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>35, 'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+
+							$this->db->select("(mark_obtained) as total");
+							$total_mark2 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>36,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								
+							$this->db->select("(mark_obtained) as total");
+							$total_mark3 = $this->db->get_where('mark0',array("subject_id"=>$row2['subject_id'],'class_id'=>37,'exam_id' => $exam_id,'session_year'=>$sessoin_id))->result_array();
+								
+							$total_marks = array_merge($total_mark1,$total_mark2,$total_mark3);
+						
+						
+							?>
+							<tr>
+								<td><?php echo $subjects[0]['name']; ?>	</td>
+								<td class="tg-yw4l"><?php echo $row2['mark_obtained'];?></td>
+								<td class="tg-yw4l"><?php echo grade_mock($row2['mark_obtained']);?></td>
+								<td class="tg-yw4l"><?php $arr_max = max($total_marks); echo $arr_max['total']; ?></td>
+								<td class="tg-yw4l"><?php echo $row2['effort_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['attitude_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['attentiveness_mark'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['assignment_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['interest_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['willingness_marks'];?></td>
+								<td class="tg-yw4l"><?php echo $row2['teacher']; ?></td>
+                              
+							 </tr>
+						
+					<?php } endforeach; ?>
+
+							<tr>
+								<td colspan="3" style="text-align: center">Total Marks</td>
+								<td style="text-align: center"><?php echo $value[0]['total_score'];?></td>
+								<td colspan="2" style="text-align: center">Student Average</td>
+								<td style="text-align: center"><?php echo $value[0]['total_average'];?></td>
+								<td colspan="2" style="text-align: center">Class Average</td>
+								<td style="text-align: center"><?php echo $value[0]['class_average'];?></td>
+								<!-- <td colspan="1" style="text-align: center">Position</td>
+								<td style="text-align: center"><?php //echo $value[0]['position'];?></td> -->
+							</tr>
+						</tbody>
+					</table>
+					<br />
+					<hr>
+					<br />
+			
+			<div class="table-responsive">
+				<table style="width:98%; margin:10px;" class="tg">
+					
+					<tr>
+						<td style=" font-size:20px;">key:</td>
+						<td style=" font-size:13px;"><strong>A1</strong> = Excellent (75-100) </td>
+						<td style=" font-size:13px;"><strong>B2</strong> = V.GOOD (70-74) </td>
+						<td style=" font-size:13px;"><strong>B3</strong> = GOOD (65-69) </td>
+						<td style=" font-size:13px;"><strong>C4</strong> = CREDIT (60-64) </td>
+						<td style=" font-size:13px;"><strong>C5</strong> = CREDIT (55-59) </td>
+						<td style=" font-size:13px;"><strong>C6</strong> = CREDIT (50-54) </td>
+						<td style=" font-size:13px;"><strong>D7</strong> = PASS (45-49) </td>
+						<td style=" font-size:13px;"><strong>D8</strong> = PASS (40-44) </td>
+						<td style=" font-size:13px;"><strong>F9</strong> = FAIL (0-39) </td>
+					</tr>
+					<tr>
+						<td style=" font-size:15px;" colspan="1" rowspan="3">Definitions:</td>
+						<td style=" font-size:15px;" colspan="1">Grade -</td>
+						<td style=" font-size:15px;" colspan="8">Assessment level of academic achievement based on the total score</td>
+					</tr>
+					<tr>
+						<td style=" font-size:15px;" colspan="1">Class max -</td>
+						<td style=" font-size:15px;" colspan="8">Highest grade obtained in the subject</td>
+					</tr>
+					<tr>
+						<td style=" font-size:15px;" colspan="1">Effort -</td>
+						<td style=" font-size:15px;" colspan="8">Assessment of the level of intrest and seriousness</td>
+					</tr>
+				</table>
+
+				<br />
+				
+				<!--COMMENT AREA-->
+					<?php 
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
 						$query_comments = $this->db->get_where('comments0' , $verify_data);
-
 						$row = $query_comments->result_array();
-						//foreach($student_comments as $row):
 					?>
-
+				<table style="width:98%; margin:10px;" class="tg">
 					<tr>
 						<td colspan="6" style="width:50%;" class="tg" ><strong>TEACHER'S NAME: <?php echo ' ',$row[0]['TeacherNames'];?></strong></td>
 						<td colspan="6" style="width:50%;" class="tg" ><strong>VICE PRINCIPAL'S NAME:<?php echo ' ',$row[0]['VPName'];?></strong></td>
 					</tr>
 					
 					<tr>
-						<th colspan="2" style="height:10px;  width: 10%;">Teacher's Comment</th>
-						<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-						<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
-						<th colspan="2" style="height:10px;  width: 10%;">Head Teacher's Comment</th>
-						<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-						<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width: 50%; height:100%; display: block; margin:auto; padding:auto"></th>
+						<th colspan="3" style="height:10px;  width: 25%;">TEACHER'S COMMENT</th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $row[0]['teach_sign'];?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
+						<th colspan="3" style="height:10px;  width: 25%;">VICE PRINCIPAL'S COMMENT</th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $row[0]['head_sign'];?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
 					</tr>
 					<tr>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['TeacherComments'];?></td>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['VPComment'];?></td>
 					</tr>
-  
-					  <?php //endforeach; ?>
-				  </table>
-			  </div>
-			  <?php } if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?>
-			  
-				  </div>
-				  <br>
-				  <br>
-				  <br>
-				  <br>
-				  <br>
-			  <table style="width:100%; font-size:14px;">
-				  <tr>
-					  <td colspan="6" style="text-align:center;">CLASS TEACHER</td>
-					  <td colspan="6" style="text-align:center;">PRINCIPAL</td>
-				  </tr>
-				  <tr>
-					  <td colspan="2">KEYS TO GRADES:</td>
-					  <td colspan="2"><strong>A</strong> = Excellent </td>
-					  <td colspan="2"><strong>B</strong> = Very Good </td>
-					  <td colspan="2"><strong>C</strong> = Credit </td>
-					  <td colspan="2"><strong>D</strong> = Pass </td>
-					  <td colspan="2"><strong>E</strong> = Poor </td>
-				  </tr>
-				  <tr>
-					  <td colspan="2">KEYS:</td>
-					  <td colspan="2"><strong>Assignment</strong> = 10% </td>
-					  <td colspan="2"><strong>Project</strong> = 10% </td>
-					  <td colspan="2"><strong>Class Exercise</strong> = 10% </td>
-					  <td colspan="2"><strong>Affective Domain</strong> = 5% </td>
-					  <td colspan="2"><strong>Notes</strong> = 5% </td>
-				  </tr>
-			  </table>
-			  </div>
-		  </div>
-  
-		  <br />
-		  <?php } ?>
+				</table>
+			</div>
+			<?php } if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?>
+			
+				</div>
+				<br>
+				<br>
+			<table style="width:100%; font-size:14px;">
+				<tr>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER <img src="uploads/signature/<?php echo $row[0]['teach_sign'];?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL <img src="uploads/signature/<?php echo $row[0]['head_sign'];?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
+				</tr>
+				<tr>
+					<td colspan="2">KEYS TO GRADES:</td>
+					<td colspan="2"><strong>A</strong> = Excellent </td>
+					<td colspan="2"><strong>B</strong> = Very Good </td>
+					<td colspan="2"><strong>C</strong> = Credit </td>
+					<td colspan="2"><strong>D</strong> = Pass </td>
+					<td colspan="2"><strong>E</strong> = Poor </td>
+				</tr>
+				<tr>
+					<td colspan="2">KEYS:</td>
+					<td colspan="2"><strong>Assignment</strong> = 10% </td>
+					<td colspan="2"><strong>Project</strong> = 10% </td>
+					<td colspan="2"><strong>Class Exercise</strong> = 10% </td>
+					<td colspan="2"><strong>Affective Domain</strong> = 5% </td>
+					<td colspan="2"><strong>Notes</strong> = 5% </td>
+				</tr>
+			</table>
+			</div>
+		</div>
+
+		<br />
+		<?php } ?>
   
   <!--Junior Secondary-->
 	  <?php }else if (strpos($class_type, 'junior secondary') !== false || strpos($class_type, 'jss') !== false){?>
@@ -576,16 +580,16 @@
 				  <br>
 				  <br>
 			  <table style="width:100%; font-size:14px;">
-			  	<?php
-					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-					$head_sign = $this->db->get_where('head', array('section'=>'primary'))->result_array();
+			  <?php 
+										//Comment Area
+					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
+					$query_comments = $this->db->get_where('comments0' , $verify_data);
+					$sign = $query_comments->result_array();
 				?>
 				<tr>
-					<td colspan="3" style="text-align:center;">CLASS TEACHER</td>
-					<td colspan="3" style="height:100px;  width: 25%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
-					<td colspan="3" style="text-align:center;">PRINCIPAL</td>
-					<td colspan="3" style="height:100px;  width: 25%;"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER: <img src="uploads/signature/<?php echo $sign[0]['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL: <img src="uploads/signature/<?php echo $sign[0]['head_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				  <tr>
 					  <td colspan="2">KEYS TO GRADES:</td>
@@ -747,11 +751,8 @@
 						<!-- Comment Area -->
 				<table style="width: 80%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 					<?php
-						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-								  
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-										'student_id' => $student_id);
+										'student_id' => $student_id, 'session_year' => $sessoin_id);
 						$query_comments = $this->db->get_where('comments0' , $verify_data);
 						$student_comments = $query_comments->result_array();
 						foreach($student_comments as $row):
@@ -762,7 +763,7 @@
 					</tr>
 					<tr>
 						<td colspan="5" style="height:100px;  width: 10%;">SIGNATURE:</td>
-						<td colspan="5" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="5" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 				  <tr>
 					  <td colspan="2">KEYS:</td>
@@ -900,11 +901,8 @@
   
 		  	<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
-					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -914,7 +912,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
-					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				
 				<?php endforeach; ?>
@@ -1053,11 +1051,8 @@
   
 			<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
-					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -1067,7 +1062,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
-					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				
 				<?php endforeach; ?>
@@ -1220,11 +1215,8 @@
   
 		  <table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
-					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -1234,7 +1226,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
-					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				
 				<?php endforeach; ?>
@@ -1373,9 +1365,6 @@
   
 		  	<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
-					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 									'student_id' => $student_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
@@ -1387,7 +1376,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="height:100px;  width: 10%;">SIGNATURE:</td>
-					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="3" style="height:100px;  width: 10%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width: 20%; height:70%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				
 				<?php endforeach; ?>
@@ -1514,7 +1503,7 @@
 					</div>
 					</div>
 		<?php $child = $this->db->get_where('student', array('student_id' => $student_id))->result_array();?> 
-		<div class="alert alert-danger" align="center"><?php echo $child[0]['name'] . $child[0]['surname'] ?> school fees status: Outstanding</div>
+		<div class="alert alert-danger" align="center"><?php echo $child[0]['name'] . $child[0]['surname'] ?> School Fees Status: Outstanding</div>
 </div>
 <?php endif;?>
 
@@ -1557,7 +1546,38 @@ window.print();
 document.body.innerHTML = oldstr;
 return false;
 }
-
+function show_students_session(session_year){
+	var class_id = $("#class_ids").val();
+	 var current_session = $("#current_session").val();
+	  if(current_session == session_year){
+			if(class_id && session_year){
+				$.ajax({
+					url: '<?php echo base_url();?>index.php?student/student_session_year/' + session_year +'/'+class_id+'/current',
+					success: function(response){
+						if($.trim(response)){
+							$("#student_id_0").html(response);
+						}else{
+							$("#student_id_0").html('');
+						}
+					}
+				});
+			}
+		}else{
+			if(class_id && session_year){
+				$.ajax({
+					url: '<?php echo base_url();?>index.php?student/student_session_year/' + session_year +'/'+class_id,
+					success: function(response){
+						if($.trim(response)){
+							$("#student_id_0").html(response);
+						}else{
+							$("#student_id_0").html('');
+						}
+					}
+				});
+			}
+		}
+	
+  }
 </script>
   <script type="text/javascript" src="js/html2canvas.min.js"></script>
   <script type="text/javascript" src="js/jspdf.min.js"></script>

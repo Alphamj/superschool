@@ -122,7 +122,12 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			</div>
 		<?php echo form_close();?>
 </div>
-
+<?php
+	$nclass = $this->db->get_where('mark',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
+	$class_id = $nclass[0]['class_id'];
+	$student_id = $nclass[0]['student_id'];
+	$sessoin_id = $nclass[0]['session_year'];
+?>
 <?php if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
 <br>
 <div class="row">

@@ -326,16 +326,13 @@
 				<br />
 				
 				<!--COMMENT AREA-->
-				<table style="width:98%; margin:10px;" class="tg">
 					<?php 
-
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
-						$query_comments = $this->db->get_where('comments0' , $verify_data);
-
+						$query_comments = $this->db->get_where('comments0' , $verify_data);	
 						$row = $query_comments->result_array();
-						//foreach($student_comments as $row):
 					?>
+				<table style="width:98%; margin:10px;" class="tg">
 
 					<tr>
 						<td colspan="6" style="width:50%;" class="tg" ><strong>TEACHER'S NAME: <?php echo ' ',$row[0]['TeacherNames'];?></strong></td>
@@ -344,16 +341,14 @@
 					
 					<tr>
 						<th colspan="3" style="height:10px;  width: 25%;">TEACHER'S COMMENT</th>
-						<th colspan="3" style="height:10px;  width: 25%;">SIGNATURE:</th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $row[0]['teach_sign'];?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
 						<th colspan="3" style="height:10px;  width: 25%;">VICE PRINCIPAL'S COMMENT</th>
-						<th colspan="3" style="height:10px;  width: 25%;">SIGNATURE:</th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $row[0]['head_sign'];?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
 					</tr>
 					<tr>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['TeacherComments'];?></td>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['VPComment'];?></td>
 					</tr>
-
-					<?php //endforeach; ?>
 				</table>
 			</div>
 			<?php } if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?>
@@ -361,13 +356,11 @@
 				</div>
 				<br>
 				<br>
-				<br>
-				<br>
-				<br>
+				
 			<table style="width:100%; font-size:14px;">
 				<tr>
-					<td colspan="6" style="text-align:center;">CLASS TEACHER</td>
-					<td colspan="6" style="text-align:center;">PRINCIPAL</td>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER <img src="uploads/signature/<?php echo $row[0]['teach_sign'];?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL <img src="uploads/signature/<?php echo $row[0]['head_sign'];?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS TO GRADES:</td>
@@ -513,13 +506,18 @@
 				</div>
 				<br>
 				<br>
-				<br>
-				<br>
-				<br>
+				
 			<table style="width:100%; font-size:14px;">
+				<?php 
+										//Comment Area
+					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
+					$query_comments = $this->db->get_where('comments0' , $verify_data);
+					$sign = $query_comments->result_array();
+				?>
 				<tr>
-					<td colspan="6" style="text-align:center;">CLASS TEACHER</td>
-					<td colspan="6" style="text-align:center;">PRINCIPAL</td>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER: <img src="uploads/signature/<?php echo $sign[0]['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL: <img src="uploads/signature/<?php echo $sign[0]['head_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS TO GRADES:</td>
@@ -681,7 +679,7 @@
 				<table style="width: 80%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id, 'session_year' => $sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -692,7 +690,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">SIGNATURE:</td>
-					<td colspan="8"></td>
+					<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS:</td>
@@ -753,7 +751,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
@@ -831,7 +829,7 @@
 		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id,'session_year'=>$sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -840,7 +838,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td>SIGNATURE: <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -979,7 +977,7 @@
 		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id,'session_year'=>$sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -988,7 +986,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td>SIGNATURE <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto">:</td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1141,7 +1139,7 @@
 		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id,'session_year'=>$sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -1150,7 +1148,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td>SIGNATURE: <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1289,7 +1287,7 @@
 		<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px; font-size: 14px;">
 				<?php
 					$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-									'student_id' => $student_id);
+									'student_id' => $student_id,'session_year'=>$sessoin_id);
 					$query_comments = $this->db->get_where('comments0' , $verify_data);
 					$student_comments = $query_comments->result_array();
 					foreach($student_comments as $row):
@@ -1298,7 +1296,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE:</td>
+					<td>SIGNATURE: <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>

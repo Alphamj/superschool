@@ -2,7 +2,7 @@
 <div class="top_nav">
 
     <!-- top navigation -->
-    <div class="nav_menu">
+    <div class="nav_menu" style="padding-left: 10px">
         <nav> 
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -161,6 +161,6 @@
 
         <div class="clearfix"></div>
 
-        <div class="row">
+        <div class="row" style="padding-left: 10px;">
             <div class="col-md-12 col-xs-12">
                 <!-- /top navigation -->

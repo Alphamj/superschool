@@ -358,9 +358,9 @@
 					
 					<tr>
 						<td colspan="3" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="4"></td>
+						<td colspan="4"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						<td colspan="3" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="4"></td>
+						<td colspan="4"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -510,9 +510,6 @@
 				<!-- Commemt area -->
 				<table style="width:50%; vertical-align: top; float:right; margin-right:10px;" class="tg">
 					<?php 
-						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-						$head_sign = $this->db->get_where('head', array('section'=>'secondary'))->result_array();
 
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
@@ -533,7 +530,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -548,7 +545,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -838,10 +835,7 @@
 
 				<!-- Commemt area -->
 				<table style="width:50%; vertical-align: top; float:right; margin-right:10px;" class="tg">
-					<?php 
-						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-						$head_sign = $this->db->get_where('head', array('section'=>'secondary'))->result_array();
+					<?php
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
 						$query_comments = $this->db->get_where('comments' , $verify_data);
@@ -861,7 +855,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -876,7 +870,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -1477,12 +1471,9 @@
 				<!-- Commemt area -->
 					<table style="width:50%; vertical-align: top; float:right; margin-right:10px; margin-top:10px;" class="tg">
 						<?php //if ($exam_name == 'TERM 3'){$exam_id++;} //step in for Term 3
-						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-						$head_sign = $this->db->get_where('head', array('section'=>'primary'))->result_array();
 
 							$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-											'student_id' => $student_id);
+											'student_id' => $student_id, 'session_year' => $sessoin_id);
 							$query_comments = $this->db->get_where('comments' , $verify_data);
 							$student_comments = $query_comments->result_array();
 							foreach($student_comments as $row):
@@ -1498,7 +1489,7 @@
 						</tr>
 						<tr>
 							<td colspan="6">SIGNATURE:</td>
-							<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 						<tr>
 							<td colspan="6"></td>
@@ -1513,7 +1504,7 @@
 						</tr>
 						<tr>
 							<td colspan="6" style="width:25%">SIGNATURE:</td>
-							<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 
 						<?php endforeach; ?>
@@ -1534,7 +1525,7 @@
 		</style>
 		<?php 
 			$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id, 
-								'student_id' => $student_id);
+								'student_id' => $student_id, 'session_year' => $sessoin_id);
 				$query_comments = $this->db->get_where('comments' , $verify_data);
 				$student_comments = $query_comments->result_array();
 		?>
@@ -1895,11 +1886,7 @@
 
 		<table class="print" style="width: 98%; margin:auto;font-size: 20px;">
 			<?php
-			$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
-			$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
-			$head_sign = $this->db->get_where('head', array('section'=>'primary'))->result_array();
 
-			
 			foreach($student_comments as $row):
 			?>
 			
@@ -1910,10 +1897,10 @@
 				<tr>
 					<th colspan="2" style="height:10px;  width: 10%;">Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $teach_sign[0]['signature'];?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 					<th colspan="2" style="height:10px;  width: 10%;">Head Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $head_sign[0]['signature'];?>" style="width: 50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 				</tr>
 				<tr>
 					<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row['TeacherComment'];?></td>

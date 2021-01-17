@@ -69,33 +69,33 @@ $admin_level = $admin_info['level'];
                 </a>
             </li>
 					
-                    <!-- ENQUIRY TABLE INFO -->
-            <li class="<?php if ($page_name == 'enquiry_setting') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/enquiry_setting">
-                    <span><?php echo get_phrase('enquiry_category'); ?></span>
+                    <!-- ENQUIRY TABLE INFO 
+            <li class="<?php //if ($page_name == 'enquiry_setting') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/enquiry_setting">
+                    <span><?php //echo get_phrase('enquiry_category'); ?></span>
                 </a>
-            </li>
+            </li>-->
 			
-			 <!-- ENQUIRY TABLE INFO -->
-            <li class="<?php if ($page_name == 'enquiry') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/enquiry">
-                    <span><?php echo get_phrase('view_enquiries'); ?></span>
+			 <!-- ENQUIRY TABLE INFO 
+            <li class="<?php //if ($page_name == 'enquiry') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/enquiry">
+                    <span><?php //echo get_phrase('view_enquiries'); ?></span>
                 </a>
-            </li>
+            </li>-->
 				
-				 <!-- CLUB -->
-            <li class="<?php if ($page_name == 'club') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/club">
-                    <span><?php echo get_phrase('school_clubs'); ?></span>
+				 <!-- CLUB 
+            <li class="<?php //if ($page_name == 'club') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/club">
+                    <span><?php //echo get_phrase('school_clubs'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
-            <!-- CIRCULAR MANAGER -->
-            <li class="<?php if ($page_name == 'circular') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/circular">
-                <?php echo get_phrase('manage_circular'); ?></span>
+            <!-- CIRCULAR MANAGER 
+            <li class="<?php //if ($page_name == 'circular') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/circular">
+                <?php //echo get_phrase('manage_circular'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- TASK MANAGER -->
             <li class="<?php if ($page_name == 'task_manager') echo 'active'; ?> ">
@@ -126,19 +126,19 @@ $admin_level = $admin_info['level'];
             </li>
 			
 			
-            <!-- HELP LINKS -->
-            <li class="<?php if ($page_name == 'help_link') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/help_link">
-                    <span><?php echo get_phrase('manage_help_link'); ?></span>
+            <!-- HELP LINKS 
+            <li class="<?php //if ($page_name == 'help_link') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/help_link">
+                    <span><?php //echo get_phrase('manage_help_link'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
-            <!-- HELP DESK -->
-            <li class="<?php if ($page_name == 'help_desk') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/help_desk">
-                    <span><?php echo get_phrase('manage_help_desks'); ?></span>
+            <!-- HELP DESK 
+            <li class="<?php //if ($page_name == 'help_desk') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/help_desk">
+                    <span><?php //echo get_phrase('manage_help_desks'); ?></span>
                 </a>
-            </li>
+            </li>-->
 					
                 </ul>
             </li>
@@ -174,12 +174,12 @@ $admin_level = $admin_info['level'];
                 </a>
             </li>
 					
-                    <!-- LIBRARIAN -->
-            <li class="<?php if ($page_name == 'librarian') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/librarian">
-                    <span><?php echo get_phrase('librarians'); ?></span>
+                    <!-- LIBRARIAN 
+            <li class="<?php //if ($page_name == 'librarian') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/librarian">
+                    <span><?php //echo get_phrase('librarians'); ?></span>
                 </a>
-            </li>
+            </li>-->
 			
 			 <!-- ACCOUNTANT -->
             <li class="<?php if ($page_name == 'accountant') echo 'active'; ?> ">
@@ -188,12 +188,12 @@ $admin_level = $admin_info['level'];
                 </a>
             </li>
 
-            <!-- HOSTEL MANAGER -->
-            <li class="<?php if ($page_name == 'hostel') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/hostel">
-                    <span><?php echo get_phrase('hostel_manager'); ?></span>
+            <!-- HOSTEL MANAGER 
+            <li class="<?php //if ($page_name == 'hostel') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/hostel">
+                    <span><?php //echo get_phrase('hostel_manager'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
 					
 					
@@ -293,25 +293,25 @@ $admin_level = $admin_info['level'];
 			   <!-- code comment on 4 june 2018 sandeep -->
             <!--
             <li class="<?php
-            if ($page_name == 'assignment' ||
-                    $page_name == 'study_material')
-                echo 'opened active';
+            //if ($page_name == 'assignment' ||
+                    //$page_name == 'study_material')
+                //echo 'opened active';
             ?> ">
                 <a href="#">
                     <i class="fa fa-download"></i>
-                    <span><?php echo get_phrase('download_page'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('download_page'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
                    
-            <li class="<?php if ($page_name == 'assignment') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/assignment">
-                    <span><?php echo get_phrase('assignments'); ?></span>
+            <li class="<?php //if ($page_name == 'assignment') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/assignment">
+                    <span><?php //echo get_phrase('assignments'); ?></span>
                 </a>
             </li>
          
-            	<li class="<?php if ($page_name == 'study_material') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/study_material">
-                    <span><?php echo get_phrase('study_materials'); ?></span>
+            	<li class="<?php //if ($page_name == 'study_material') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/study_material">
+                    <span><?php //echo get_phrase('study_materials'); ?></span>
                 </a>
             </li>
                 </ul>
@@ -325,23 +325,23 @@ $admin_level = $admin_info['level'];
                 </a>
             </li>
 
-            <!-- LIBRARIAN -->
-            <!-- code comment on 4 june 2018 sandeep -->
+            <!-- ALUMNI -->
+            <!-- code comment on 4 june 2018 sandeep 
             
-            <li class="<?php if ($page_name == 'alumni') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/alumni">
+            <li class="<?php //if ($page_name == 'alumni') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/alumni">
                     <i class="entypo-users"></i>
-                    <span><?php echo get_phrase('manage_alumni'); ?></span>
+                    <span><?php //echo get_phrase('manage_alumni'); ?></span>
                 </a>
-            </li>
+            </li>-->
 			 
             <!-- MEDIA -->
                <!-- code comment on 4 june 2018 sandeep -->
             <!--
-            <li class="<?php if ($page_name == 'media') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/media">
+            <li class="<?php //if ($page_name == 'media') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/media">
                     <i class="entypo-target"></i>
-                    <span><?php echo get_phrase('manage_media'); ?></span>
+                    <span><?php //echo get_phrase('manage_media'); ?></span>
                 </a>
             </li>-->
 
@@ -349,23 +349,23 @@ $admin_level = $admin_info['level'];
               <!-- code comment on 4 june 2018 sandeep -->
             <!--
             <li class="<?php
-            if ($page_name == 'loan_applicant' ||
+            /*if ($page_name == 'loan_applicant' ||
                     $page_name == 'loan_approval')
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-flow-tree"></i>
-                    <span><?php echo get_phrase('manage_loan'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('manage_loan'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <li class="<?php if ($page_name == 'loan_applicant') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/loan_applicant">
-                            <span><?php echo get_phrase('loan_applicant'); ?></span>
+                    <li class="<?php //if ($page_name == 'loan_applicant') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/loan_applicant">
+                            <span><?php //echo get_phrase('loan_applicant'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'loan_approval') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/loan_approval">
-                            <span><?php echo get_phrase('loan_approval'); ?></span>
+                    <li class="<?php //if ($page_name == 'loan_approval') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/loan_approval">
+                            <span><?php //echo get_phrase('loan_approval'); ?></span>
                         </a>
                     </li>
                 </ul>
@@ -373,42 +373,42 @@ $admin_level = $admin_info['level'];
   <!-- code comment on 4 june 2018 sandeep -->
             <!--
             <li class="<?php
-            if ($page_name == 'teacher_id_card' ||
+            /*if ($page_name == 'teacher_id_card' ||
                     $page_name == 'hostel_id_card' ||
                     $page_name == 'id_card' ||
                     $page_name == 'accountant_id_card' ||
                     $page_name == 'librarian_id_card')
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-book"></i>
-                    <span><?php echo get_phrase('generate_ID_cards'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('generate_ID_cards'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <li class="<?php if ($page_name == 'teacher_id_card') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/teacher_id_card">
-                            <span> <?php echo get_phrase('teacher_ID_card'); ?></span>
+                    <li class="<?php //if ($page_name == 'teacher_id_card') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/teacher_id_card">
+                            <span> <?php //echo get_phrase('teacher_ID_card'); ?></span>
                         </a>
                     </li>
 
-                    <li class="<?php if ($page_name == 'id_card') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/id_card">
-                            <span><?php echo get_phrase('student_ID_card'); ?></span>
+                    <li class="<?php //if ($page_name == 'id_card') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/id_card">
+                            <span><?php //echo get_phrase('student_ID_card'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'hostel_id_card') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/hostel_id_card">
-                            <span><?php echo get_phrase('hostel_ID_card'); ?></span>
+                    <li class="<?php //if ($page_name == 'hostel_id_card') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/hostel_id_card">
+                            <span><?php //echo get_phrase('hostel_ID_card'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'accountant_id_card') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/accountant_id_card">
-                            <span><?php echo get_phrase('accountant_ID_card'); ?></span>
+                    <li class="<?php //if ($page_name == 'accountant_id_card') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/accountant_id_card">
+                            <span><?php //echo get_phrase('accountant_ID_card'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'librarian_id_card') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/librarian_id_card">
-                            <span><?php echo get_phrase('librarian_ID_card'); ?></span>
+                    <li class="<?php //if ($page_name == 'librarian_id_card') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/librarian_id_card">
+                            <span><?php //echo get_phrase('librarian_ID_card'); ?></span>
                         </a>
                     </li>
                 </ul>
@@ -431,17 +431,17 @@ $admin_level = $admin_info['level'];
                             <span><?php echo get_phrase('manage_classes'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'section') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/section">
-                            <span><?php echo get_phrase('manage_sections'); ?></span>
+                    <!--<li class="<?php //if ($page_name == 'section') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/section">
+                            <span><?php //echo get_phrase('manage_sections'); ?></span>
                         </a>
                     </li>
 					
-					<li class="<?php if ($page_name == 'class_routine') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/class_routine">
-                    <span><?php echo get_phrase('class_timetable'); ?></span>
-                </a>
-            </li>   
+					<li class="<?php //if ($page_name == 'class_routine') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/class_routine">
+                             <span><?php //echo get_phrase('class_timetable'); ?></span>
+                        </a>
+                    </li> -->  
                 </ul>
             </li>
 
@@ -483,7 +483,7 @@ $admin_level = $admin_info['level'];
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject3') echo 'active'; ?>">
                             <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3/">
-                                <span><?php echo get_phrase('toddler'); ?></span>
+                                <span><?php echo get_phrase('toddler_term_1'); ?></span>
                             </a>
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject3_2') echo 'active'; ?>">
@@ -493,7 +493,7 @@ $admin_level = $admin_info['level'];
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject') echo 'active'; ?>">
                             <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject/">
-                                <span><?php echo get_phrase('nursery_1'); ?></span>
+                                <span><?php echo get_phrase('nursery_1_term_1'); ?></span>
                             </a>
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject_2') echo 'active'; ?>">
@@ -503,7 +503,7 @@ $admin_level = $admin_info['level'];
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject1') echo 'active'; ?>">
                             <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1/">
-                                <span><?php echo get_phrase('nursery_2'); ?></span>
+                                <span><?php echo get_phrase('nursery_2_term_1'); ?></span>
                             </a>
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject12_') echo 'active'; ?>">
@@ -513,7 +513,7 @@ $admin_level = $admin_info['level'];
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject2') echo 'active'; ?>">
                             <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2/">
-                                <span><?php echo get_phrase('nursery_3'); ?></span>
+                                <span><?php echo get_phrase('nursery_3_term_1'); ?></span>
                             </a>
                         </li>
                         <li class="<?php if ($page_name == 'nursery_subject2_2') echo 'active'; ?>">
@@ -539,11 +539,11 @@ $admin_level = $admin_info['level'];
                             </a>
                         </li>
                         
-						<li class="<?php if ($page_name == 'subject_template') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/subject_template/">
-                                <span><?php echo get_phrase('add_subject_template'); ?></span>
+						<!--<li class="<?php //if ($page_name == 'subject_template') echo 'active'; ?>">
+                            <a href="<?php //echo base_url(); ?>index.php?admin/subject_template/">
+                                <span><?php //echo get_phrase('add_subject_template'); ?></span>
                             </a>
-                        </li>
+                        </li>-->
 						
                     <?php //endforeach; ?>
 					
@@ -551,14 +551,14 @@ $admin_level = $admin_info['level'];
                 </ul>
             </li>
 
-            <!-- DAILY ATTENDANCE 
+            <!-- DAILY ATTENDANCE -->
             <li class="<?php if ($page_name == 'manage_attendance') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?admin/manage_attendance/<?php echo date("d/m/Y"); ?>">
                     <i class="entypo-chart-area"></i>
                     <span><?php echo get_phrase('daily_attendances'); ?></span>
                 </a>
     
-            </li> -->
+            </li> 
 
 
 
@@ -566,33 +566,33 @@ $admin_level = $admin_info['level'];
               <!-- code comment on 4 june 2018 sandeep -->
             <!--
             <li class="<?php
-            if ($page_name == 'exam_list' ||
+            /*if ($page_name == 'exam_list' ||
                     $page_name == 'exam_add' ||
                     $page_name == 'exam_view' ||
                     $page_name == 'exam_result_list')
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-graduation-cap"></i>
-                    <span><?php echo get_phrase('manage_CBT'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('manage_CBT'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
 
-                    <li class="<?php if ($page_name == 'exam_add') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/exam_add">
-                            <span><?php echo get_phrase('add_exams'); ?></span>
+                    <li class="<?php //if ($page_name == 'exam_add') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/exam_add">
+                            <span><?php //echo get_phrase('add_exams'); ?></span>
                         </a>
                     </li>  
 
-                    <li class="<?php if ($page_name == 'exam_list' || $page_name == 'exam_view') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/exam_list">
-                            <span><?php echo get_phrase('list_exams'); ?></span>
+                    <li class="<?php //if ($page_name == 'exam_list' || $page_name == 'exam_view') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/exam_list">
+                            <span><?php //echo get_phrase('list_exams'); ?></span>
                         </a>
                     </li>
 
-                    <li class="<?php if ($page_name == 'exam_result_list') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/exam_result_list">
-                            <span><?php echo get_phrase('view_result'); ?></span>
+                    <li class="<?php //if ($page_name == 'exam_result_list') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/exam_result_list">
+                            <span><?php //echo get_phrase('view_result'); ?></span>
                         </a>
                     </li>    
 
@@ -600,36 +600,36 @@ $admin_level = $admin_info['level'];
             </li>-->
 
 
-            <!-- EXAMS -->
+            <!-- EXAMS 
             <li class="<?php
-            if ($page_name == 'exam' ||
+            /*if ($page_name == 'exam' ||
                     $page_name == 'grade' ||
                     $page_name == 'examquestion')
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-graduation-cap"></i>
-                    <span><?php echo get_phrase('manage_exams'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('manage_exams'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <li class="<?php if ($page_name == 'examquestion') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/examquestion">
-                            <span><?php echo get_phrase('exam_questions'); ?></span>
+                    <li class="<?php //if ($page_name == 'examquestion') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/examquestion">
+                            <span><?php //echo get_phrase('exam_questions'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'exam') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/exam">
-                            <span><?php echo get_phrase('list_exams'); ?></span>
+                    <li class="<?php //if ($page_name == 'exam') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/exam">
+                            <span><?php //echo get_phrase('list_exams'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'grade') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/grade">
-                            <span><?php echo get_phrase('exam_grades'); ?></span>
+                    <li class="<?php //if ($page_name == 'grade') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/grade">
+                            <span><?php //echo get_phrase('exam_grades'); ?></span>
                         </a>
                     </li>
                    
                 </ul>
-            </li>
+            </li>-->
 			
 			
 			 <!-- REPORT CARD -->
@@ -650,7 +650,7 @@ $admin_level = $admin_info['level'];
                      <!-- NOTICEBOARD -->
                     <li class="<?php if ($page_name == 'marks0') echo 'active'; ?> ">
                         <a href="<?php echo base_url(); ?>index.php?admin/marks0">
-                            <span><?php echo 'mid-term scores'; ?></span>
+                            <span><?php echo 'Mid Term Scores'; ?></span>
                         </a>
                     </li>
                     <!-- new code for mid term report -->
@@ -661,12 +661,12 @@ $admin_level = $admin_info['level'];
                     </li>
                     <li class="<?php if ($page_name == 'marks') echo 'active'; ?> ">
                         <a href="<?php echo base_url(); ?>index.php?admin/marks">
-                            <span><?php echo get_phrase('enter_student_scores'); ?></span>
+                            <span><?php echo get_phrase('end_of_term_scores'); ?></span>
                         </a>
                     </li>
                     <li class="<?php if ($page_name == 'tabulation_sheet') echo 'active'; ?> ">
                         <a href="<?php echo base_url(); ?>index.php?admin/tabulation_sheet">
-                            <span><?php echo get_phrase('generate_report_card'); ?></span>
+                            <span><?php echo get_phrase('generate_EOT_report_card'); ?></span>
                         </a>
                     </li>
                     <li class="<?php if ($page_name == 'EOT score_sheet') echo 'active'; ?> ">
@@ -679,28 +679,28 @@ $admin_level = $admin_info['level'];
                             <span><?php echo get_phrase('MIT score_sheet'); ?></span>
                         </a>
                     </li>
-					 <li class="<?php if ($page_name == 'nursery_student_question') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/nursery_student_question">
-                            <span><?php echo get_phrase('enter_nursery_student_question'); ?></span>
+					 <!--<li class="<?php //if ($page_name == 'nursery_student_question') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/nursery_student_question">
+                            <span><?php //echo get_phrase('enter_nursery_student_question'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'exam_marks_sms') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/exam_marks_sms">
-                            <span><?php echo get_phrase('send_scores_by_sms'); ?></span>
+                    <li class="<?php //if ($page_name == 'exam_marks_sms') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/exam_marks_sms">
+                            <span><?php //echo get_phrase('send_scores_by_sms'); ?></span>
                         </a>
-                    </li>
+                    </li>-->
                     
                 </ul>
             </li>
 
            
-            <!-- PAYMENT -->
-            <li class="<?php if ($page_name == 'invoice') echo 'active';?> ">
-                <a href="<?php echo base_url();?>index.php?admin/invoice">
+            <!-- PAYMENT 
+            <li class="<?php //if ($page_name == 'invoice') echo 'active';?> ">
+                <a href="<?php //echo base_url();?>index.php?admin/invoice">
                     <i class="entypo-credit-card"></i>
-                    <span><?php echo get_phrase('payment');?></span>
+                    <span><?php //echo get_phrase('payment');?></span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- ACCOUNTING -->
             <li class="<?php
@@ -736,29 +736,29 @@ $admin_level = $admin_info['level'];
 
 
 
-			 <!-- EXPENSES -->
+			 <!-- EXPENSES 
             <li class="<?php
-            if ($page_name == 'expense' ||
+            /*if ($page_name == 'expense' ||
                     $page_name == 'expense_category' )
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-vcard"></i>
-                    <span><?php echo get_phrase('expenses'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('expenses'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <li class="<?php if ($page_name == 'expense') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/expense">
-                            <span><?php echo get_phrase('expense'); ?></span>
+                    <li class="<?php //if ($page_name == 'expense') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/expense">
+                            <span><?php //echo get_phrase('expense'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'expense_category') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/expense_category">
-                            <span><?php echo get_phrase('expense_category'); ?></span>
+                    <li class="<?php //if ($page_name == 'expense_category') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/expense_category">
+                            <span><?php //echo get_phrase('expense_category'); ?></span>
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
 			
 			 <!-- LIBRARY INFORMATION -->
             <li class="<?php
@@ -806,44 +806,43 @@ $admin_level = $admin_info['level'];
             </li>
 
 			
-			 <!-- HOSTEL INFORMATION -->
+			 <!-- HOSTEL INFORMATION 
             <li class="<?php
-            if ($page_name == 'dormitory' ||
+            /*if ($page_name == 'dormitory' ||
                     $page_name == 'hostel_category' ||
 					$page_name == 'room_type' ||
                     $page_name == 'hostel_room' )
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                      <i class="entypo-home"></i>
-                    <span><?php echo get_phrase('hostel_information'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('hostel_information'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <!-- LIBRARY -->
-            <li class="<?php if ($page_name == 'dormitory') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/dormitory">
-                    <span><?php echo get_phrase('manage_hostel'); ?></span>
+            <li class="<?php ////if ($page_name == 'dormitory') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/dormitory">
+                    <span><?php //echo get_phrase('manage_hostel'); ?></span>
                 </a>
             </li>
-                    <li class="<?php if ($page_name == 'hostel_category') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/hostel_category">
-                            <span><?php echo get_phrase('hostel_category'); ?></span>
+                    <li class="<?php //if ($page_name == 'hostel_category') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/hostel_category">
+                            <span><?php //echo get_phrase('hostel_category'); ?></span>
                         </a>
                     </li>
 					
-					<li class="<?php if ($page_name == 'room_type') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/room_type">
-                            <span><?php echo get_phrase('room_type'); ?></span>
+					<li class="<?php //if ($page_name == 'room_type') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/room_type">
+                            <span><?php //echo get_phrase('room_type'); ?></span>
                         </a>
                     </li>
 					
-					<li class="<?php if ($page_name == 'hostel_room') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/hostel_room">
-                            <span><?php echo get_phrase('hostel_room'); ?></span>
+					<li class="<?php //if ($page_name == 'hostel_room') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/hostel_room">
+                            <span><?php //echo get_phrase('hostel_room'); ?></span>
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
 			
 			
 			 <!-- COMMUNICATIONS -->
@@ -857,14 +856,11 @@ $admin_level = $admin_info['level'];
                     <span><?php echo get_phrase('communications'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                     <!-- NOTICEBOARD -->
             <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?admin/noticeboard">
                     <span><?php echo get_phrase('manage_events'); ?></span>
                 </a>
             </li>
-
-            <!-- MESSAGE -->
             <li class="<?php if ($page_name == 'message') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?admin/message">
                     <span><?php echo get_phrase('private_messages'); ?></span>
@@ -874,37 +870,36 @@ $admin_level = $admin_info['level'];
             </li>
 			
 			
-			 <!-- TRANSPORTATION CONTROLLER INFORMATION  -->
+			 <!-- TRANSPORTATION CONTROLLER INFORMATION  
             <li class="<?php
-            if ($page_name == 'transport' ||
+            /*if ($page_name == 'transport' ||
                     $page_name == 'transport_route' ||
                     $page_name == 'vehicle' )
-                echo 'opened active';
+                echo 'opened active';*/
             ?> ">
                 <a href="#">
                     <i class="entypo-flight"></i>
-                    <span><?php echo get_phrase('transportation'); ?></span><span class="fa fa-chevron-down"></span>
+                    <span><?php //echo get_phrase('transportation'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                     <!-- TRANSPORT -->
-            <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?admin/transport">
-                    <span><?php echo get_phrase('transports'); ?></span>
+            <li class="<?php //if ($page_name == 'transport') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?admin/transport">
+                    <span><?php //echo get_phrase('transports'); ?></span>
                 </a>
             </li>
-                    <li class="<?php if ($page_name == 'transport_route') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/transport_route">
-                            <span><?php echo get_phrase('transport_route'); ?></span>
+                    <li class="<?php //if ($page_name == 'transport_route') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/transport_route">
+                            <span><?php //echo get_phrase('transport_route'); ?></span>
                         </a>
                     </li>
 					
-					 <li class="<?php if ($page_name == 'vehicle') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/vehicle">
-                            <span><?php echo get_phrase('manage_vehicle'); ?></span>
+					 <li class="<?php //if ($page_name == 'vehicle') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/vehicle">
+                            <span><?php //echo get_phrase('manage_vehicle'); ?></span>
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
 
 
             <!-- SETTINGS -->
@@ -927,65 +922,65 @@ $admin_level = $admin_info['level'];
                             <span><?php echo get_phrase('general_settings'); ?></span>
                         </a>
                     </li>
-					 <li class="<?php if ($page_name == 'actions') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/actions">
-                            <span><?php echo get_phrase('manage_sidebar'); ?></span>
+					 <!--<li class="<?php //if ($page_name == 'actions') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/actions">
+                            <span><?php //echo get_phrase('manage_sidebar'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'sms_settings') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/sms_settings">
-                            <span><?php echo get_phrase('manage_sms_api'); ?></span>
+                    <li class="<?php //if ($page_name == 'sms_settings') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/sms_settings">
+                            <span><?php //echo get_phrase('manage_sms_api'); ?></span>
                         </a>
                     </li>
-					 <li class="<?php if ($page_name == 'backup_restore') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/backup_restore">
-                            <span><?php echo get_phrase('manage_database'); ?></span>
+					 <li class="<?php //if ($page_name == 'backup_restore') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/backup_restore">
+                            <span><?php //echo get_phrase('manage_database'); ?></span>
                         </a>
                     </li>
-					 <li class="<?php if ($page_name == 'email_template') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/email_template">
-                            <span><?php echo get_phrase('email_template'); ?></span>
+					 <li class="<?php //if ($page_name == 'email_template') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/email_template">
+                            <span><?php //echo get_phrase('email_template'); ?></span>
                         </a>
                     </li>
-                    <li class="<?php if ($page_name == 'manage_language') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/manage_language">
-                            <span><?php echo get_phrase('languages'); ?></span>
+                    <li class="<?php //if ($page_name == 'manage_language') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/manage_language">
+                            <span><?php //echo get_phrase('languages'); ?></span>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
 			
 			
-			<!-- REPORTS -->
+			<!-- REPORTS 
             <li class="<?php
-            if ($page_name == 'manage_report' ||
+           /* if ($page_name == 'manage_report' ||
                     $page_name == 'student_report' ||
                     $page_name == 'payment_report' ||
                     $page_name == 'expense_report' ||
                     $page_name == 'loan_report' ||
 					$page_name == 'documentation' )
-                echo 'opened active';
-            ?> <?php if ($page_name == 'manage_report' ) echo 'active'; ?>">
-                <a href="<?php echo base_url(); ?>index.php?admin/manage_report">
+                echo 'opened active';*/
+            ?> <?php //if ($page_name == 'manage_report' ) echo 'active'; ?>">
+                <a href="<?php //echo base_url(); ?>index.php?admin/manage_report">
                     <i class="fa fa-bar-chart-o"></i>
-                    <span><?php echo get_phrase('generate_reports'); ?></span><!--<span class="fa fa-chevron-down"></span>-->
-                </a>
+                    <span><?php //echo get_phrase('generate_reports'); ?></span>--><!--<span class="fa fa-chevron-down"></span>
+                </a>-->
                     <!-- code comment on 4 june 2018 sandeep -->
             <!--
                 <ul class="nav child_menu">
-                    <li class="<?php if ($page_name == 'manage_report' || $page_name == 'student_report' || $page_name == 'payment_report' || $page_name == 'expense_report' || $page_name == 'loan_report') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/manage_report">
-                            <span><?php echo get_phrase('manage_reports'); ?></span>
+                    <li class="<?php //if ($page_name == 'manage_report' || $page_name == 'student_report' || $page_name == 'payment_report' || $page_name == 'expense_report' || $page_name == 'loan_report') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/manage_report">
+                            <span><?php //echo get_phrase('manage_reports'); ?></span>
                         </a>
                     </li>
                   
-                    <li class="<?php if ($page_name == 'documentation') echo 'active'; ?> ">
-                        <a href="<?php echo base_url(); ?>index.php?admin/documentation">
-                            <span><?php echo get_phrase('view_documentation'); ?></span>
+                    <li class="<?php //if ($page_name == 'documentation') echo 'active'; ?> ">
+                        <a href="<?php //echo base_url(); ?>index.php?admin/documentation">
+                            <span><?php //echo get_phrase('view_documentation'); ?></span>
                         </a>
                     </li>
-                </ul>-->
-            </li>
+                </ul> 
+            </li>-->
 
 
 

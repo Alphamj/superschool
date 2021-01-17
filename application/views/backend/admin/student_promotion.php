@@ -16,7 +16,7 @@
         <select name="running_year" class="form-control selectboxit " required>
             <option>
                 <?php
-                    $year = date('Y') - 1;
+                    $year = date('Y') - 2;
                     $next_year = $year + 1;
                     $running_year = $year."-".$next_year;
                     echo $running_year;
@@ -152,6 +152,14 @@
                     <?php 
                   //change on 28 may 2018 sandeep/
                     $students   =   $this->crud_model->get_students($from_class);
+                    foreach($students as $rowz){
+                        if ($to_class > 28 && $to_class < 38){
+                         $data['class_id'] = $to_class;
+
+                        $this->db->where('student_id', $rowz['student_id']);
+                        $this->db->update('class_subject', $data);
+                        }
+                    }
                   //  $students   =   $this->crud_model->get_students_section($from_class,$from_section);
                     foreach($students as $row): ?>
                     <tr>
@@ -236,6 +244,7 @@
                     <?php 
                     $students   =   $this->crud_model->get_students($from_class);
                     foreach($students as $row): ?>
+                    
                     <tr>
                     <td> <img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" style="max-height:30px;margin-right: 30px;"></td>
                     <td align="left" name="enroll_<?php echo $row['student_id'];?>" value="<?php echo $row['student_id'];?>">
@@ -289,6 +298,7 @@
                            ?> 
                         </td>
                     </tr>
+                    
                     <?php endforeach;?>
                 </tbody>
             </table>

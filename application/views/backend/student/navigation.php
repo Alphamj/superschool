@@ -44,13 +44,13 @@
                 </a>
             </li>
 
-            <!-- CLASS ROUTINE -->
+            <!-- CLASS ROUTINE 
             <li class="<?php if ($page_name == 'class_routine') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/class_routine">
                     <i class="entypo-target"></i>
                     <span><?php echo get_phrase('time_table'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- STUDY MATERIAL -->
             <li class="<?php if ($page_name == 'study_material') echo 'active'; ?> ">
@@ -82,21 +82,21 @@
                 </a>
             </li> -->
 
-            <!-- Media -->
-            <li class="<?php if ($page_name == 'media') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/media/<?php echo $this->session->userdata('login_user_id'); ?>">
+            <!-- Media 
+            <li class="<?php //if ($page_name == 'media') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/media/<?php //echo $this->session->userdata('login_user_id'); ?>">
                     <i class="entypo-camera"></i>
-                    <span><?php echo get_phrase('view_media'); ?></span>
+                    <span><?php //echo get_phrase('view_media'); ?></span>
                 </a>
-            </li>		
+            </li>	-->	
 
-            <!-- TODAYS THOUGHT -->
-            <li class="<?php if ($page_name == 'news') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/news">
+            <!-- TODAYS THOUGHT 
+            <li class="<?php //if ($page_name == 'news') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/news">
                     <i class="entypo-book"></i>
-                    <span><?php echo get_phrase('view_news'); ?></span>
+                    <span><?php //echo get_phrase('view_news'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
 
             <!-- Report Card -->
@@ -140,13 +140,13 @@
             </li>
 
 
-            <!-- LIBRARY -->
-            <li class="<?php if ($page_name == 'book') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/book">
+            <!-- LIBRARY 
+            <li class="<?php //if ($page_name == 'book') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/book">
                     <i class="entypo-book"></i>
-                    <span><?php echo get_phrase('view_library'); ?></span>
+                    <span><?php //echo get_phrase('view_library'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- TRANSPORT 
             <li class="<?php //if ($page_name == 'transport') echo 'active'; ?> ">
@@ -157,13 +157,13 @@
             </li> -->
 
 
-            <!-- TODAYS THOUGHT -->
-            <li class="<?php if ($page_name == 'holiday') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/holiday">
+            <!-- TODAYS THOUGHT 
+            <li class="<?php //if ($page_name == 'holiday') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/holiday">
                     <i class="entypo-home"></i>
-                    <span><?php echo get_phrase('view_holiday'); ?></span>
+                    <span><?php //echo get_phrase('view_holiday'); ?></span>
                 </a>
-            </li>
+            </li>-->
 			
 			
 			<!-- COMMUNICATIONS -->
@@ -177,7 +177,8 @@
                     <span><?php echo get_phrase('communications'); ?></span><span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                     <!-- NOTICEBOARD -->
+
+            <!-- NOTICEBOARD -->
             <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/noticeboard">
                     <span><?php echo get_phrase('manage_events'); ?></span>
@@ -195,7 +196,7 @@
 
           
 
-            <!-- TODAYS THOUGHT -->
+            <!-- Assignments -->
             <li class="<?php if ($page_name == 'assignment') echo 'active'; ?> ">
                 <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/assignment">
                     <i class="entypo-book"></i>
@@ -203,21 +204,21 @@
                 </a>
             </li>
 
-            <!-- TODAYS THOUGHT -->
-            <li class="<?php if ($page_name == 'help_link') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/help_link">
+            <!-- HELPFUL LINK 
+            <li class="<?php //if ($page_name == 'help_link') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/help_link">
                     <i class="entypo-book"></i>
-                    <span><?php echo get_phrase('helpful_link'); ?></span>
+                    <span><?php //echo get_phrase('helpful_link'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
-            <!-- TODAYS THOUGHT -->
-            <li class="<?php if ($page_name == 'help_desk') echo 'active'; ?> ">
-                <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/help_desk">
+            <!-- HELP DESK 
+            <li class="<?php //if ($page_name == 'help_desk') echo 'active'; ?> ">
+                <a href="<?php //echo base_url(); ?>index.php?<?php //echo $account_type; ?>/help_desk">
                     <i class="entypo-book"></i>
-                    <span><?php echo get_phrase('help_desks'); ?></span>
+                    <span><?php //echo get_phrase('help_desks'); ?></span>
                 </a>
-            </li>
+            </li>-->
 
 
             <!-- ACCOUNT -->

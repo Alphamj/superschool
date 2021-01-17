@@ -94,7 +94,7 @@
                         <a href="../school/Documentation" target="_blank"><i class="entypo-book"></i>View Documentation</a>
                         <a href="http://optimumlinkupsoftware.com/pricing.php"><i class="entypo-paypal"></i>Buy Now</a>
 						<hr>
-                </div>-->
+                </div>
 				<button class="btn btn-xs btn-blue" id="admin"><i class="entypo-user"></i>Admin</button>
     	            <button class="btn btn-xs btn-orange" id="teacher"><i class="entypo-user"></i>Teacher</button>
     	            <button class="btn btn-xs btn-blue" id="student"><i class="entypo-user"></i>Student</button>
@@ -102,7 +102,7 @@
     	            <button class="btn btn-xs btn-blue" id="accountant"><i class="entypo-user"></i>Accountant</button>
     	            <button class="btn btn-xs btn-orange" id="librarian"><i class="entypo-user"></i>Librarian</button>
     		    <button class="btn btn-xs btn-blue" id="recep"><i class="entypo-user"></i>Hostel</button>
-    			<hr><br>
+    			<hr><br>-->
             	</div>
 			
            

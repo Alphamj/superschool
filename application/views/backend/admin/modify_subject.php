@@ -92,7 +92,7 @@
                </thead>
                <tbody>
                     <?php
-                    $subject = $this->db->get_where('class_subject', array('student_id' => $student_id))->result_array();
+                    $subject = $this->db->get_where('class_subject', array('student_id' => $student_id, 'class_id' => $class_id))->result_array();
                     foreach($subject as $rows):
                          $subject = $this->db->get_where('subject', array('subject_id' => $rows['subject_id']))->result_array();
                          $teachers = $this->db->get_where('teacher', array('teacher_id' => $rows['teacher_id']))->result_array();

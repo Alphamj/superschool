@@ -360,6 +360,7 @@ class Teacher extends CI_Controller
                    // Comments for primary
                    $data0['TeacherName']  = $this->input->post('TeacherName');
                    $data0['Attendances']  = $this->input->post('Attendances');
+                   $data0['teach_sign'] = $this->input->post('teach_sign');
 
                    $this->db->where('class_id', $class_id);
                    $this->db->where('student_id', $student_id);
@@ -392,6 +393,8 @@ class Teacher extends CI_Controller
                     $data_s['TeacherComments']  = $this->input->post('TeacherComments');
                     $data_s['VPComment']  = $this->input->post('VPComment');
                     $data_s['Attendances']  = $this->input->post('Attendances');
+                    $data_s['teach_sign'] = $this->input->post('teach_sign');
+                    $data_s['head_sign'] = $this->input->post('head_sign');
  
                     $this->db->where('class_id', $class_id);
                     $this->db->where('student_id', $student_id);
@@ -516,6 +519,7 @@ class Teacher extends CI_Controller
 
              // Comments for nursery
              $data0['TeacherName']  = $this->input->post('TeacherName');
+             $data0['teach_sign'] = $this->input->post('teach_sign');
 
              $this->db->where('class_id', $class_id);
              $this->db->where('student_id', $student_id);
@@ -638,6 +642,8 @@ class Teacher extends CI_Controller
                    $data_p['HeadTeacherName']  = $this->input->post('HeadTeacherName');
                    $data_p['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                    $data_p['Attendance']  = $this->input->post('Attendance');
+                   $data_p['teach_sign'] = $this->input->post('teach_sign');
+                    $data_p['head_sign'] = $this->input->post('head_sign');
 
                    $this->db->where('class_id', $class_id);
                    $this->db->where('student_id', $student_id);
@@ -669,6 +675,8 @@ class Teacher extends CI_Controller
                    $data_s['TeacherComments']  = $this->input->post('TeacherComments');
                     $data_s['VPComment']  = $this->input->post('VPComment');
                    $data_s['Attendances']  = $this->input->post('Attendances');
+                   $data_s['teach_sign'] = $this->input->post('teach_sign');
+                    $data_s['head_sign'] = $this->input->post('head_sign');
 
                    $this->db->where('class_id', $class_id);
                    $this->db->where('student_id', $student_id);
@@ -887,6 +895,8 @@ class Teacher extends CI_Controller
                 $data_n['HeadTeacherName']  = $this->input->post('HeadTeacherName');
                 $data_n['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                 $data_n['Attendance']  = $this->input->post('Attendance');
+                $data_n['teach_sign'] = $this->input->post('teach_sign');
+                $data_n['head_sign'] = $this->input->post('head_sign');
 
                $this->db->where('class_id', $class_id);
                $this->db->where('student_id', $student_id);
@@ -992,15 +1002,36 @@ class Teacher extends CI_Controller
                 </option>
                             <?php endforeach;
 		}else{
-			$this->db->distinct();
-			$this->db->select('t1.student_id, t1.name,t1.surname')
+			if ($class_id > 39 && $class_id < 47){
+			    $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+			    		->from('nursery_student_marks as t2')
+			    		->where('t2.class_id', $class_id)
+			    		->where('t2.session_year', $session)
+			    		->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+                $query_array = $query->result_array();}
+                
+            if ($class_id > 0 && $class_id < 20){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+					->from('mark_pri as t2')
+					->where('t2.class_id', $class_id)
+					->where('t2.session_year', $session)
+					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();}
+            
+            if ($class_id > 19 && $class_id < 40){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
 					->from('mark as t2')
 					->where('t2.class_id', $class_id)
 					->where('t2.session_year', $session)
 					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
-			$query = $this->db->get();
-			$query_array = $query->result_array();
-			
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();
+            }
 			foreach($query_array as $students_ids){
 				$students_id =$students_ids['student_id'];
 				$students_name =$students_ids['name'];

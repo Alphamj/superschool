@@ -717,15 +717,36 @@ class Head extends CI_Controller
                 </option>
                             <?php endforeach;
 		}else{
-			$this->db->distinct();
-			$this->db->select('t1.student_id, t1.name,t1.surname')
+			if ($class_id > 39 && $class_id < 47){
+			    $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+			    		->from('nursery_student_marks as t2')
+			    		->where('t2.class_id', $class_id)
+			    		->where('t2.session_year', $session)
+			    		->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+                $query_array = $query->result_array();}
+                
+            if ($class_id > 0 && $class_id < 20){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
+					->from('mark_pri as t2')
+					->where('t2.class_id', $class_id)
+					->where('t2.session_year', $session)
+					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();}
+            
+            if ($class_id > 19 && $class_id < 40){
+                $this->db->distinct();
+                $this->db->select('t1.student_id, t1.name,t1.surname')
 					->from('mark as t2')
 					->where('t2.class_id', $class_id)
 					->where('t2.session_year', $session)
 					->join('student as t1', 't1.student_id = t2.student_id', 'LEFT');
-			$query = $this->db->get();
-			$query_array = $query->result_array();
-			
+			    $query = $this->db->get();
+			    $query_array = $query->result_array();
+            }
 			foreach($query_array as $students_ids){
 				$students_id =$students_ids['student_id'];
 				$students_name =$students_ids['name'];

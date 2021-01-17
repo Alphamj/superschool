@@ -18,13 +18,13 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('birthday');?></label>
+					<!--<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php //echo get_phrase('birthday');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control datepicker" name="birthday" value="" data-start-view="2">
 						</div> 
-					</div>
+					</div> -->
 					
 					<div class="form-group">
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('gender');?></label>
@@ -37,21 +37,21 @@
 						</div> 
 					</div>
 					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('religion');?></label>
+					<!--<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php //echo get_phrase('religion');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="religion" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('blood_group');?></label>
+					<!--<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php //echo get_phrase('blood_group');?></label>
                         
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="blood_group" value="" >
 						</div> 
-					</div>
+					</div>-->
 					
 					<div class="form-group">
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('address');?></label>
@@ -90,47 +90,47 @@
 					</div>
 					
 					
-					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('qualification');?></label>
+					<!--<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('qualification');?></label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="qualification" value="">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('facebook');?></label>
+						<label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('facebook');?></label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="facebook" value="">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('twitter');?></label>
+						<label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('twitter');?></label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="twitter" value="">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('googleplus');?></label>
+						<label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('googleplus');?></label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="googleplus" value="">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('linkedin');?></label>
+						<label for="field-1" class="col-sm-3 control-label"><?php //echo get_phrase('linkedin');?></label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="linkedin" value="">
 						</div>
 					</div>
 					
 					<div class="form-group">
-                    	<label class="col-sm-3 control-label"><?php echo get_phrase('Document'); ?></label>
+                    	<label class="col-sm-3 control-label"><?php //echo get_phrase('Document'); ?></label>
                     	<div class="col-sm-9">
               				<input type="file" name="file_name" class="form-control file2 inline btn btn-primary btn-sm" data-label="<i class='glyphicon glyphicon-file'></i> Browse Document" />
 						</div>
-					</div>
+					</div>-->
 
 					<div class="form-group">
                     	<label class="col-sm-3 control-label"><?php echo get_phrase('Signature'); ?></label>

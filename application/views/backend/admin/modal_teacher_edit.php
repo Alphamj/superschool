@@ -38,12 +38,12 @@ foreach ( $edit_data as $row):
                                     <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label"><?php echo get_phrase('birthday');?></label>
+                            <!--<div class="form-group">
+                                <label class="col-sm-2 control-label"><?php //echo get_phrase('birthday');?></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="datepicker form-control" name="birthday" value="<?php echo $row['birthday'];?>"/>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"><?php echo get_phrase('sex');?></label>
                                 <div class="col-sm-10">

@@ -61,7 +61,7 @@ td h5 {color: #000 !important;}
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					 <select name="student_id" id="student_id_0" class="form-control" style="float:left;">
+					 <select name="student_id" id="student_id_0" class="form-control " style="float:left;">
                             <option value="">Select a student</option>
                             <?php 
 								if($class_id){
@@ -78,7 +78,7 @@ td h5 {color: #000 !important;}
 			<div class="col-md-3">
 				<div class="form-group">
 					<select name="exam_id" class="form-control selectboxit">
-                        <option value=""><?php echo get_phrase('select_an_term');?></option>
+                        <option value=""><?php echo get_phrase('select_a_term');?></option>
                         <?php 
                         $exams = $this->db->get('exam')->result_array();
                         foreach($exams as $row):
@@ -100,7 +100,12 @@ td h5 {color: #000 !important;}
 			</div>
 		<?php echo form_close();?>
 </div>
-
+<?php
+	$nclass = $this->db->get_where('mark0',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
+	$class_id = $nclass[0]['class_id'];
+	$student_id = $nclass[0]['student_id'];
+	$sessoin_id = $nclass[0]['session_year'];
+?>
 <?php if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
 <br>
 <div class="row">
