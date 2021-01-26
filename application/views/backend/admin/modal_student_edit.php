@@ -124,13 +124,13 @@ foreach ($edit_data as $row):
                         </div> 
                     </div>
 					
-					<div class="form-group">
-                        <label for="field-2" class="col-sm-2 control-label"><?php echo get_phrase('mother_tongue'); ?></label>
+					<!--<div class="form-group">
+                        <label for="field-2" class="col-sm-2 control-label"><?php //echo get_phrase('mother_tongue'); ?></label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="m_tongue" value="<?php echo $row['m_tongue']; ?>" >
+                            <input type="text" class="form-control" name="m_tongue" value="<?php //echo $row['m_tongue']; ?>" >
                         </div> 
-                    </div>
+                    </div>-->
 
                     
 
@@ -140,8 +140,8 @@ foreach ($edit_data as $row):
                         <div class="col-sm-10">
                             <select name="sex" class="form-control selectboxit">
                                 <option value=""><?php echo get_phrase('select'); ?></option>
-                                <option value="MALE" <?php if ($row['sex'] == 'MALE') echo 'selected'; ?>><?php echo get_phrase('male'); ?></option>
-                                <option value="FEMALE"<?php if ($row['sex'] == 'FEMALE') echo 'selected'; ?>><?php echo get_phrase('female'); ?></option>
+                                <option value="MALE" <?php if ($row['sex'] == 'MALE') echo 'selected'; ?>><?php echo 'MALE'; ?></option>
+                                <option value="FEMALE"<?php if ($row['sex'] == 'FEMALE') echo 'selected'; ?>><?php echo 'FEMALE'; ?></option>
                             </select>
                         </div> 
                     </div>
@@ -168,8 +168,8 @@ foreach ($edit_data as $row):
                             <input type="text" class="form-control" name="email" value="<?php echo $row['email']; ?>">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="field-1" class="col-sm-2 control-label"><?php echo get_phrase('notes'); ?></label>
+                    <!--<div class="form-group">
+                        <label for="field-1" class="col-sm-2 control-label"><?php /*echo get_phrase('notes'); ?></label>
                         <div class="col-sm-10">
                             <textarea type="text" class="form-control" name="notes" ><?php echo $row['notes']; ?></textarea>
                         </div>
@@ -258,8 +258,8 @@ foreach ($edit_data as $row):
 							</div>
 						</div>
 						<?php $medical_image= $this->crud_model->get_user_image_url('medical_certificate', $row['student_id']); ?>
-						<a href="uploads/student_image/medical_certificate/<?php echo $medical_image; ?>"><span><?php echo $medical_image; ?></span></a>
-					</div>
+						<a href="uploads/student_image/medical_certificate/<?php echo $medical_image; ?>"><span><?php echo $medical_image; */?></span></a>
+					</div>-->
                     <div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-blue btn-sm"><i class="entypo-pencil"></i><?php echo get_phrase('update_student');?></button>

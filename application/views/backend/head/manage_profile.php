@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 <label class="col-sm-1 control-label"><?php echo get_phrase('name');?></label>
                                 <div class="col-sm-11">
-                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"/>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" readonly="true"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('current_password');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="password" value="<?php echo $row['password'];?>"/ readonly="true">
+                                    <input type="text" class="form-control" name="password" value="<?php echo $row['password'];?>" readonly="true" />
                                 </div>
                             </div>
                             <div class="form-group">

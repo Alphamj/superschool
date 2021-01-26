@@ -163,7 +163,7 @@ $query = $this->db->get_where('attendance', array('exam_id' => $exam_id ,'class_
 						<td><strong>Name</strong></td>
 						<td><strong><?php echo $row['surname'].' '.$row['name'];?></strong></td>
 						<td><strong>Class</strong></td>
-						<td colspan="6"><?php $class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name;echo $class_name;?></td>
+						<td colspan="6"><?php $class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name2;echo $class_name;?></td>
 					</tr>
 					<tr>
 						<td><strong>Admission No</strong></td>

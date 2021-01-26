@@ -32,14 +32,14 @@
 
 		<?php echo form_close();?>
 		
-		<?php echo form_open(base_url() . 'index.php?admin/student_information');?>
-			 <div class="form-group list-search">
+		<?php //echo form_open(base_url() . 'index.php?admin/student_information');?>
+			 <!--<div class="form-group list-search">
                         <div class="col-sm-12">
-                            <input type="text" placeholder ="Search Student" name="student_search" value="<?php if(isset($_REQUEST['student_search'])){echo $_REQUEST['student_search']; } ?>">
+                            <input type="text" placeholder ="Search Student" name="student_search" value="<?php //if(isset($_REQUEST['student_search'])){echo $_REQUEST['student_search']; } ?>">
                             <input type="hidden" name="Search">
                         </div>
-                    </div> 
-		<?php echo form_close();?>
+                    </div> -->
+		<?php //echo form_close();?>
 </div>
 <?php if ($class_id != '' || isset($_REQUEST['student_search'])): ?>
 

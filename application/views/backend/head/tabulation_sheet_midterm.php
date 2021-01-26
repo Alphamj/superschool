@@ -65,7 +65,7 @@ td h5 {color: #000 !important;}
 									   </option> <?php } endif?>
 									   
 							<?php if ($sect[0]['section'] == 'Nursery'):
-									if ($row['class_id'] > 39 && $row['class_id'] < 50){ ?>
+									if ($row['class_id'] > 39 && $row['class_id'] < 47){ ?>
                             				<option value="<?php echo $row['class_id'];?>"
                             					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
                             				 		<?php echo $row['name'];?>

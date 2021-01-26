@@ -94,10 +94,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					$exam_name  = $this->db->get_where('exam' , array('exam_id' => $exam_id))->row()->name; 
 					$student  = $this->db->get_where('student' , array('student_id' => $student_id))->result_array(); 
 					$class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name; 
-					echo get_phrase('report_card_for:').'&nbsp;&nbsp;'. $student[0]['name'].' '.$student[0]['surname'];;
+					echo 'score sheet for:'.' '. $sessoin_id . ' '.'Academic Year';
 				?>
 			</h3>
-			<h4><?php echo get_phrase('class') . ' ' . $class_name;?></h4>
+			<h4><?php echo 'CLASS' . ' ' . $class_name;?></h4>
 			<h4><?php echo $exam_name;?></h4>
 		</div>
 	</div>
@@ -164,21 +164,84 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     <tbody>
 				<?php
 					if ($class_id > 28 && $class_id < 32 ){
-						$querystud = $this->db->get_where('student' , array('class_id' =>  29))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 30))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 31))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 29)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 30)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 31)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 elseif ($class_id > 31 && $class_id < 35 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 32))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 33))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 34))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 32)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 33)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 34)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
-					 elseif ($class_id > 34 && $class_id < 37 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 35))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 36))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 37))->result_array();
+					 elseif ($class_id > 34 && $class_id < 38 ){
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 35)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 36)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 37)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 
@@ -219,7 +282,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						
 				?>
 							<tr>
-								<td><?php echo $row2['name'].' '.$row2['surname']; ?>	</td>
+								<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
+								<td><?php echo $studd['name'].' '.$studd['surname']; ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
@@ -755,21 +819,85 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					
 				<?php
 					if ($class_id > 19 && $class_id < 23 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 20))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 21))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 22))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 20)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 21)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 22)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
+						
 					 }
 					 elseif ($class_id > 22 && $class_id < 26 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 23))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 24))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 25))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 23)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 24)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 25)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 elseif ($class_id > 25 && $class_id < 29 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 26))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 27))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 28))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 26)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 27)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 28)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					
@@ -812,7 +940,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						
 				?>
 							<tr>
-								<td><?php echo $row2['name'].' '.$row2['surname']; ?>	</td>
+						 		<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
+								<td><?php echo $studd[0]['name'].' '.$studd[0]['surname'] ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
@@ -1292,11 +1421,11 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 
 		<?php } ?>
 		<center>
-			<!-- <a href="<?php //echo base_url();?>index.php?head/score_sheet/<?php //echo $class_id;?>/<?php //echo $exam_id;?>/<?php //echo $sessoin_id;?>" 
+			<!-- <a href="<?php //echo base_url();?>index.php?admin/score_sheet/<?php //echo $class_id;?>/<?php //echo $exam_id;?>/<?php //echo $sessoin_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php //echo get_phrase('mass_report_card');?>
 			</a> 
-			<a href="<?php echo base_url();?>index.php?head/score_sheet/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>" 
+			<a href="<?php echo base_url();?>index.php?admin/score_sheet/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php echo 'Print Score Sheet';?>
 			</a>-->
@@ -1305,19 +1434,3 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 </div>
 </div>
 <?php endif;?>
-<?php 
-function score($verify_data){
-	$marks	=	$this->db->get_where('mark' , $verify_data)->result_array();
-	foreach($marks as $val){
-		$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
-		foreach ($subject as $subj){
-			if (strpos($subj['name'], 'ENGLISH' ) !== false){
-				return ($val['ca_marks']+$val['mark_obtained']);
-			}
-		}
-	}
-}
-?>
-
-
-

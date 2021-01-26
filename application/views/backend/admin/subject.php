@@ -81,7 +81,10 @@
 						</tr>
 					</thead>
                     <tbody>
-                    	<?php $count = 1;foreach($subjects as $row):?>
+										
+						<?php 
+						$subjects = $this->db->get('subject')->result_array();
+						$count = 1;foreach($subjects as $row):?>
                         <tr>
 							 <!-- Comment on 28 may 2018 sandeep -->
 							 <!--<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>-->

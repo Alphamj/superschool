@@ -48,8 +48,8 @@ foreach ( $edit_data as $row):
                                 <label class="col-sm-2 control-label"><?php echo get_phrase('sex');?></label>
                                 <div class="col-sm-10">
                                     <select name="sex" class="form-control selectboxit">
-                                    	<option value="male" <?php if($row['sex'] == 'male')echo 'selected';?>><?php echo get_phrase('male');?></option>
-                                    	<option value="female" <?php if($row['sex'] == 'female')echo 'selected';?>><?php echo get_phrase('female');?></option>
+                                    	<option value="male" <?php if($row['sex'] == 'male')echo 'selected';?>><?php echo 'MALE';?></option>
+                                    	<option value="female" <?php if($row['sex'] == 'female')echo 'selected';?>><?php echo 'FEMALE';?></option>
                                     </select>
                                 </div>
                             </div>
@@ -70,9 +70,9 @@ foreach ( $edit_data as $row):
                                    <div class="col-sm-10">
 						     <select name="section" class="form-control selectboxit">
                                         <option value=""><?php echo get_phrase('select');?></option>
-                                        <option value="Nursery"><?php echo 'Nursery';?></option>
-                                        <option value="Primary"><?php echo 'Primary';?></option>
-                                        <option value="Secondary"><?php echo 'Secondary';?></option>
+                                        <option value="Nursery" <?php if($row['section'] == 'Nursery')echo 'selected';?>><?php echo 'Nursery';?></option>
+                                        <option value="Primary" <?php if($row['section'] == 'Primary')echo 'selected';?>><?php echo 'Primary';?></option>
+                                        <option value="Secondary" <?php if($row['section'] == 'Secondary')echo 'selected';?>><?php echo 'Secondary';?></option>
                                    </select>
                                    </div>
 					     </div>

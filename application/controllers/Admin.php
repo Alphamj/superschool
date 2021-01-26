@@ -350,7 +350,7 @@ class Admin extends CI_Controller {
             $data['religion'] 			= $this->input->post('religion');
             $data['phone'] 				= $this->input->post('phone');
             $data['email'] 				= $this->input->post('email');
-            $data['physical_h'] 		= $this->input->post('physical_h');
+            //$data['physical_h'] 		= $this->input->post('physical_h');
 
             $data['password'] 			= $this->input->post('password');
             $data['class_id'] 			= $this->input->post('class_id');
@@ -361,10 +361,7 @@ class Admin extends CI_Controller {
            
             
             $this->db->insert('student', $data);
-            $student_id = $this->db->insert_id();
             
-            $this->db->where('student_id', $student_id);
-            $this->db->update('student', $data1);
             
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
             $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));

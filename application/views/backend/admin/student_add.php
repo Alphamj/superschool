@@ -120,8 +120,8 @@
 						<div class="col-sm-9">
 							<select name="sex" class="form-control selectboxit">
                               <option value=""><?php echo get_phrase('select');?></option>
-                              <option value="Male"><?php echo get_phrase('male');?></option>
-                              <option value="Female"><?php echo get_phrase('female');?></option>
+                              <option value="Male"><?php echo 'MALE';?></option>
+                              <option value="Female"><?php echo 'FEMALE';?></option>
                           </select>
 						</div> 
 					</div>

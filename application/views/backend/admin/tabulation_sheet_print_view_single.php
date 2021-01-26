@@ -87,7 +87,7 @@
 							<td><strong>Name</strong></td>
 							<td><strong><?php echo $row['surname'].' '.$row['name'];?></strong></td>
 							<td><strong>Class</strong></td>
-							<td colspan="6"><?php $class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name;echo $class_name;?></td>
+							<td colspan="6"><?php $class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name2;echo $class_name;?></td>
 						</tr>
 						<tr>
 							<td><strong>Admission No</strong></td>
@@ -855,7 +855,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -870,7 +870,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>

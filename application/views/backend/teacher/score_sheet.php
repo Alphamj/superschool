@@ -44,17 +44,41 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				<div class="form-group">
 					<select name="class_id"  id="class_ids" class="form-control selectboxit"  onchange="show_students(this.value)">
                         <option value=""><?php echo get_phrase('select_a_class');?></option>
-                        <?php 
-                        $classes = $this->db->get('class')->result_array();
-				    foreach($classes as $row):
-                        ?>
-                            <option value="<?php echo $row['class_id'];?>"
-                            	<?php if ($class_id == $row['class_id']) echo 'selected';?>>
-                            		 <?php echo $row['name'];?>
-                            </option>
                         <?php
-                        endforeach;
+						$classes = $this->db->get('class')->result_array();
+						$sect = $this->db->get_where('teacher', array('teacher_id' => $this->session->userdata('login_user_id')))->result_array();
+                    foreach($classes as $row):
                         ?>
+                                   <?php if ($sect[0]['section'] == 'Secondary'): 
+									if ($row['class_id'] > 19 && $row['class_id'] < 40){ ?>
+                            				<option value="<?php echo $row['class_id'];?>"
+                            					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
+                            				 		<?php echo $row['name'];?>
+							   		</option> <?php } endif ?>
+							   
+							<?php if ($sect[0]['section'] == 'Primary'):
+									if ($row['class_id'] > 0 && $row['class_id'] < 20){ ?>
+                            				<option value="<?php echo $row['class_id'];?>"
+                            					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
+                            				 		<?php echo $row['name'];?>
+									   </option> <?php } endif?>
+									   
+							<?php if ($sect[0]['section'] == 'Nursery'):
+									if ($row['class_id'] > 40 && $row['class_id'] < 47){ ?>
+                            				<option value="<?php echo $row['class_id'];?>"
+                            					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
+                            				 		<?php echo $row['name'];?>
+									   </option> <?php } endif?>
+
+							<?php if ($sect[0]['section'] == 'Toddler'):
+									if ($row['class_id'] == 40){ ?>
+                            				<option value="<?php echo $row['class_id'];?>"
+                            					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
+                            				 		<?php echo $row['name'];?>
+                            				</option> <?php } endif?>
+                                <?php
+                                endforeach;
+                            ?>
                     </select>
 				</div>
 			</div>
@@ -82,7 +106,6 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			</div>
 		<?php echo form_close();?>
 </div>
-
 <?php if ($class_id != '' && $exam_id != ''):?>
 <br>
 <div class="row">
@@ -94,10 +117,10 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					$exam_name  = $this->db->get_where('exam' , array('exam_id' => $exam_id))->row()->name; 
 					$student  = $this->db->get_where('student' , array('student_id' => $student_id))->result_array(); 
 					$class_name = $this->db->get_where('class' , array('class_id' => $class_id))->row()->name; 
-					echo get_phrase('report_card_for:').'&nbsp;&nbsp;'. $student[0]['name'].' '.$student[0]['surname'];;
+					echo 'score sheet for:'.' '. $sessoin_id . ' '.'Academic Year';
 				?>
 			</h3>
-			<h4><?php echo get_phrase('class') . ' ' . $class_name;?></h4>
+			<h4><?php echo 'CLASS' . ' ' . $class_name;?></h4>
 			<h4><?php echo $exam_name;?></h4>
 		</div>
 	</div>
@@ -164,21 +187,84 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     <tbody>
 				<?php
 					if ($class_id > 28 && $class_id < 32 ){
-						$querystud = $this->db->get_where('student' , array('class_id' =>  29))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 30))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 31))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 29)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 30)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 31)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 elseif ($class_id > 31 && $class_id < 35 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 32))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 33))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 34))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 32)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 33)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 34)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
-					 elseif ($class_id > 34 && $class_id < 37 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 35))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 36))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 37))->result_array();
+					 elseif ($class_id > 34 && $class_id < 38 ){
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 35)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 36)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 37)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 
@@ -219,7 +305,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						
 				?>
 							<tr>
-								<td><?php echo $row2['name'].' '.$row2['surname']; ?>	</td>
+								<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
+								<td><?php echo $studd[0]['name'].' '.$studd[0]['surname'] ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
@@ -755,21 +842,85 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					
 				<?php
 					if ($class_id > 19 && $class_id < 23 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 20))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 21))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 22))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 20)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 21)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 22)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
+						
 					 }
 					 elseif ($class_id > 22 && $class_id < 26 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 23))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 24))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 25))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 23)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 24)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 25)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					 elseif ($class_id > 25 && $class_id < 29 ){
-						$querystud = $this->db->get_where('student' , array('class_id' => 26))->result_array();
-						$querystud1 = $this->db->get_where('student' , array('class_id' => 27))->result_array();
-						$querystud2 = $this->db->get_where('student' , array('class_id' => 28))->result_array();
+						$this->db->distinct();
+						$this->db->select('student_id')
+			    				->from('mark')
+			    				->where('class_id', 26)
+			    				->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 27)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud1 = $query->result_array();
+					
+						$this->db->distinct();
+						$this->db->select('student_id')
+								->from('mark')
+								->where('class_id', 28)
+								->where('session_year', $sessoin_id);
+						$query = $this->db->get();
+						$querystud2 = $query->result_array();
+
 						$stud	=	array_merge($querystud,$querystud1,$querystud2);
 					 }
 					
@@ -812,7 +963,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 						
 				?>
 							<tr>
-								<td><?php echo $row2['name'].' '.$row2['surname']; ?>	</td>
+						 		<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
+								<td><?php echo $studd[0]['name'].' '.$studd[0]['surname'] ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
@@ -1276,6 +1428,54 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							?>
 						</tbody>
 					</table>
+				
+		<!-- Primary -->		 
+				<?php }else if (strpos($class_type, 'primary') !== false){ ?>
+					<table class="tg" style="width: auto;">
+						<tbody>
+							<tr>
+								<td colspan="12"></td>
+								<td colspan="42" style="text-align: center;"><?php echo $exam_name ?></td>	
+							</tr>
+							<tr>
+								<td colspan="12">NAME</td>
+								<td colspan="3" class="space" style="text-align: center;">CA 1</td>
+								<td colspan="3" class="space" style="text-align: center;">CW</td>
+								<td colspan="3" class="space" style="text-align: center;">CA</td>
+								<td colspan="5" class="space" style="text-align: center;">PROJECT</td>
+								<td colspan="5" class="space" style="text-align: center;">TOTAL CA</td>
+								<td colspan="4" class="space" style="text-align: center;">EXAM</td>
+								<td colspan="3" class="space" style="text-align: center;">TOTAL <br> SCORE</td>
+								<td colspan="3" class="space" style="text-align: center;">SUBJECT <br> AVERAGE</td>
+								<td colspan="3" class="space" style="text-align: center;">GRADE</td>
+								<td width = 10% class="space" style="text-align: center;">REMARK</td>
+								
+								
+							</tr>
+							<?php 
+							$query = $this->db->get_where('student' , array('class_id' => $class_id));
+							$marks	=	$query->result_array();
+							 
+							foreach($marks as $row2):
+							?>
+								<tr>
+									<td colspan="12"><?php echo $row2['name'].$row2['surname'];?></td>
+									<td class="space" colspan="3" ></td>
+									<td class="space" colspan="3" ></td>
+									<td class="space" colspan="3" ></td>
+									<td class="space" colspan="5" ></td>
+									<td class="space" colspan="5" ></td>
+									<td class="space" colspan="4" ></td>
+									<td class="space" colspan="3" ></td>
+									<td class="space" colspan="3" ></td>
+                                             <td class="space" colspan="3" ></td>
+                                             <td class="space" width = 10% ></td>
+								</tr>
+							<?php
+							endforeach;
+							?>
+						</tbody>
+					</table>
 
 <!-- Nursery -->
 		<?php }else if (strpos($class_type, 'nursery') !== false || strpos($class_type, 'nur') !== false || strpos($class_type, 'toddler') !== false){ ?>
@@ -1292,11 +1492,11 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 
 		<?php } ?>
 		<center>
-			<!-- <a href="<?php //echo base_url();?>index.php?teacher/score_sheet/<?php //echo $class_id;?>/<?php //echo $exam_id;?>/<?php //echo $sessoin_id;?>" 
+			<!-- <a href="<?php //echo base_url();?>index.php?admin/score_sheet/<?php //echo $class_id;?>/<?php //echo $exam_id;?>/<?php //echo $sessoin_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php //echo get_phrase('mass_report_card');?>
 			</a> 
-			<a href="<?php echo base_url();?>index.php?teacher/score_sheet/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>" 
+			<a href="<?php echo base_url();?>index.php?admin/score_sheet/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">
 				<i class="entypo-print"></i><?php echo 'Print Score Sheet';?>
 			</a>-->
@@ -1305,19 +1505,3 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 </div>
 </div>
 <?php endif;?>
-<?php 
-function score($verify_data){
-	$marks	=	$this->db->get_where('mark' , $verify_data)->result_array();
-	foreach($marks as $val){
-		$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
-		foreach ($subject as $subj){
-			if (strpos($subj['name'], 'ENGLISH' ) !== false){
-				return ($val['ca_marks']+$val['mark_obtained']);
-			}
-		}
-	}
-}
-?>
-
-
-
