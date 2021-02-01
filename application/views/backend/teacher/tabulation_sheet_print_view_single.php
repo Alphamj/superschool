@@ -1615,7 +1615,7 @@
 			<?php // NURSERY 1
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 				<?php 
-					if($sessoin_id  = '2019-2020'){
+					if($sessoin_id  == '2019-2020'){
 						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
 						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
 						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
@@ -1686,7 +1686,7 @@
 			<?php // NURSERY 2
 				}if (strpos($class_type, 'nursery 2') !== false ) { ?>
 				<?php 
-					if($sessoin_id  = '2019-2020'){
+					if($sessoin_id  == '2019-2020'){
 						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
 						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
 						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
