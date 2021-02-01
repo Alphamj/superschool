@@ -67,7 +67,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 									   </option> <?php } endif?>
 									   
 							<?php if ($sect[0]['section'] == 'Nursery'):
-									if ($row['class_id'] > 40 && $row['class_id'] < 47){ ?>
+									if ($row['class_id'] > 40 && $row['class_id'] < 50){ ?>
                             				<option value="<?php echo $row['class_id'];?>"
                             					<?php if ($class_id == $row['class_id']) echo 'selected';?>>
                             				 		<?php echo $row['name'];?>
@@ -1881,9 +1881,9 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ************nursery 1****************
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 				<?php
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1946,9 +1946,9 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ************Nursery 2*****************
 				} if (strpos($class_type, 'nursery 2') !== false) { ?>
 				<?php 
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject1')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject1_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject1_3')->result_array();}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					

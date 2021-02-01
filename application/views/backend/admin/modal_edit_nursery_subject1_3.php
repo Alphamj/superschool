@@ -1,6 +1,6 @@
-<!--TODDLER-->
+<!--NURSERY 2-->
 <?php 
-$edit_data		=	$this->db->get_where('nnursery_subject3' , array('nursub_id' => $param2) )->result_array();
+$edit_data		=	$this->db->get_where('nnursery_subject1_3' , array('nursub_id' => $param2) )->result_array();
 foreach ( $edit_data as $row):
 ?>
 	<div class="col-md-12">
@@ -10,7 +10,7 @@ foreach ( $edit_data as $row):
         	</div>
         </div>
 		<div class="panel-body">
-            <?php echo form_open(base_url() . 'index.php?admin/nursery_subject3/do_update/'.$row['nursub_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+            <?php echo form_open(base_url() . 'index.php?admin/nursery_subject1_3/do_update/'.$row['nursub_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
             <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo get_phrase('language');?></label>
                 <div class="col-sm-10 controls">

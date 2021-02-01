@@ -98,12 +98,6 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			</div>
 		<?php echo form_close();?>
 </div>
-<?php
-	$nclass = $this->db->get_where('mark',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
-	$class_id = $nclass[0]['class_id'];
-	$student_id = $nclass[0]['student_id'];
-	$sessoin_id = $nclass[0]['session_year'];
-?>
 
 <?php if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
 <br>
@@ -1384,9 +1378,16 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ******************NURSERY 1*******************
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 				<?php 
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+					if($sessoin_id  = '2019-2020'){
+						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
+						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
+						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+					}
+					else{
+						if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
+						if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
+						if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
+					}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1449,9 +1450,16 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ******************NURSERY 2*****************88
 				}if (strpos($class_type, 'nursery 2') !== false ) { ?>
 				<?php 
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
+					if($sessoin_id  = '2019-2020'){
+						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
+						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
+						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
+					}
+					else{
+						if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject1')->result_array();}
+						if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject1_2')->result_array();}
+						if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject1_3')->result_array();}
+					}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1514,9 +1522,16 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ***************NURSERY 3***************
 				}if (strpos($class_type, 'nursery 3') !== false ) { ?>
 				<?php 
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject2')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject2_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject2_3')->result_array();}
+					//if($sessoin_id  = '2019-2020'){ 
+						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject2')->result_array();}
+						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject2_2')->result_array();}
+						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject2_3')->result_array();}
+					//}
+					//else{
+					//	if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject2')->result_array();}
+					//	if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject2_2')->result_array();}
+					//	if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject2_3')->result_array();}
+					//}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1582,10 +1597,17 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				
 			<?php // **************TODDLER*****************
 				}if (strpos($class_type, 'toddler') !== false ) { ?>
-				<?php 
+				<?php
+				//if($sessoin_id  = '2019-2020'){  
 					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject3')->result_array();}
 					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject3_2')->result_array();}
 					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject3_3')->result_array();}
+				//}
+				//else{
+				//	if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject3')->result_array();}
+				//	if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject3_2')->result_array();}
+				//	if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject3_3')->result_array();}
+				//}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					

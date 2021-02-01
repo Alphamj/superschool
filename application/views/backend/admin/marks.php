@@ -1847,9 +1847,9 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 
 				<?php
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1913,9 +1913,9 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				} if (strpos($class_type, 'nursery 2') !== false) { ?>
 
 				<?php 
-					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
-					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
-					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject1')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject1_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject1_3')->result_array();}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					

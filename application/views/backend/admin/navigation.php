@@ -449,14 +449,6 @@ $admin_level = $admin_info['level'];
             <li class="<?php 
             if ($page_name == 'subject' ||
                     $page_name == 'student_subject' ||
-                    $page_name == 'nursery_subject' ||
-                    $page_name == 'nursery_subject1' ||
-                    $page_name == 'nursery_subject2' ||
-                    $page_name == 'nursery_subject3' ||
-                    $page_name == 'nursery_subject_2' ||
-                    $page_name == 'nursery_subject1_2' ||
-                    $page_name == 'nursery_subject2_2' ||
-                    $page_name == 'nursery_subject3_2' ||
                     $page_name == 'class_subject' ||
                     $page_name == 'modify_subject' ||
                     $page_name == 'subject_template')
@@ -481,47 +473,7 @@ $admin_level = $admin_info['level'];
                                 <span><?php echo get_phrase('student_subjects');?></span>
                             </a>
                         </li>
-                        <li class="<?php if ($page_name == 'nursery_subject3') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3/">
-                                <span><?php echo get_phrase('toddler_term_1'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject3_2') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3_2/">
-                                <span><?php echo get_phrase('toddler_term_2'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject/">
-                                <span><?php echo get_phrase('nursery_1_term_1'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject_2') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject_2/">
-                                <span><?php echo get_phrase('nursery_1_term_2'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject1') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1/">
-                                <span><?php echo get_phrase('nursery_2_term_1'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject12_') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1_2/">
-                                <span><?php echo get_phrase('nursery_2_term_2'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject2') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2/">
-                                <span><?php echo get_phrase('nursery_3_term_1'); ?></span>
-                            </a>
-                        </li>
-                        <li class="<?php if ($page_name == 'nursery_subject2_2') echo 'active'; ?>">
-                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2_2/">
-                                <span><?php echo get_phrase('nursery_3_term_2'); ?></span>
-                            </a>
-                        </li>
-						<li class="<?php if ($page_name == 'class_subject') echo 'active'; ?>">
+                        <li class="<?php if ($page_name == 'class_subject') echo 'active'; ?>">
                             <a href="<?php echo base_url(); ?>index.php?admin/class_subject/">
                                 <span><?php echo get_phrase('class_subject'); ?></span>
                             </a>
@@ -548,6 +500,93 @@ $admin_level = $admin_info['level'];
                     <?php //endforeach; ?>
 					
 					   
+                </ul>
+            </li>
+
+            <!-- NURSERY SUBJECT -->
+            <li class="<?php 
+                if ($page_name == 'Nursery subject' ||
+                        $page_name == 'nursery_subject' ||
+                        $page_name == 'nursery_subject1' ||
+                        $page_name == 'nursery_subject2' ||
+                        $page_name == 'nursery_subject3' ||
+                        $page_name == 'nursery_subject_2' ||
+                        $page_name == 'nursery_subject1_2' ||
+                        $page_name == 'nursery_subject2_2' ||
+                        $page_name == 'nursery_subject3_2' ||
+                        $page_name == 'nursery_subject_3' ||
+                        $page_name == 'nursery_subject1_3' ||
+                        $page_name == 'nursery_subject2_3' ||
+                        $page_name == 'nursery_subject3_3')
+                    echo 'opened active';
+                ?> ">
+                <a href="#">
+                    <i class="entypo-book"></i>
+                    <span><?php echo get_phrase('nursery_subjects'); ?></span><span class="fa fa-chevron-down"></span>
+                </a>
+                
+                
+             <ul class="nav child_menu">
+                        <li class="<?php if ($page_name == 'nursery_subject3') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3/">
+                                <span><?php echo get_phrase('toddler_term_1'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject3_2') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3_2/">
+                                <span><?php echo get_phrase('toddler_term_2'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject3_3') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject3_3/">
+                                <span><?php echo get_phrase('toddler_term_3'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject/">
+                                <span><?php echo get_phrase('nursery_1_term_1'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject_2') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject_2/">
+                                <span><?php echo get_phrase('nursery_1_term_2'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject_3') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject_3/">
+                                <span><?php echo get_phrase('nursery_1_term_3'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject1') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1/">
+                                <span><?php echo get_phrase('nursery_2_term_1'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject12_') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1_2/">
+                                <span><?php echo get_phrase('nursery_2_term_2'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject13_') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject1_3/">
+                                <span><?php echo get_phrase('nursery_2_term_3'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject2') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2/">
+                                <span><?php echo get_phrase('nursery_3_term_1'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject2_2') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2_2/">
+                                <span><?php echo get_phrase('nursery_3_term_2'); ?></span>
+                            </a>
+                        </li>
+                        <li class="<?php if ($page_name == 'nursery_subject2_3') echo 'active'; ?>">
+                            <a href="<?php echo base_url(); ?>index.php?admin/nursery_subject2_3/">
+                                <span><?php echo get_phrase('nursery_3_term_3'); ?></span>
+                            </a>
+                        </li>
                 </ul>
             </li>
 

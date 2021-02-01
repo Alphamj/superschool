@@ -57,7 +57,7 @@
 			</thead>
                <tbody>
 				<?php
-				$query = $this->db->get('nursery_subject')->result_array();
+				$query = $this->db->get('nnursery_subject')->result_array();
 				foreach($query as $row):?>
                     	<tr>
 						<td><?php echo $row['nursub_id'];?></td>

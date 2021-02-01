@@ -1,5 +1,5 @@
 <?php 
-$edit_data		=	$this->db->get_where('nursery_subject' , array('nursub_id' => $param2) )->result_array();
+$edit_data		=	$this->db->get_where('nnursery_subject' , array('nursub_id' => $param2) )->result_array();
 foreach ( $edit_data as $row):
 ?>
 	<div class="col-md-12">

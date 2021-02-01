@@ -1269,7 +1269,7 @@ function nursery_subject($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject', $data);
+        $this->db->insert('nnursery_subject', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject/', 'refresh');
     }
@@ -1279,22 +1279,22 @@ function nursery_subject($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject', $data);
+        $this->db->update('nnursery_subject', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject');
+        $this->db->delete('nnursery_subject');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject';
     $page_data['page_title'] = get_phrase('nursery_1_subject');
     $this->load->view('backend/index', $page_data);
@@ -1308,7 +1308,7 @@ function nursery_subject_2($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject_2', $data);
+        $this->db->insert('nnursery_subject_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject_2/', 'refresh');
     }
@@ -1318,23 +1318,62 @@ function nursery_subject_2($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject_2', $data);
+        $this->db->update('nnursery_subject_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject_2/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject_2', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject_2', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject_2');
+        $this->db->delete('nnursery_subject_2');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject_2/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject_2', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject_2', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject_2';
+    $page_data['page_title'] = get_phrase('nursery_1_subject');
+    $this->load->view('backend/index', $page_data);
+}
+
+//nursery 1 term 3
+function nursery_subject_3($param1 = '', $param2 = '', $param3 = '') {
+	if ($this->session->userdata('admin_login') != 1)
+        redirect(base_url(), 'refresh');
+    if ($param1 == 'create') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+        $this->db->insert('nnursery_subject_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
+        redirect(base_url() . 'index.php?admin/nursery_subject_3/', 'refresh');
+    }
+    if ($param1 == 'do_update') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+
+        $this->db->where('nursub_id', $param2);
+        $this->db->update('nnursery_subject_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
+        redirect(base_url() . 'index.php?admin/nursery_subject_3/', 'refresh');
+    } else if ($param1 == 'edit') {
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject_3', array(
+                    'nursub_id' => $param2
+                ))->result_array();
+    }
+    if ($param1 == 'delete') {
+        $this->db->where('nursub_id', $param2);
+        $this->db->delete('nnursery_subject_3');
+        $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
+        redirect(base_url() . 'index.php?admin/nursery_subject_3/' . $param3, 'refresh');
+    }
+    $page_data['nursub_id'] = $param1;
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject_3', array('nursub_id' => $param1))->result_array();
+    $page_data['page_name'] = 'nursery_subject_3';
     $page_data['page_title'] = get_phrase('nursery_1_subject');
     $this->load->view('backend/index', $page_data);
 }
@@ -1347,7 +1386,7 @@ function nursery_subject1($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject1', $data);
+        $this->db->insert('nnursery_subject1', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject1/', 'refresh');
     }
@@ -1357,22 +1396,22 @@ function nursery_subject1($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject1', $data);
+        $this->db->update('nnursery_subject1', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject1/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject1', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject1', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject1');
+        $this->db->delete('nnursery_subject1');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject1/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject1', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject1', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject1';
     $page_data['page_title'] = get_phrase('nursery_2_subject');
     $this->load->view('backend/index', $page_data);
@@ -1386,7 +1425,7 @@ function nursery_subject1_2($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject1_2', $data);
+        $this->db->insert('nnursery_subject1_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject1_2/', 'refresh');
     }
@@ -1396,23 +1435,62 @@ function nursery_subject1_2($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject1_2', $data);
+        $this->db->update('nnursery_subject1_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject1_2/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject1_2', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject1_2', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject1_2');
+        $this->db->delete('nnursery_subject1_2');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject1_2/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject1_2', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject1_2', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject1_2';
+    $page_data['page_title'] = get_phrase('nursery_2_subject');
+    $this->load->view('backend/index', $page_data);
+}
+
+//nursery 2 term 3
+function nursery_subject1_3($param1 = '', $param2 = '', $param3 = '') {
+	if ($this->session->userdata('admin_login') != 1)
+        redirect(base_url(), 'refresh');
+    if ($param1 == 'create') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+        $this->db->insert('nnursery_subject1_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
+        redirect(base_url() . 'index.php?admin/nursery_subject1_3/', 'refresh');
+    }
+    if ($param1 == 'do_update') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+
+        $this->db->where('nursub_id', $param2);
+        $this->db->update('nnursery_subject1_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
+        redirect(base_url() . 'index.php?admin/nursery_subject1_3/', 'refresh');
+    } else if ($param1 == 'edit') {
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject1_3', array(
+                    'nursub_id' => $param2
+                ))->result_array();
+    }
+    if ($param1 == 'delete') {
+        $this->db->where('nursub_id', $param2);
+        $this->db->delete('nnursery_subject1_3');
+        $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
+        redirect(base_url() . 'index.php?admin/nursery_subject1_3/' . $param3, 'refresh');
+    }
+    $page_data['nursub_id'] = $param1;
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject1_3', array('nursub_id' => $param1))->result_array();
+    $page_data['page_name'] = 'nursery_subject1_3';
     $page_data['page_title'] = get_phrase('nursery_2_subject');
     $this->load->view('backend/index', $page_data);
 }
@@ -1425,7 +1503,7 @@ function nursery_subject2($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject2', $data);
+        $this->db->insert('nnursery_subject2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject2/', 'refresh');
     }
@@ -1435,22 +1513,22 @@ function nursery_subject2($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject2', $data);
+        $this->db->update('nnursery_subject2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject2/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject2', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject2', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject2');
+        $this->db->delete('nnursery_subject2');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject2/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject2', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject2', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject2';
     $page_data['page_title'] = get_phrase('nursery_3_subject');
     $this->load->view('backend/index', $page_data);
@@ -1464,7 +1542,7 @@ function nursery_subject2_2($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject2_2', $data);
+        $this->db->insert('nnursery_subject2_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject2_2/', 'refresh');
     }
@@ -1474,23 +1552,62 @@ function nursery_subject2_2($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject2_2', $data);
+        $this->db->update('nnursery_subject2_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject2_2/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject2_2', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject2_2', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject2_2');
+        $this->db->delete('nnursery_subject2_2');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject2_2/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
-    $page_data['subjects'] = $this->db->get_where('nursery_subject2_2', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject2_2', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject2_2';
+    $page_data['page_title'] = get_phrase('nursery_3_subject');
+    $this->load->view('backend/index', $page_data);
+}
+
+//nursery 3 term 3
+function nursery_subject2_3($param1 = '', $param2 = '', $param3 = '') {
+	if ($this->session->userdata('admin_login') != 1)
+        redirect(base_url(), 'refresh');
+    if ($param1 == 'create') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+        $this->db->insert('nnursery_subject2_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
+        redirect(base_url() . 'index.php?admin/nursery_subject2_3/', 'refresh');
+    }
+    if ($param1 == 'do_update') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+
+        $this->db->where('nursub_id', $param2);
+        $this->db->update('nnursery_subject2_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
+        redirect(base_url() . 'index.php?admin/nursery_subject2_3/', 'refresh');
+    } else if ($param1 == 'edit') {
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject2_3', array(
+                    'nursub_id' => $param2
+                ))->result_array();
+    }
+    if ($param1 == 'delete') {
+        $this->db->where('nursub_id', $param2);
+        $this->db->delete('nnursery_subject2_3');
+        $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
+        redirect(base_url() . 'index.php?admin/nursery_subject2_3/' . $param3, 'refresh');
+    }
+    $page_data['nursub_id'] = $param1;
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject2_3', array('nursub_id' => $param1))->result_array();
+    $page_data['page_name'] = 'nursery_subject2_3';
     $page_data['page_title'] = get_phrase('nursery_3_subject');
     $this->load->view('backend/index', $page_data);
 }
@@ -1504,7 +1621,7 @@ function nursery_subject3($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject3', $data);
+        $this->db->insert('nnursery_subject3', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject3/', 'refresh');
     }
@@ -1514,23 +1631,23 @@ function nursery_subject3($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject3', $data);
+        $this->db->update('nnursery_subject3', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject3/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject3', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject3', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject3');
+        $this->db->delete('nnursery_subject3');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject3/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
     //$page_data['exam_id'] = $this->input->post('exam_id');
-    $page_data['subjects'] = $this->db->get_where('nursery_subject3', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject3', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject3';
     $page_data['page_title'] = get_phrase('toddler');
     $this->load->view('backend/index', $page_data);
@@ -1545,7 +1662,7 @@ function nursery_subject3_2($param1 = '', $param2 = '', $param3 = '') {
         $data['language'] = $this->input->post('language');
         $data['social'] = $this->input->post('social');
         $data['knowledge'] = $this->input->post('knowledge');
-        $this->db->insert('nursery_subject3_2', $data);
+        $this->db->insert('nnursery_subject3_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
         redirect(base_url() . 'index.php?admin/nursery_subject3_2/', 'refresh');
     }
@@ -1555,24 +1672,65 @@ function nursery_subject3_2($param1 = '', $param2 = '', $param3 = '') {
         $data['knowledge'] = $this->input->post('knowledge');
 
         $this->db->where('nursub_id', $param2);
-        $this->db->update('nursery_subject3_2', $data);
+        $this->db->update('nnursery_subject3_2', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/nursery_subject3_2/', 'refresh');
     } else if ($param1 == 'edit') {
-        $page_data['edit_data'] = $this->db->get_where('nursery_subject3_2', array(
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject3_2', array(
                     'nursub_id' => $param2
                 ))->result_array();
     }
     if ($param1 == 'delete') {
         $this->db->where('nursub_id', $param2);
-        $this->db->delete('nursery_subject3_2');
+        $this->db->delete('nnursery_subject3_2');
         $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
         redirect(base_url() . 'index.php?admin/nursery_subject3_2/' . $param3, 'refresh');
     }
     $page_data['nursub_id'] = $param1;
     //$page_data['exam_id'] = $this->input->post('exam_id');
-    $page_data['subjects'] = $this->db->get_where('nursery_subject3_2', array('nursub_id' => $param1))->result_array();
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject3_2', array('nursub_id' => $param1))->result_array();
     $page_data['page_name'] = 'nursery_subject3_2';
+    $page_data['page_title'] = get_phrase('toddler');
+    $this->load->view('backend/index', $page_data);
+}
+
+//toddler term 3
+function nursery_subject3_3($param1 = '', $param2 = '', $param3 = '') {
+	if ($this->session->userdata('admin_login') != 1)
+        redirect(base_url(), 'refresh');
+   
+    if ($param1 == 'create') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+        $this->db->insert('nnursery_subject3_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_added_successfully'));
+        redirect(base_url() . 'index.php?admin/nursery_subject3_3/', 'refresh');
+    }
+    if ($param1 == 'do_update') {
+        $data['language'] = $this->input->post('language');
+        $data['social'] = $this->input->post('social');
+        $data['knowledge'] = $this->input->post('knowledge');
+
+        $this->db->where('nursub_id', $param2);
+        $this->db->update('nnursery_subject3_3', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
+        redirect(base_url() . 'index.php?admin/nursery_subject3_3/', 'refresh');
+    } else if ($param1 == 'edit') {
+        $page_data['edit_data'] = $this->db->get_where('nnursery_subject3_3', array(
+                    'nursub_id' => $param2
+                ))->result_array();
+    }
+    if ($param1 == 'delete') {
+        $this->db->where('nursub_id', $param2);
+        $this->db->delete('nnursery_subject3_3');
+        $this->session->set_flashdata('flash_message', get_phrase('data_deleted'));
+        redirect(base_url() . 'index.php?admin/nursery_subject3_3/' . $param3, 'refresh');
+    }
+    $page_data['nursub_id'] = $param1;
+    //$page_data['exam_id'] = $this->input->post('exam_id');
+    $page_data['subjects'] = $this->db->get_where('nnursery_subject3_3', array('nursub_id' => $param1))->result_array();
+    $page_data['page_name'] = 'nursery_subject3_3';
     $page_data['page_title'] = get_phrase('toddler');
     $this->load->view('backend/index', $page_data);
 }

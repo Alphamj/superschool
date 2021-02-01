@@ -5,9 +5,9 @@
 				<?php echo 'subjects'; ?>
 			</div>
 		</div>
- 		<!----CREATION FORM STARTS (FOR NURSERY 3)---->
+ 		<!----CREATION FORM STARTS---->
 
-          <?php echo form_open(base_url() . 'index.php?admin/nursery_subject2_2/create' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+          <?php echo form_open(base_url() . 'index.php?admin/nursery_subject_3/create' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                   <div class="form-group">
                       <label class="col-sm-3 control-label"><?php echo get_phrase('language');?></label>
                       <div class="col-sm-9">
@@ -57,7 +57,7 @@
 			</thead>
                <tbody>
 				<?php
-				$query = $this->db->get('nnursery_subject2_2')->result_array();
+				$query = $this->db->get('nnursery_subject_3')->result_array();
 				foreach($query as $row):?>
                     	<tr>
 						<td><?php echo $row['nursub_id'];?></td>
@@ -65,8 +65,8 @@
 						<td><?php echo $row['social'];?></td>
 						<td><?php echo $row['knowledge'];?></td>
 						<td>
-							<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_edit_nursery_subject2_2/<?php echo $row['nursub_id'];?>');"><button type="button" class="btn btn-blue btn-xs"><i class="entypo-pencil"></i></button></a>
-							<a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/nursery_subject2_2/delete/<?php echo $row['nursub_id'];?>');"><button type="button" class="btn btn-red btn-xs"><i class="entypo-trash"></i></button></a>
+							<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_edit_nursery_subject_3/<?php echo $row['nursub_id'];?>');"><button type="button" class="btn btn-blue btn-xs"><i class="entypo-pencil"></i></button></a>
+							<a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/nursery_subject_3/delete/<?php echo $row['nursub_id'];?>');"><button type="button" class="btn btn-red btn-xs"><i class="entypo-trash"></i></button></a>
 						</td>
                     	</tr>
                     <?php endforeach;?>
