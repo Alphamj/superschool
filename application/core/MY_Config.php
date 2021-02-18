@@ -66,7 +66,7 @@ class MY_Config Extends CI_Config {
         $this->CI->load->helper('file');
 
         // Read the config data as a string
-        $config_file = read_file($this->config_path);
+        $config_file = readfile($this->config_path);
 
         // Trim it
         $config_file = trim($config_file);
@@ -124,7 +124,7 @@ class MY_Config Extends CI_Config {
         require $this->database_path;
 
         // Now we read the file data as a string
-        $config_file = read_file($this->database_path);
+        $config_file = readfile($this->database_path);
 
         if (count($dbconfig) > 0) {
             foreach ($dbconfig as $key => $val) {
@@ -219,7 +219,7 @@ function routes_config_update($config_array = array()) {
     $this->CI->load->helper('file');
 
     // Read the config data as a string
-    $config_file = read_file($this->routes_path);
+    $config_file = readfile($this->routes_path);
 
     // Trim it
     $config_file = trim($config_file);

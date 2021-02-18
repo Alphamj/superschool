@@ -1119,7 +1119,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					</tr>
 				<?php endforeach; ?>
 
-			</table>
+		</table>
 
 		<input type="hidden" name="exam_id" value="<?php echo $exam_id;?>" />
         	<input type="hidden" name="class_id" value="<?php echo $class_id;?>" />

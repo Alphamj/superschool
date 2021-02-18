@@ -367,12 +367,13 @@ class Head extends CI_Controller
                
                    // Comments for primary
                    //$data0['TeacherName']  = $this->input->post('TeacherName');
+                   $data0['teach_sign'] = $this->input->post('teach_sign');
 
-                   //$this->db->where('class_id', $class_id);
-                   //$this->db->where('student_id', $student_id);
-                   //$this->db->where('exam_id', $exam_id);
-                   //$this->db->where('session_year', $session_year);
-                   //$this->db->update('comments0', $data0);
+                   $this->db->where('class_id', $class_id);
+                   $this->db->where('student_id', $student_id);
+                   $this->db->where('exam_id', $exam_id);
+                   $this->db->where('session_year', $session_year);
+                   $this->db->update('comments0', $data0);
                    
                }
                else if($this->input->post('class_types') == 'nursery'){                     
@@ -400,6 +401,9 @@ class Head extends CI_Controller
                    $data0['VPComment']  = $this->input->post('VPComment');
                    $data0['TeacherNames']  = $this->input->post('TeacherNames');
                    $data0['TeacherComments']  = $this->input->post('TeacherComments');
+                   $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
+
 
 
                    $this->db->where('class_id', $class_id);
@@ -514,8 +518,10 @@ class Head extends CI_Controller
             if($this->input->post('class_types') == 'nursery 3' || $this->input->post('class_types') == 'nursery 2' 
                 || $this->input->post('class_types') == 'nursery 1' || $this->input->post('class_types') == 'toddler'){
 
+
              // Comments for nursery
              $data0['TeacherName']  = $this->input->post('TeacherName');
+             $data0['teach_sign'] = $this->input->post('teach_sign');
 
              $this->db->where('class_id', $class_id);
              $this->db->where('student_id', $student_id);
@@ -589,6 +595,8 @@ class Head extends CI_Controller
                    $data0['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                    $data0['TeacherName']  = $this->input->post('TeacherName');
                     $data0['TeacherComment']  = $this->input->post('TeacherComment');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
 
                    $this->db->where('class_id', $class_id);
                    $this->db->where('student_id', $student_id);
@@ -606,6 +614,8 @@ class Head extends CI_Controller
                    $data0['VPComment']  = $this->input->post('VPComment');
                    $data0['TeacherNames']  = $this->input->post('TeacherNames');
                     $data0['TeacherComments']  = $this->input->post('TeacherComments');
+                    $data0['teach_sign'] = $this->input->post('teach_sign');
+                    $data0['head_sign'] = $this->input->post('head_sign');
 
                    $this->db->where('class_id', $class_id);
                    $this->db->where('student_id', $student_id);
@@ -622,6 +632,8 @@ class Head extends CI_Controller
                $data0['HeadTeacherComment']  = $this->input->post('HeadTeacherComment');
                $data0['TeacherName']  = $this->input->post('TeacherName');
                $data0['TeacherComment']  = $this->input->post('TeacherComment');
+               $data0['teach_sign'] = $this->input->post('teach_sign');
+                $data0['head_sign'] = $this->input->post('head_sign');
 
                $this->db->where('class_id', $class_id);
                $this->db->where('student_id', $student_id);

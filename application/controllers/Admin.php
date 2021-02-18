@@ -1808,7 +1808,7 @@ function modify_subject($param1 = '', $param2 = '', $param3 = '', $param4 = '', 
         
 
         $this->db->where('subject_id', $param2);
-        //$this->db->where('class_id', $this->input->post('class_ids'));
+        $this->db->where('class_id', $this->input->post('class_ids'));
         $this->db->update('class_subject', $data);
         $this->session->set_flashdata('flash_message', get_phrase('data_updated'));
         redirect(base_url() . 'index.php?admin/modify_subject/' . $param3 . '/' . $param4, 'refresh');;

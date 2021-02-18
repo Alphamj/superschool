@@ -1372,7 +1372,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			?>
 			
 					<tr>
-						<th>Teacher's Name</th>
+						<th>Teacher's Name <?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?></th>
 						<th>Vice Principal's Name</th>
 						<th>Attendance</th>
 					</tr>
