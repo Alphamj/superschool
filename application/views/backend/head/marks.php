@@ -340,7 +340,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     	
                         <?php 
                         //cod e added on 4 june sandeep
-						$edit_datastudents	=	$this->crud_model->get_subjects_by_class4($class_id,$student_id);
+						$students	=	$this->crud_model->get_subjects_by_class4($class_id,$student_id);
 						$h = $z = 0;
 						foreach($students as $row):
 						

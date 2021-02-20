@@ -283,7 +283,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				?>
 							<tr>
 								<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
-								<td><?php echo $studd['name'].' '.$studd['surname']; ?>	</td>
+								<td><?php echo $studd[0]['name'].' '.$studd[0]['surname'] ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();
@@ -941,7 +941,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				?>
 							<tr>
 								<?php $studd = $this->db->get_where('student' , array('student_id' => $row2['student_id']))->result_array();?>
-								<td><?php echo $studd['name'].' '.$studd['surname']; ?>	</td>
+								<td><?php echo $studd[0]['name'].' '.$studd[0]['surname'] ?>	</td>
 								<th class="tg-yw4l"><?php 
 								foreach ($marks as $val){
 									$subject = $this->db->get_where('subject',array('subject_id' => $val['subject_id']))->result_array();

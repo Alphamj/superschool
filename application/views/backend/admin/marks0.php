@@ -589,8 +589,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					<tr>
 						<td><textarea class="class_score form-control" value="<?php echo $row['TeacherComments'];?>" cols="30" name = "TeacherComments"><?php echo $row['TeacherComments'];?></textarea></td>
 						<td><textarea class="class_score form-control" value="<?php echo $row['VPComment'];?>" cols="30" name = "VPComment"><?php echo $row['VPComment'];?></textarea></td>
-						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg' ?>" />
-						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg' ?>" />
+						<input type="hidden" name="teach_sign" value="<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg'; ?>" />
+						<input type="hidden" name="head_sign" value="<?php echo $head_sign[0]['head_id'] . '.' . 'jpg'; ?>" />
 					</tr>
 					<?php } ?>
 			<?php endforeach; ?>

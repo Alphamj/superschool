@@ -101,10 +101,10 @@ td h5 {color: #000 !important;}
 		<?php echo form_close();?>
 </div>
 <?php
-	$nclass = $this->db->get_where('mark0',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
-	$class_id = $nclass[0]['class_id'];
-	$student_id = $nclass[0]['student_id'];
-	$sessoin_id = $nclass[0]['session_year'];
+	//$nclass = $this->db->get_where('mark0',array('student_id'=>$student_id,'session_year'=>$sessoin_id))->result_array();
+	//$class_id = $nclass[0]['class_id'];
+	//$student_id = $nclass[0]['student_id'];
+	//$sessoin_id = $nclass[0]['session_year'];
 ?>
 <?php if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
 <br>
