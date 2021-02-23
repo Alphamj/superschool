@@ -533,7 +533,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -548,7 +548,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -862,7 +862,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -877,7 +877,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -1499,7 +1499,7 @@
 						</tr>
 						<tr>
 							<td colspan="6">SIGNATURE:</td>
-							<td colspan="8"><img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 						<tr>
 							<td colspan="6"></td>
@@ -1514,7 +1514,7 @@
 						</tr>
 						<tr>
 							<td colspan="6" style="width:25%">SIGNATURE:</td>
-							<td colspan="8"><img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 
 						<?php endforeach; ?>
@@ -1544,7 +1544,7 @@
 				<table class="table-bordered" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -1924,10 +1924,10 @@
 				<tr>
 					<th colspan="2" style="height:10px;  width: 10%;">Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 					<th colspan="2" style="height:10px;  width: 10%;">Head Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 				</tr>
 				<tr>
 					<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row['TeacherComment'];?></td>

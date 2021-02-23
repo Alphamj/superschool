@@ -59,7 +59,7 @@
 				<table class="table-bordered" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -345,9 +345,9 @@
 					
 					<tr>
 						<th colspan="3" style="height:10px;  width: 25%;">TEACHER'S COMMENT</th>
-						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
 						<th colspan="3" style="height:10px;  width: 25%;">VICE PRINCIPAL'S COMMENT</th>
-						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
+						<th colspan="3" style="height:60px;  width: 25%;">SIGNATURE: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:30%; height:70%; display: block; margin:auto; padding:auto"></th>
 					</tr>
 					<tr>
 						<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row[0]['TeacherComments'];?></td>
@@ -363,8 +363,8 @@
 
 			<table style="width:100%; font-size:14px;">
 				<tr>
-					<td colspan="6" style="text-align:left;">CLASS TEACHER <img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
-					<td colspan="6" style="text-align:left;">PRINCIPAL <img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:15%; height:15%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS TO GRADES:</td>
@@ -524,8 +524,8 @@
 					$sign = $query_comments->result_array();
 				?>
 				<tr>
-					<td colspan="6" style="text-align:left;">CLASS TEACHER: <img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
-					<td colspan="6" style="text-align:left;">PRINCIPAL: <img src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">CLASS TEACHER: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="6" style="text-align:left;">PRINCIPAL: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS TO GRADES:</td>
@@ -559,7 +559,7 @@
 				<table class="table-bordered" style="width: 80%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -698,7 +698,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">SIGNATURE:</td>
-					<td colspan="8"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<tr>
 					<td colspan="2">KEYS:</td>
@@ -721,7 +721,7 @@
 				<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -850,7 +850,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE: <img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td>SIGNATURE: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -873,7 +873,7 @@
 				<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;"src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -911,7 +911,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
@@ -998,7 +998,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto">:</td>
+					<td>SIGNATURE <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto">:</td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1021,7 +1021,7 @@
 				<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -1059,7 +1059,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
@@ -1164,7 +1164,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE: <img src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td>SIGNATURE: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1187,7 +1187,7 @@
 				<table class="tg" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -1312,7 +1312,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE: <img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
+					<td>SIGNATURE: <img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto"></td>
 				</tr>
 				<?php endforeach; ?>
 			</table>

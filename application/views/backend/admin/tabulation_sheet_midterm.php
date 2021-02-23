@@ -360,7 +360,7 @@ td h5 {color: #000 !important;}
 					 }
         				$this->db->where('student_id', $student_id);
 					$this->db->where('exam_id', $exam_id);
-					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->where('session_year', $sessoin_id);
 					$this->db->update('average0', $datas);
 				?>
 
@@ -556,7 +556,7 @@ td h5 {color: #000 !important;}
 					 }
         				$this->db->where('student_id', $student_id);
 					$this->db->where('exam_id', $exam_id);
-					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->where('session_year', $sessoin_id);
 					$this->db->update('average0', $datas);
 				?>
 
@@ -599,7 +599,7 @@ td h5 {color: #000 !important;}
 																	'class_id' => $class_id ,
 																	'strand_id' => $rowz['strand_id'] , 
 																	'student_id' => $student_id,
-																	'session_year'=>$get_system_settings[17]['description']))->result_array();
+																	'session_year'=>$sessoin_id))->result_array();
 										foreach($strands as $rows):
 									?>
 											<tr>
@@ -640,7 +640,7 @@ td h5 {color: #000 !important;}
 		<!-- Individual Total Average -->
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-							'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+							'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_Remark = $this->db->get_where('average0' , $verify_data);
 
 				if($query_Remark->num_rows() < 1){
@@ -687,7 +687,7 @@ td h5 {color: #000 !important;}
 			<table style="width:100%; vertical-align: bottom;">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_comments = $this->db->get_where('comments0' , $verify_data);
 							
 				if($query_comments->num_rows() < 1){
@@ -725,7 +725,7 @@ td h5 {color: #000 !important;}
 			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width:auto">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
@@ -805,7 +805,7 @@ td h5 {color: #000 !important;}
 			<?php if ($exam_name == 'TERM 3'){$exam_id++;} //step in for Term 3
 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_comments = $this->db->get_where('comments0' , $verify_data);
 				
 				$student_comments = $query_comments->result_array();
@@ -834,7 +834,7 @@ td h5 {color: #000 !important;}
 			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width:auto">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
@@ -915,7 +915,7 @@ td h5 {color: #000 !important;}
 			<?php if ($exam_name == 'TERM 3'){$exam_id++;} //step in for Term 3
 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_comments = $this->db->get_where('comments0' , $verify_data);
 				
 				$student_comments = $query_comments->result_array();
@@ -944,7 +944,7 @@ td h5 {color: #000 !important;}
 			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width:auto">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
@@ -1038,7 +1038,7 @@ td h5 {color: #000 !important;}
 			<?php if ($exam_name == 'TERM 3'){$exam_id++;} //step in for Term 3
 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_comments = $this->db->get_where('comments0' , $verify_data);
 				
 				$student_comments = $query_comments->result_array();
@@ -1067,7 +1067,7 @@ td h5 {color: #000 !important;}
 			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width:auto">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
@@ -1147,7 +1147,7 @@ td h5 {color: #000 !important;}
 			<?php if ($exam_name == 'TERM 3'){$exam_id++;} //step in for Term 3
 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=>$sessoin_id);
 				$query_comments = $this->db->get_where('comments0' , $verify_data);
 				
 				$student_comments = $query_comments->result_array();

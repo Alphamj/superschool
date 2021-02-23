@@ -365,7 +365,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					 }
         			$this->db->where('student_id', $student_id);
 					$this->db->where('exam_id', $exam_id);
-					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->where('session_year', $sessoin_id);
 					$this->db->update('average', $datas);
 				?>
 
@@ -670,7 +670,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					 }
         				$this->db->where('student_id', $student_id);
 					$this->db->where('exam_id', $exam_id);
-					$this->db->where('session_year', $get_system_settings[17]['description']);
+					$this->db->where('session_year', $sessoin_id);
 					$this->db->update('average', $datas);
 				?>
 
@@ -880,7 +880,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 																	'class_id' => $class_id ,
 																	'strand_id' => $rowz['strand_id'] , 
 																	'student_id' => $student_id,
-																	'session_year'=>$get_system_settings[17]['description']))->result_array();
+																	'session_year'=>$sessoin_id))->result_array();
 										foreach($strands as $rows):
 									?>
 											<tr>

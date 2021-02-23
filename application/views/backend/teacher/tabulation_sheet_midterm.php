@@ -858,7 +858,7 @@ td h5 {color: #000 !important;}
 			<table cellpadding="0" cellspacing="0" border="0" class="tg" style="width:auto">
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
-								'student_id' => $student_id,'session_year'=>$get_system_settings[17]['description']);
+								'student_id' => $student_id,'session_year'=> $sessoin_id);
 				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>

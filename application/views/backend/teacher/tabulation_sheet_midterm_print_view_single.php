@@ -918,7 +918,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
@@ -1009,7 +1009,7 @@
 					<td>TEACHER:<?php echo ' ',$row['TeacherName'];?></td>
 				</tr>
 				<tr>
-					<td>SIGNATURE <img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:10%; height:10%; display: block; margin:auto; padding:auto">:</td>
+					<td>SIGNATURE <img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:5px%; height:5px;">:</td>
 				</tr>
 				<?php endforeach; ?>
 			</table>
@@ -1070,7 +1070,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
@@ -1236,7 +1236,7 @@
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
-				$query_mark0 = $this->db->get_where('mark0' , $verify_data);
+				$query_mark0 = $this->db->get_where('mark0_nur' , $verify_data);
 				$row2 = $query_mark0->result_array();
 			?>
 			
