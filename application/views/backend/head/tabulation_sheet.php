@@ -271,7 +271,7 @@ if ($class_id != '' && $exam_id != '' && $student_id != ''):?>
                     <thead>
 						<tr>
 							<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-							<th class="tg-yw4l" rowspan="2">PRE-MOCK [100]</th>
+							<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > [100]</th>
 							<th class="tg-yw4l" rowspan="2">GRADE</th>
 							<th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
 							<th class="tg-yw4l" rowspan="2">EFFORT</th>

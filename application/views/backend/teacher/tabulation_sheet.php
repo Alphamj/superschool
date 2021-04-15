@@ -266,7 +266,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     <thead>
 						<tr>
 							<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-							<th class="tg-yw4l" rowspan="2">PRE-MOCK [100]</th>
+							<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > [100]</th>
 							<th class="tg-yw4l" rowspan="2">GRADE</th>
 							<th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
 							<th class="tg-yw4l" rowspan="2">EFFORT</th>
@@ -1132,8 +1132,11 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
 								
 					foreach($total_average as $avgg){
-						$z++;
-						$cav +=$avgg['total_average'];
+						if($avgg['total_average'] > 0){
+							$cav +=$avgg['total_average'];
+							$z++;
+						}
+						
 					}
 
 					$class_avg = $cav / $z;

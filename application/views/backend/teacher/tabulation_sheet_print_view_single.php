@@ -60,7 +60,7 @@
 				<table class="table-bordered" style="width: 80%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img style="display:block; margin:auto; padding:auto" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -72,7 +72,7 @@
 						</tr>
 						<?php } if ($class_id > 34 && $class_id <40){ ?>
 						<tr>
-							<td colspan="17" style="text-align: center;font-size: 17px;">PRE-MOCK REPORT</td>
+							<td colspan="17" style="text-align: center;font-size: 17px;"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?> REPORT</td>
 						</tr>
 						<?php } ?>
 						<tr>
@@ -234,7 +234,7 @@
 				<thead>
 					<tr>
 						<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-						<th class="tg-yw4l" rowspan="2">PRE-MOCK <br />[100]</th>
+						<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br />[100]</th>
 						<th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
 						<th class="tg-yw4l" rowspan="2">CLASS <br /> MAXIMUM</th>
 						<th class="tg-yw4l" rowspan="2">E<br />F<br />F<br />O<br />R<br />T</th>
@@ -340,6 +340,9 @@
 				
 				<table style="width:70%; vertical-align: top; margin:10px;" class="tg">
 					<?php 
+						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+						$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
 
 						$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 										'student_id' => $student_id , 'session_year' => $sessoin_id);
@@ -358,9 +361,9 @@
 					
 					<tr>
 						<td colspan="3" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="4"><img src="uploads/signature/<?php echo $row['teach_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="4"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						<td colspan="3" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="4"><img src="uploads/signature/<?php echo $row['head_sign'];?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="4"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -510,7 +513,7 @@
 				<!-- Commemt area -->
 				<table style="width:50%; vertical-align: top; float:right; margin-right:10px;" class="tg">
 					<?php 
-					    $teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
 						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
 						$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
 
@@ -533,7 +536,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -548,7 +551,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -839,7 +842,7 @@
 				<!-- Commemt area -->
 				<table style="width:50%; vertical-align: top; float:right; margin-right:10px;" class="tg">
 					<?php
-					    $teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+						$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
 						$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
 						$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
 						
@@ -862,7 +865,7 @@
 					
 					<tr>
 						<td colspan="6" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -877,7 +880,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="width:25%" class="tg-yw4l">SIGNATURE:</td>
-						<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+						<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:50%; display: block; margin:auto; padding:auto"></td>
 					</tr>
 
 					<?php endforeach; ?>
@@ -934,7 +937,7 @@
 				<table class="table-bordered" style="width: 80%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img style="display:block; margin:auto; padding:auto" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -1481,7 +1484,6 @@
 							$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
 							$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
 							$head_sign = $this->db->get_where('head', array('section'=>'Primary'))->result_array();
-							
 
 							$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 											'student_id' => $student_id, 'session_year' => $sessoin_id);
@@ -1500,7 +1502,7 @@
 						</tr>
 						<tr>
 							<td colspan="6">SIGNATURE:</td>
-							<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 						<tr>
 							<td colspan="6"></td>
@@ -1515,7 +1517,7 @@
 						</tr>
 						<tr>
 							<td colspan="6" style="width:25%">SIGNATURE:</td>
-							<td colspan="8"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>;?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="8"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:25%; height:25%; display: block; margin:auto; padding:auto"></td>
 						</tr>
 
 						<?php endforeach; ?>
@@ -1545,7 +1547,7 @@
 				<table class="table-bordered" style="width: 70%; margin:auto; margin-bottom: 10px;">
 					<tbody>
 						<tr>
-							<td colspan="1" rowspan="4"><img src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
+							<td colspan="1" rowspan="4"><img style="display: block; margin:auto;" src="uploads/logo.png" style="max-height:100%; display: block; margin:auto; padding:auto"></td>
 							<td colspan="17" style="text-align: center;font-size: 45px;font-family: 'canterburyregular';"><?php echo $this->db->get_where('settings' , array('type' =>'system_name'))->row()->description;?></td>
 						</tr>
 						<tr>
@@ -1626,16 +1628,16 @@
 			<?php // NURSERY 1
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
 				<?php 
-					if($sessoin_id  == '2019-2020'){
-						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
-					}
-					else{
-						if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
-					}
+				if($sessoin_id  = '2019-2020'){
+					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+				}
+				else{
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
+				}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1697,16 +1699,16 @@
 			<?php // NURSERY 2
 				}if (strpos($class_type, 'nursery 2') !== false ) { ?>
 				<?php 
-					if($sessoin_id  == '2019-2020'){
-						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
-					}
-					else{
-						if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject1')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject1_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject1_3')->result_array();}
-					}
+				if($sessoin_id  = '2019-2020'){  
+					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
+				}
+				else{
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject1')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject1_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject1_3')->result_array();}
+				}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1925,10 +1927,10 @@
 				<tr>
 					<th colspan="2" style="height:10px;  width: 10%;">Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $teach_sign[0]['teacher_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 					<th colspan="2" style="height:10px;  width: 10%;">Head Teacher's Comment</th>
 					<th colspan="2" style="height:100px;  width: 10%;">signature:</th>
-					<th colspan="2" style="height:100px;  width: 15%;"><img style="display:block; margin:auto; padding:auto" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
+					<th colspan="2" style="height:100px;  width: 15%;"><img style="display: block; margin:auto; width:100px;" src="uploads/signature/<?php echo $head_sign[0]['head_id'] . '.' . 'jpg';?>" style="width:50%; height:100%; display: block; margin:auto; padding:auto"></th>
 				</tr>
 				<tr>
 					<td colspan="6" style="height:10px; width: 50%; font-size: 15px;"><?php echo $row['TeacherComment'];?></td>

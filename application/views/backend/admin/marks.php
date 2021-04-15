@@ -333,7 +333,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     <thead>
 						<tr>
 							<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-							<th class="tg-yw4l" rowspan="2">PRE-MOCK [100]</th>
+							<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > [100]</th>
 							<th class="tg-yw4l" rowspan="2">EFFORT</th>
 							<th class="tg-yw4l" colspan="5">SUBJECT TEACHER'S REMARKS</th>
 							<th class="tg-yw4l" rowspan="2">TEACHER</th>

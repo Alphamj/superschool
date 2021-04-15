@@ -72,7 +72,7 @@
 						</tr>
 						<?php } if ($class_id > 34 && $class_id <40){ ?>
 						<tr>
-							<td colspan="17" style="text-align: center;font-size: 17px;">PRE-MOCK REPORT</td>
+							<td colspan="17" style="text-align: center;font-size: 17px;"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > REPORT</td>
 						</tr>
 						<?php } ?>
 						<tr>
@@ -234,7 +234,7 @@
 				<thead>
 					<tr>
 						<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-						<th class="tg-yw4l" rowspan="2">PRE-MOCK <br />[100]</th>
+						<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > [100]</th>
 						<th class="tg-yw4l" rowspan="2">G<br />R<br />A<br />D<br />E<br />S</th>
 						<th class="tg-yw4l" rowspan="2">CLASS <br /> MAXIMUM</th>
 						<th class="tg-yw4l" rowspan="2">E<br />F<br />F<br />O<br />R<br />T</th>

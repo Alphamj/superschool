@@ -240,7 +240,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
                     <thead>
 						<tr>
 							<th class="tg-yw4l" rowspan="2">SUBJECT</th>
-							<th class="tg-yw4l" rowspan="2">PRE-MOCK [100]</th>
+							<th class="tg-yw4l" rowspan="2"><?php if ($exam_id == 1) { echo 'MOCK 1';} ?><?php if ($exam_id == 2) { echo 'MOCK 2';} ?><br > [100]</th>
 							<th class="tg-yw4l" rowspan="2">GRADE</th>
 							<th class="tg-yw4l" rowspan="2">CLASS MAXIMUM</th>
 							<th class="tg-yw4l" rowspan="2">EFFORT</th>
@@ -1097,10 +1097,14 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 							}
 
 					$total_average = $this->db->get_where('average',array('exam_id' => $exam_id,'class_id'=>$class_id ,'session_year'=>$sessoin_id))->result_array();
-								
+					
 					foreach($total_average as $avgg){
-						$z++;
-						$cav +=$avgg['total_average'];
+						if($avgg['total_average'] > 0){
+							
+							$cav +=$avgg['total_average'];
+							$z++;
+						}
+						
 					}
 
 					$class_avg = $cav / $z;
@@ -1320,7 +1324,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			</table>
 
 <!-- Nursery -->
-		<?php }else if (strpos($class_type, 'nursery') !== false || strpos($class_type, 'nur') !== false || strpos($class_type, 'toddler') !== false){ ?>
+<?php }else if (strpos($class_type, 'nursery') !== false || strpos($class_type, 'nur') !== false || strpos($class_type, 'toddler') !== false){ ?>
 		<style>
 			table, tr, td, th {    border: 1px solid #000;border-collapse: collapse;font-family: sans-serif;font-size: 14px;}
 			th { padding: 10px; margin-left: 100px;}td span {font-size: 13px; margin-left: 2px;}th {height: 200px; }
@@ -1331,7 +1335,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			td.inner table, td.inner tr {border: 0;}
 		</style>
 
-		<table style="width: 99%;float:center; margin-left: 10px;">
+		<table>
 			<?php 
 				$verify_data = array('exam_id' => $exam_id ,'class_id' => $class_id , 
 								'student_id' => $student_id,'session_year'=>$sessoin_id);
@@ -1341,7 +1345,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			?>
 			
 			<tbody>
-				<tr>
+			<tr>
 					<th colspan="12"><span><strong>SUBJECTS</strong></span></th>
 					<th class="text-transform"><span><strong>Exceeding</strong></span></th>
 					<th class="text-transform"><span><strong>Meeting_Expectations</strong></span></th>
@@ -1375,19 +1379,19 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 					<td></td>
 					<td></td>
 				</tr>
-			<?php // ******************NURSERY 1*******************
+				<?php // ******************NURSERY 1*******************
 				if (strpos($class_type, 'nursery 1') !== false ) { ?>
-				<?php 
-					if($sessoin_id  = '2019-2020'){
-						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
-					}
-					else{
-						if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
-						if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
-						if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
-					}
+				<?php
+				if($sessoin_id  == '2019-2020'){ 
+					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject_3')->result_array();}
+				}
+				else{
+					if ($exam_id == 1) {$items = $this->db->get_where('nnursery_subject')->result_array();}
+					if ($exam_id == 2) {$items = $this->db->get_where('nnursery_subject_2')->result_array();}
+					if ($exam_id == 3) {$items = $this->db->get_where('nnursery_subject_3')->result_array();}
+				}
 					$a = 0;$b = 100;$c = 200;
 					foreach ($items as $row){
 					
@@ -1450,7 +1454,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ******************NURSERY 2*****************88
 				}if (strpos($class_type, 'nursery 2') !== false ) { ?>
 				<?php 
-					if($sessoin_id  = '2019-2020'){
+					if($sessoin_id  == '2019-2020'){
 						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject1')->result_array();}
 						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject1_2')->result_array();}
 						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject1_3')->result_array();}
@@ -1522,7 +1526,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 			<?php // ***************NURSERY 3***************
 				}if (strpos($class_type, 'nursery 3') !== false ) { ?>
 				<?php 
-					//if($sessoin_id  = '2019-2020'){ 
+					//if($sessoin_id  = '2019-2020'){
 						if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject2')->result_array();}
 						if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject2_2')->result_array();}
 						if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject2_3')->result_array();}
@@ -1597,8 +1601,8 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				
 			<?php // **************TODDLER*****************
 				}if (strpos($class_type, 'toddler') !== false ) { ?>
-				<?php
-				//if($sessoin_id  = '2019-2020'){  
+				<?php 
+				//if($sessoin_id  = '2019-2020'){
 					if ($exam_id == 1) {$items = $this->db->get_where('nursery_subject3')->result_array();}
 					if ($exam_id == 2) {$items = $this->db->get_where('nursery_subject3_2')->result_array();}
 					if ($exam_id == 3) {$items = $this->db->get_where('nursery_subject3_3')->result_array();}
@@ -1668,7 +1672,7 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 				<?php }} ?>
 			</tbody>
 			</table>
-			
+
 			<hr>
 
 		<!--COMMENT AREA-->
@@ -1704,8 +1708,6 @@ td {font-family: Arial, sans-serif;font-size: 12px;padding: 8px;border: 1px soli
 		<br />
 
 		<?php } ?>
-
-		<hr />
 		<center>
 			<a href="<?php echo base_url();?>index.php?admin/tabulation_sheet_print_view_control/<?php echo $class_id;?>/<?php echo $exam_id;?>/<?php echo $sessoin_id;?>" 
 				class="btn btn-orange btn-sm btn-icon icon-left" target="_blank">

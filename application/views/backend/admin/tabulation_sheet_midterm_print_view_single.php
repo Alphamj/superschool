@@ -355,7 +355,11 @@
 					</tr>
 				</table>
 			</div>
-			<?php } if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) { ?>
+			<?php } if (strpos($class_type, 'ss 1') !== false || strpos($class_type, 'ss 2') !== false) {  
+					$teach_id = $this->db->get_where('class', array('class_id'=>$class_id))->result_array();
+					$teach_sign = $this->db->get_where('teacher', array('teacher_id'=>$teach_id[0]['teacher_id']))->result_array();
+					$head_sign = $this->db->get_where('head', array('section'=>'Secondary'))->result_array();
+				?>
 			
 				</div>
 				<br>
