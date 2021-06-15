@@ -54,7 +54,7 @@ $active_record = TRUE;
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'connected1';
-$db['default']['database'] = 'superschool1';
+$db['default']['database'] = 'superschool';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['db_debug'] = true;
 

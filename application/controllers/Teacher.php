@@ -1052,7 +1052,33 @@ class Teacher extends CI_Controller
 		$this->load->view('backend/teacher/tabulation_sheet_print_view', $page_data);
     }
 
-    //SCORESHEET
+    //MIT SCORESHEET
+    function score_sheet0($class_id = '', $exam_id = '', $sessoin_id = '') {
+        if ($this->session->userdata('teacher_login') != 1)
+            redirect(base_url(), 'refresh');
+
+        if ($this->input->post('operation') == 'selection') {
+            $page_data['exam_id'] = $this->input->post('exam_id');
+            $page_data['class_id'] = $this->input->post('class_id');
+            $page_data['sessoin_id'] = $this->input->post('session_year');
+
+            if ($page_data['exam_id'] > 0 && $page_data['class_id'] > 0) {
+                redirect(base_url() . 'index.php?teacher/score_sheet0/' . $page_data['class_id'] . '/' . $page_data['exam_id'] . '/' .$page_data['sessoin_id'], 'refresh');
+            } else {
+                $this->session->set_flashdata('mark_message', 'Choose class and exam');
+                redirect(base_url() . 'index.php?teacher/score_sheet0/', 'refresh');
+            }
+        }
+        $page_data['exam_id'] = $exam_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['sessoin_id'] = $sessoin_id;
+        $page_data['page_info'] = 'BROADSHEET';
+
+        $page_data['page_name'] = 'score_sheet0';
+        $page_data['page_title'] = get_phrase('score_sheet0');
+        $this->load->view('backend/index', $page_data);
+    }
+    //EOT SCORESHEET
     function score_sheet($class_id = '', $exam_id = '', $sessoin_id = '') {
     	if ($this->session->userdata('teacher_login') != 1)
 			redirect(base_url(), 'refresh');
@@ -1072,7 +1098,7 @@ class Teacher extends CI_Controller
 		$page_data['exam_id'] = $exam_id;
 		$page_data['class_id'] = $class_id;
 		$page_data['sessoin_id'] = $sessoin_id;
-		$page_data['page_info'] = 'Exam marks';
+		$page_data['page_info'] = 'BROADSHEET';
 	
 		$page_data['page_name'] = 'score_sheet';
 		$page_data['page_title'] = get_phrase('score_sheet');

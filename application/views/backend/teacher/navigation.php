@@ -181,6 +181,7 @@
                     $page_name == 'tabulation_sheet_midterm' ||
                     $page_name == 'tabulation_sheet' ||
                     $page_name == 'grade' ||
+                    $page_name == 'score_sheet0' ||
                     $page_name == 'score_sheet' ||
                     $page_name == 'marks')
                 echo 'opened active';
@@ -216,8 +217,13 @@
                         </a>
                     </li>
                     <li class="<?php if ($page_name == 'score_sheet') echo 'active'; ?> ">
+                        <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/score_sheet0">
+                            <span><?php echo 'Mid-Term score sheet' ?></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($page_name == 'score_sheet') echo 'active'; ?> ">
                         <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/score_sheet">
-                            <span><?php echo 'Generate score sheet' ?></span>
+                            <span><?php echo 'EOT score sheet' ?></span>
                         </a>
                     </li>
                 </ul>
